@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <% include ../header.html %>
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <form class="form-horizontal" id="f_reg_sub" method="post" action="/users/reg_sub">
+        <div id="div_uname" class="form-group">
+            <label class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="u_name" name="u_name" placeholder="登陆系统使用的用户名">
+            </div>
+        </div>
+        <div id="div_upw" class="form-group">
+            <label class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="u_pw" name="u_pw" placeholder="请使用字母或数字，最少6位">
+            </div>
+        </div>
+        <div id="div_upw2" class="form-group">
+            <label class="col-sm-2 control-label">确认密码</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="u_pw2" name="u_pw2" placeholder="请再次输入相同的密码">
+            </div>
+        </div>
+        <div id="div_rname" class="form-group">
+            <label class="col-sm-2 control-label">真实姓名</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="r_name" name="r_name" placeholder="请输入真实的姓名">
+            </div>
+        </div>
+        <div id="div_phone" class="form-group">
+            <label class="col-sm-2 control-label">手机号码</label>
+            <div class="col-sm-4">
+                <input type="tel" class="form-control" id="phone" name="phone" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11" placeholder="您的建议很重要，我们需要在必要的时候和您联系">
+            </div>
+        </div>
+        <div id="div_local" class="form-group">
+            <label class="col-sm-2 control-label">所在部门</label>
+            <div class="col-sm-4">
+                <select class="form-control" id="local" name="local">
+                    <option value="0">请选择分店</option>
+                    <option value="1">金融街店</option>
+                    <option value="2">方圆店</option>
+                </select>
+                <br>
+
+                <select class="form-control" id="dep" name="dep">
+                    <option value="0">请选择部门</option>
+                    <option value="1">体检部</option>
+                    <option value="2">呼叫中心</option>
+                    <option value="3">销售部</option>
+                    <option value="4">综合管理部</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-6">
+                <button type="button" class="btn btn-default" id="bt_sub">提交注册</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+<script>
+    $(document).ready(function(){
+ $('#bt_sub').click(function(){
+     var sub=true;
+     var u_name=$('#u_name');
+     var u_pw=$('#u_pw');
+     var u_pw2=$('#u_pw2');
+     var r_name=$('#r_name');
+     var phone=$('#phone');
+     var local=$('#local');
+     var dep=$('#dep');
+     if(u_name.val()==''||u_name.val()==null){
+         $('#div_uname').toggleClass("has-error",true);
+         sub=false;
+     }else{
+         $('#div_uname').toggleClass("has-error",false);
+     }
+     if(u_pw.val()==''||u_pw.val()==null){
+         $('#div_upw').toggleClass("has-error",true);
+         sub=false;
+     }else{
+         $('#div_upw').toggleClass("has-error",false);
+     }
+     if(u_pw2.val()==''||u_pw2.val()==null){
+         $('#div_pw2').toggleClass("has-error",true);
+         sub=false;
+     }else{
+         $('#div_pw2').toggleClass("has-error",false);
+     }
+     if(u_pw.val()!=u_pw2.val()||u_pw2.val()==''||u_pw2.val()==null||u_pw.val()==''||u_pw.val()==null){
+         $('#div_upw').toggleClass("has-error",true);
+         $('#div_upw2').toggleClass("has-error",true);
+         sub=false;
+     }else{
+         $('#div_upw').toggleClass("has-error",false);
+         $('#div_upw2').toggleClass("has-error",false);
+     }
+     if(r_name.val()==''||r_name.val()==null){
+         $('#div_rname').toggleClass("has-error",true);
+         sub=false;
+     }else{
+         $('#div_rname').toggleClass("has-error",false)
+     }
+     if(phone.val()==''||phone.val()==null){
+         $('#div_phone').toggleClass("has-error",true);
+         sub=false;
+     }else{
+         $('#div_phone').toggleClass("has-error",false);
+     }
+     if(local.val()=='0'||dep.val()=='0'){
+         $('#div_local').toggleClass("has-error",true);
+         sub=false;
+     }else{
+         $('#div_local').toggleClass("has-error",false);
+     }
+     if(sub==true){
+         $('#f_reg_sub').submit();
+     }else{
+         return false;
+     }
+
+ });
+});
+</script>
+</html>

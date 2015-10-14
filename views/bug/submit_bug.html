@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>N.I.U-首页</title>
+
+    <!-- Bootstrap core CSS -->
+    <% include ../header.html %>
+    <script type="text/javascript", src="/javascripts/nicEdit.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!--导航栏-->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+
+            <a class="navbar-brand" href="#">欢迎使用 <strong>N.I.U</strong> 系统</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="#">首 页 <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">维修申请</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BUG提交<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" class="active">体检系统</a></li>
+                  <li><a href="#">CRM系统</a></li>
+                  <li><a href="#">N.I.U 系统</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">其他系统</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default">搜 索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">消 息 <span class="badge">4</span></a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">当前用户<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">设 置</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">注 销</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+      <!--导航栏 end-->
+
+
+      <div>
+        <h1>您正在为 体检系统 提交BUG信息</h1>
+        <p>体检系统涉及体检流程、LIS、PACS系统</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8">
+          <!--from-->
+          <form class="form-horizontal" id="f_bug_submit" name="f_bug_submit" method="post" action="/bug/submit/post">
+            <div class="form-group" id="div_title">
+              <label class="col-sm-2 control-label">标题</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="bug_title" name="bug_title" maxlength="30" placeholder="用最精炼的语言描述一下问题（最多30字），例如：导诊台无法刷出客户信息">
+              </div>
+            </div>
+            <div class="form-group" id="div_blcok">
+              <label class="col-sm-2 control-label">功能模块</label>
+              <div class="col-sm-10">
+                <select id="bug_block" name="bug_block" class="form-control">
+                  <option value="0">请选择问题模块</option>
+                  <option value="1">检前咨询</option>
+                  <option value="2">导诊台</option>
+                  <option value="3">一般检查</option>
+                  <option value="4">骨密度检查</option>
+                  <option value="5">生化检查</option>
+                </select>
+              </div>
+            </div>
+
+
+            <!--nicEditor-->
+            <div class="form-group" id="div_descrption">
+              <label class="col-sm-2 control-label">问题描述</label>
+              <div class="col-sm-10">
+                <textarea name="bug_descrption", id="bug_descrption", class="form-control" style="height: 300px"></textarea>
+              </div>
+            </div>
+
+            <!--nicEditor end-->
+
+            <!--nicEditor-->
+            <div class="form-group" id="div_suggest">
+              <label class="col-sm-2 control-label">修改建议</label>
+              <div class="col-sm-10">
+                <textarea name="bug_sug_textarea", id="bug_sug_textarea", class="form-control" style="height: 300px"></textarea>
+              </div>
+            </div>
+
+            <!--nicEditor end-->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">BUG等级</label>
+              <div class="col-sm-10">
+                <div class="has-success">
+                <label class="radio-inline">
+                  <input type="radio" name="bug_level" id="bug_level" value="1" checked="checked"> 一般 （不影响正常工作的错误流程或数据混乱)
+                </label>
+                </div>
+                <div class="has-warning">
+                <label class="radio-inline">
+                  <input type="radio" name="bug_level" id="bug_level" value="2"> 紧急 （对工作流程有一定影响的错误或数据混乱）
+                </label>
+                </div>
+                <div class="has-error">
+                <label class="radio-inline">
+                  <input type="radio" name="bug_level" id="bug_level" value="3"> 严重 （严重影响工作的系统问题！请谨慎选择，程序猿将全员动员，彻夜修复！）
+                </label>
+                </div>
+              </div>
+            </div>
+            <input type="hidden" name="userid" id="userid" value="007">
+            <input type="hidden" name="h_description" id="h_description">
+            <input type="hidden" name="h_suggest" id="h_suggest">
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-default" name="bt_bug_submit" id="bt_bug_submit">提 交</button>
+              </div>
+            </div>
+          </form>
+          <!--from end-->
+</div>
+
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>可能相关的BUG</h4>
+            <p>看看是不是有可能与您提出的问题相似</p>
+          </div>
+          <div class="sidebar-module">
+            <ol class="list-unstyled">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+              <li><a href="#">January 2014</a></li>
+              <li><a href="#">December 2013</a></li>
+              <li><a href="#">November 2013</a></li>
+              <li><a href="#">October 2013</a></li>
+              <li><a href="#">September 2013</a></li>
+              <li><a href="#">August 2013</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2013</a></li>
+              <li><a href="#">May 2013</a></li>
+              <li><a href="#">April 2013</a></li>
+            </ol>
+          </div>
+
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer>
+
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--nicEditor-->
+    <script type="text/javascript">
+      var niceditor;
+      var niceditro1;
+      bkLib.onDomLoaded(function() {
+        niceditor = new nicEditor({fullPanel : true}).panelInstance('bug_descrption');
+        niceditor1 = new nicEditor({fullPanel : true}).panelInstance('bug_sug_textarea');
+      });
+      function getStr_descrption(){
+        var str_descrption=niceditor.instanceById("bug_descrption").getContent();
+       return str_descrption;
+        //alert(str);
+      }
+      function getStr_suggest(){
+        var str_suggest=niceditor1.instanceById("bug_sug_textarea").getContent();
+        return str_suggest;
+      }
+    </script>
+    <!--nicEditor end-->
+
+    <!--bug提交-->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#bt_bug_submit').click(function(){
+          var sub=true;
+          var title=$('#bug_title');
+          var block=$('#bug_block');
+          var descrption=$('#bug_descrption');
+          var suggest=$('#bug_sug_textarea');
+          var level=$('#bug_level');
+          if(title.val()==''||title.val()==null){
+            $('#div_title').toggleClass("has-error",true);
+            sub=false;
+          }else{
+            $('#div_title').toggleClass("has-error",false);
+          }
+          if(block.val()==0||block.val()==''){
+            $('#div_blcok').toggleClass("has-error",true);
+            sub=false;
+          }else{
+            $('#div_blcok').toggleClass("has-error",false);
+          }
+          if(getStr_descrption().length==0||getStr_descrption()=="<br>"){
+            $('#div_descrption').toggleClass("has-error",true);
+            sub=false;
+          }else{
+            $('#div_descrption').toggleClass("has-error",false);
+            $('#h_description').val(getStr_descrption());
+          }
+          if(getStr_suggest().length==0||getStr_suggest()=="<br>"){
+            $('#div_suggest').toggleClass("has-error",true);
+            sub=false;
+          }else{
+            $('#div_suggest').toggleClass("has-error",false);
+            $('#h_suggest').val(getStr_suggest());
+          }
+          if(sub==true){
+            $('#f_bug_submit').submit();
+          }else{
+            return false;
+          }
+        });
+
+
+      });
+    </script>
+    <!--bug提交 end-->
+
+  </body>
+</html>
