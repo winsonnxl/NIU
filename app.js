@@ -12,6 +12,8 @@ var work_index=require('./routes/work_index');
 var bug=require('./routes/bug');
 var test=require('./routes/test');
 
+require('./models/m_sys_list').getSys_List();
+
 var app = express();
 
 // view engine setup
@@ -21,6 +23,9 @@ app.engine('.html',require('ejs').__express);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+var log = require('./lib/log');
+log.use(app);//设置LOG
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
