@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>我的工作——N.I.U</title>
+
+    <!-- Bootstrap core CSS -->
+    <% include ../header.html %>
+</head>
+
+<body>
+<div class="container">
+    <!--导航栏-->
+    <%include ../nav.html%>
+    <!--导航栏 end-->
+
+
+    <div>
+        <h1>您正在为 体检系统 提交BUG信息</h1>
+        <p>体检系统涉及体检流程、LIS、PACS系统</p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>系统名称</th>
+                    <th>部门</th>
+                    <th>模块</th>
+                    <th>相关BUG报告</th>
+                    <th>提交时间</th>
+                    <th>处理状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <% if(results.length>0){
+                     for(var i=0;results.length>i;i++){%>
+                  <tr>
+                      <th scope="row"><%=i+1%></th>
+                      <th><%=results[i].sys_name%></th>
+                      <th><%=results[i].sys_dep%></th>
+                      <th><%=results[i].sys_model%></th>
+                     <!-- <th><%=results[i].bug_id%></th>-->
+                      <th><%=results[i].bug_title%></th>
+                      <th><%=results[i].submit_time%></th>
+                      <th><%=results[i].statue%></th>
+
+                  </tr>
+                  <%}
+                  }%>
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+<footer>
+
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+
+
+
+</body>
+</html>
