@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>N.I.U-首页</title>
+    <title>N.I.U-BUG提交</title>
 
     <!-- Bootstrap core CSS -->
     <% include ../header.html %>
@@ -13,50 +13,7 @@
   <body>
     <div class="container">
       <!--导航栏-->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-
-            <a class="navbar-brand" href="#">欢迎使用 <strong>N.I.U</strong> 系统</a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="#">首 页 <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">维修申请</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BUG提交<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#" class="active">体检系统</a></li>
-                  <li><a href="#">CRM系统</a></li>
-                  <li><a href="#">N.I.U 系统</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">其他系统</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">搜 索</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">消 息 <span class="badge">4</span></a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">当前用户<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">设 置</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">注 销</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+    <%include ../nav.html%>
       <!--导航栏 end-->
 
 
@@ -76,16 +33,25 @@
                 <input type="text" class="form-control" id="bug_title" name="bug_title" maxlength="30" placeholder="用最精炼的语言描述一下问题（最多30字），例如：导诊台无法刷出客户信息">
               </div>
             </div>
-            <div class="form-group" id="div_blcok">
+            <div class="form-group" id="div_dep">
+              <label class="col-sm-2 control-label">工作模块</label>
+              <div class="col-sm-10">
+                <select id="bug_dep" name="bug_dep" class="form-control">
+                  <option value="0">请选择工作模块</option>
+                  <%if(dep.length>0){
+                    for(var i=0;i<dep.length;i++){%>
+                  <option value=<%=dep[i].dep_id%>><%=dep[i].name%></option>
+                  <%}
+                  }%>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" id="div_block">
               <label class="col-sm-2 control-label">功能模块</label>
               <div class="col-sm-10">
                 <select id="bug_block" name="bug_block" class="form-control">
-                  <option value="0">请选择问题模块</option>
-                  <option value="1">检前咨询</option>
-                  <option value="2">导诊台</option>
-                  <option value="3">一般检查</option>
-                  <option value="4">骨密度检查</option>
-                  <option value="5">生化检查</option>
+                  <option value="0">请选择功能模块</option>
                 </select>
               </div>
             </div>
@@ -96,16 +62,19 @@
               <label class="col-sm-2 control-label">问题描述</label>
               <div class="col-sm-10">
                 <textarea name="bug_descrption", id="bug_descrption", class="form-control" style="height: 300px"></textarea>
+                <br>
+                <div id="click_sug" name="click_sug"><span class="caret"></span>&nbsp;&nbsp;&nbsp;&nbsp;我有好的修改建议</div>
               </div>
             </div>
 
             <!--nicEditor end-->
 
             <!--nicEditor-->
-            <div class="form-group" id="div_suggest">
+            <div class="form-group" id="div_suggest" hidden="hidden">
               <label class="col-sm-2 control-label">修改建议</label>
+
               <div class="col-sm-10">
-                <textarea name="bug_sug_textarea", id="bug_sug_textarea", class="form-control" style="height: 300px"></textarea>
+                <textarea name="bug_sug_textarea", id="bug_sug_textarea", class="form-control" style="height: 300px;width: 620px"></textarea>
               </div>
             </div>
 
@@ -130,9 +99,10 @@
                 </div>
               </div>
             </div>
-            <input type="hidden" name="userid" id="userid" value="007">
+
             <input type="hidden" name="h_description" id="h_description">
             <input type="hidden" name="h_suggest" id="h_suggest">
+            <input type="hidden" name="sys_id" id="sys_id" value="<%=sys_code%>">
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
@@ -206,21 +176,28 @@
         $('#bt_bug_submit').click(function(){
           var sub=true;
           var title=$('#bug_title');
-          var block=$('#bug_block');
+          var dep=$('#bug_dep');
           var descrption=$('#bug_descrption');
           var suggest=$('#bug_sug_textarea');
           var level=$('#bug_level');
+          var block=$('#bug_block');
           if(title.val()==''||title.val()==null){
             $('#div_title').toggleClass("has-error",true);
             sub=false;
           }else{
             $('#div_title').toggleClass("has-error",false);
           }
-          if(block.val()==0||block.val()==''){
-            $('#div_blcok').toggleClass("has-error",true);
+          if(dep.val()==0||dep.val()==''){
+            $('#div_dep').toggleClass("has-error",true);
             sub=false;
           }else{
-            $('#div_blcok').toggleClass("has-error",false);
+            $('#div_dep').toggleClass("has-error",false);
+          }
+          if(block.val()==0||block.val()==''){
+            $('#div_block').toggleClass("has-error",true);
+            sub=false;
+          }else{
+            $('#div_block').toggleClass("has-error",false);
           }
           if(getStr_descrption().length==0||getStr_descrption()=="<br>"){
             $('#div_descrption').toggleClass("has-error",true);
@@ -243,6 +220,27 @@
           }
         });
 
+        $('#click_sug').click(function(){
+          $('#div_suggest').show();
+          $(this).hide();
+        });
+
+        //系统功能模块列表联动
+        $('#bug_dep').change(function(){
+
+          $.ajax({
+            type: 'POST',
+            url: '/bug/ajax/get_models_list',
+            data: {'sys_id':$('#sys_id').val(),'dep_id':$('#bug_dep').val()} ,
+            dataType: 'json',
+            success: function(data){
+              $('#bug_block').empty();
+              $('#bug_block').append( $("<option>").val(0).text('请选择功能模块'));
+               for(var i=0;data.length;i++){
+                 $('#bug_block').append( $("<option>").val(data[i].model_id).text(data[i].name));
+               }
+            }});
+        });
 
       });
     </script>
