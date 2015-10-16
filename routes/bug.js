@@ -12,21 +12,66 @@ router.get('/',function(req, res, next) {
     res.send("BUG主页");
 });
 
-/*BUG提交页*/
+/*打开BUG提交页*/
 router.get('/submit',function(req,res,next){
-   res.render('bug/submit_bug');
+    //console.log("session====>"+req.session.uid);
+    var url = require('url');
+    var sys_code = url.parse(req.url).query;//主系统编号
+    /*1:sysid; 2:depid ; 3:modelid*/
+    //console.log("第一次知道是从哪里来的=========="+global.sys_list[arg]);
+    var sys_name=global.sys_list_sys[sys_code];
+
+    var async = require('async');
+    async.series({
+        one: function(callback){
+            if(req.session.uid==undefined||req.session.uid==''){
+                res.render('user/login',{data:'0'});
+            }else {
+                var session=require('../lib/c_session').get_Session(req);
+                var data={'session':session,
+                    'sys_name':sys_name,
+                    'sys_code':sys_code};
+            }
+            callback(null,data);
+
+        },
+        two:function(callback){
+            var m_sys_list=require('../models/m_sys_list');
+            var sql_data=m_sys_list.show_SysList('dep',sys_code,0,function(data){
+                console.log("进入到BUG提交页，我们得到了什么====》》》》two"+data);
+                if(data){
+                    callback(null,data);
+                }else{
+                    callbace(null,data);
+                }
+            });
+        }
+    },function(err,results){
+            console.log("进入到BUG提交页，我们得到了什么====》》》》results"+results);
+            var json_data={'session':results.one.session,
+            'sys_code':results.one.sys_code,
+            'sys_name':results.one.sys_name,//暂时没赋值
+            'dep':results.two};
+        res.render('bug/submit_bug',json_data);
+    });
+
+
+    //res.render('bug/submit_bug',data);
     //res.render('ueditor_test');
 });
 
 /*BUG内容提交到数据库*/
 router.post('/submit/post',function(req,res,next){
    var title=req.body.bug_title;
-    var block=req.body.bug_block;
+    var sys=req.body.sys_id;
+    var dep=req.body.bug_dep;
+    var model=req.body.bug_block;
     var descrption=req.body.h_description;
     var suggest=req.body.h_suggest;
     var level=req.body.bug_level;
-    var bug_userid=req.body.userid;
-    m_bug.insertBUG(title,block,descrption,suggest,level,bug_userid,function(data){
+
+    //var bug_userid=req.body.userid;
+    m_bug.insertBUG(title,sys,dep,model,descrption,suggest,level,req.session.uid,function(data){
         if(data){
             if(data['affectedRows']){
                 res.send("BUG提交陈宫");
@@ -38,5 +83,25 @@ router.post('/submit/post',function(req,res,next){
         }
     })
 });
+
+/*BUG动态读取板块或界面列表  by ajax*/
+router.post('/ajax/get_models_list',function(req,res,next){
+    var sys_id=req.body.sys_id;
+    var dep_id=req.body.dep_id;
+    var m_sys_list=require('../models/m_sys_list');
+    m_sys_list.show_SysList('model',sys_id,dep_id,function(data){
+        if(data=='[]'|| data==''){
+            res.json('false');
+        }else{
+            res.json(data);
+        }
+
+    });
+    //conosle.log("sys_id======="+sys_id);
+    //conosle.log("dep_id======="+dep_id);
+});
+
+
+
 
 module.exports = router;
