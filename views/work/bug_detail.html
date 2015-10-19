@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>BUG修改任务详情页</title>
+
+    <!-- Bootstrap core CSS -->
+    <% include ../header.html %>
+    <link href="../stylesheets/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+</head>
+
+
+<div class="container">
+    <!--导航栏-->
+    <%include ../nav.html%>
+    <!--导航栏 end-->
+
+
+    <div>
+        <blockquote>
+            <p><%=data.bug_sys%>
+                <%switch(data.bug_level){
+                case 1:%>
+                <span class="label label-info">一般</span>
+                <%break;
+                case 2:
+                %>
+                <span class="label label-warning">紧急</span>
+                <%break;
+                case 3:%>
+                <span class="label label-danger">严重</span>
+                <%break;
+                default:%>
+                <span class="label label-info">一般</span>
+                <%}%>
+            </p>
+            <div><%=data.bug_dep%>>><%=data.bug_model%></div>
+            <footer>报告人：李姗姗&nbsp&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp13955555555</footer>
+        </blockquote>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-8">
+
+            <!--问题描述-->
+            <div>
+                <blockquote>
+                    <h2>问题描述</h2>
+                </blockquote>
+                <p></p>
+                <%=data.descript%>
+
+                <blockquote>
+                    <h2>修改建议</h2>
+                </blockquote>
+                <p></p>
+                <%=data.suggest%>
+            </div>
+            <input type="hidden" id="bug_id" name="bug_id" value="<%=data.bug_id%>"/>
+            <div style="height:1px;width:100%;background:#737373;overflow:hidden;margin-top: 20px;margin-bottom: 20px;"></div>
+            <div>
+                <blockquote>
+                    <h3>信息沟通</h3>
+                </blockquote>
+                <textarea name="bug_back", id="bug_back", class="form-control" style="height: 300px" placeholder="进行详细的沟通，已确保修改到达预期目的"></textarea>
+            </div>
+
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>当前状态：
+                    <%switch(data.bug_statue){
+                    case 0:%>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="bt_ddcl" name="bt_ddcl">
+                        等待处理
+                    </button>
+                    <%break;
+                    case 2:%>
+                    <button type="button" class="btn btn-warning" id="bt_yfpzx" name="bt_yfpzx">已分派执行</button>
+                    <%break;
+                    }%>
+                </h4>
+                <%if(data.executioner_name!=null||data.executioner_name!=''){%>
+                <p id="fpg_name" name="fpg_name">分 派 给：<%=data.executioner_name%></p>
+                <%}%>
+
+
+                <!--日历-->
+                <input size="16" type="text" value="<%=new Date().getFullYear()%>-<%=new Date().getMonth()%>-<%=new Date().getDate()%>" readonly class="form_datetime">
+                <!--日历 end-->
+
+
+                <p>完成时间：2015年10月21日</p>
+            </div>
+            <div class="sidebar-module" data-spy="affix" data-offset-top="0">
+                <h4>处理记录</h4>
+                <ul class="list-unstyled nav nav-pills nav-stacked" >
+                    <li><a href="#">March 2014</a></li>
+                    <li><a href="#">February 2014</a></li>
+                    <li><a href="#">January 2014</a></li>
+                    <li><a href="#">December 2013</a></li>
+                    <li><a href="#">November 2013</a></li>
+                    <li><a href="#">October 2013</a></li>
+                    <li><a href="#">September 2013</a></li>
+                    <li><a href="#">August 2013</a></li>
+                    <li><a href="#section-1">July 2013</a></li>
+                    <li><a href="#">June 2013</a></li>
+                    <li><a href="#">May 2013</a></li>
+                    <li><a href="#">April 2013</a></li>
+                </ul>
+            </div>
+
+        </div><!-- /.blog-sidebar -->
+
+        <!--事件处理窗口-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">任务处理</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" id="submit_task" name="submit_task" action="">
+                            <div class="form-group">
+                                <label for="process_result">处理结果：</label>&nbsp;&nbsp;
+                                <label class="radio-inline">
+                                    <input type="radio" name="process_result" id="process_result" value="2"> 指派任务
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="process_result" id="process_result" value="8"> 任务驳回
+                                </label>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="person">任务执行人：</label>
+                                <select class="form-control" id="person" name="person">
+                                    <option value="0">请选择任务执行人</option>
+                                    <option value="54">牛晓亮</option>
+                                    <option value="2">潘飞</option>
+                                    <option value="3">张宁思</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="rwsm">任务说明：</label>
+                                <textarea name="rwsm", id="rwsm", class="form-control" style="height: 100px" placeholder="对指派任务进行说明"></textarea>
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关 闭</button>
+                        <button type="button" class="btn btn-primary" id="bt_submit_task" name="bt_submit_task">提 交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--事件处理窗口 end-->
+
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+<footer>
+
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#bt_submit_task').click(function(){
+            var person_name=$('#person').find("option:selected").text();
+            $.ajax({
+                type: 'POST',
+                url: '/bug/ajax/set_bug_task',
+                data: {'bug_id':$('#bug_id').val(),'process_statue':$('#process_result').val(),'person_id':$('#person').val(),'rwsm':$('#rwsm').val(),'person_name':person_name} ,
+                dataType: 'json',
+                success: function(data){
+                if(data){
+                    /*
+                    $('#myModal').modal('toggle');
+                    $('#bt_ddcl').hide();
+                    $('#bt_yfpzx').show();
+                    $('#fpg_name').html("分 派 给："+person_name).show();
+                    */
+                    location.reload();
+                }
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript" src="../javascripts/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../javascripts/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+
+    $('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        format:"yyyy-mm-dd",
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1
+    });
+
+</script>
+
+
+</body>
+</html>
