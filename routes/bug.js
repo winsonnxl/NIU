@@ -101,7 +101,45 @@ router.post('/ajax/get_models_list',function(req,res,next){
     //conosle.log("dep_id======="+dep_id);
 });
 
+/*查看BUG任务详情页*/
+router.get('/bug_detail',function(req,res,next){
+    var data={};
+    try{
+        if(req.session.uid==undefined||req.session.uid==''){
+            res.render('user/login',{data:'0'});
+        }else {
+            var url = require('url');
+            var bug_id = url.parse(req.url).query;//主系统编号
+            var session = require('../lib/c_session').get_Session(req);
 
+            m_bug.bug_detail(bug_id,function(result){
+                data={'session':session,
+                'data':result};
+                res.render('work/bug_detail',data);
+            });
+
+        }
+
+
+    }catch(ex){
+        console.log("routs----/bug_detail=====>"+ex);
+    }
+
+});
+
+
+/*任务确认及分派*/
+router.post('/ajax/set_bug_task',function(req,res,next){
+    var bug_id=req.body.bug_id;//任务ID编号
+    var process_statue=req.body.process_statue;//任务状态
+    var person_id=req.body.person_id;//被分派任务人ID
+    var rwsm=req.body.rwsm;//任务说明信息
+    var rwfpr_id=req.session.uid;//任务分派人ID
+    var name=req.body.person_name
+    m_bug.set_bug_task(bug_id,process_statue,person_id,rwsm,rwfpr_id,name,function(data){
+        res.json(data);
+    });
+});
 
 
 module.exports = router;

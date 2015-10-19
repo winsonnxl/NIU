@@ -35,10 +35,15 @@ router.get('/mywork',function(req,res,next){
         }else {
             var session=require('../lib/c_session').get_Session(req);
 
-            m_bug.showBUG(req.session.uid,req.session.leve,req.session.local,req.session.dev,function(result){
+            m_bug.showBUG(req.session.uid,req.session.level,req.session.local,req.session.dev,function(result){
                 if(result){
                     data={'session':session,
                     'results':result};
+                    console.log('mywork====>',data);
+                    res.render('work/mywork',data);
+                }else{
+                    data={'session':session,
+                    'results':0};
                     console.log('mywork====>',data);
                     res.render('work/mywork',data);
                 }

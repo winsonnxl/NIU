@@ -48,11 +48,28 @@
                      <!-- <th><%=results[i].bug_id%></th>-->
                       <th><%=results[i].bug_title%></th>
                       <th><%=results[i].submit_time%></th>
-                      <th><%=results[i].statue%></th>
+                      <th>
+                          <%switch(results[i].statue){
+                          case 0:%>
+                          <a href="/bug/bug_detail?<%=results[i].bug_id%>" class="btn btn-info">未处理</a>
+                          <%break;
+                          case 2:%>
+                          <a href="/bug/bug_detail?<%=results[i].bug_id%>" class="btn btn-warning">已分派</a>
+                          <%break;
+                          case 8:%>
+                          <a href="/bug/bug_detail?<%=results[i].bug_id%>" class="btn btn-default">驳 回</a>
+                          <%break;
+                          }%>
+
+                      </th>
 
                   </tr>
                   <%}
-                  }%>
+                  }else{%>
+                  <tr>
+                      <th>暂时没有BUG报告，很好的系统！值得骄傲的程序猿！</th>
+                  </tr>
+                  <%}%>
 
                 </tbody>
             </table>

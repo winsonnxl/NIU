@@ -97,13 +97,13 @@ exports.show_SysList=function(select,sys,dep,callback){
     }
     db.pool.getConnection(function(err,conn){
         if(err){
-            console.log("m_bug------>show_SysList====>"+err);
+            console.log("m_sys_list------>show_SysList====>"+err);
             callback(0);
         }else{
             try{
                 conn.query(sql,function(err,data){
                     if(err){
-                        console.log("m_bug------>show_SysList====>"+err);
+                        console.log("m_sys_list------>show_SysList====>"+err);
                         callback(0);
                     }else {
                         var result = [];
@@ -129,7 +129,7 @@ exports.show_SysList=function(select,sys,dep,callback){
                         callback(result);
                     }
                 });}catch(ex){
-                console.log("m_bug------>show_SysList====>"+ex);
+                console.log("m_bug------>m_sys_list====>"+ex);
             }
         }
     });
