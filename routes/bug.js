@@ -103,26 +103,70 @@ router.post('/ajax/get_models_list',function(req,res,next){
 
 /*查看BUG任务详情页*/
 router.get('/bug_detail',function(req,res,next){
-    var data={};
-    try{
-        if(req.session.uid==undefined||req.session.uid==''){
-            res.render('user/login',{data:'0'});
-        }else {
-            var url = require('url');
-            var bug_id = url.parse(req.url).query;//主系统编号
-            var session = require('../lib/c_session').get_Session(req);
+    if(req.session.uid==undefined||req.session.uid==''){
+        res.render('user/login',{data:'0'});
+    }else {
+        var url = require('url');
+        var bug_id = url.parse(req.url).query;//主系统编号
+        var session = require('../lib/c_session').get_Session(req);
+        var async = require('async');
+        async.series({
+            one: function (callback) {
+                try {
+                    var data = {};
+                    m_bug.bug_detail(bug_id, function (result) {
+                        data = {'session': session,
+                            'data': result
+                        };
+                        callback(null,data);
+                    });
 
-            m_bug.bug_detail(bug_id,function(result){
-                data={'session':session,
-                'data':result};
-                res.render('work/bug_detail',data);
-            });
+                } catch (ex) {
+                    console.log("routs----/bug_detail===one:==>" + ex);
+                }
+            },
+            two: function (callback) {
 
-        }
+                try{
+                    var data={};
+                    m_bug.get_commu(bug_id,function(result){
+                        data={'commu':result};
+                        callback(null,data);
+                    });
 
 
-    }catch(ex){
-        console.log("routs----/bug_detail=====>"+ex);
+                }catch(ex){
+                    console.log("routs----/bug_detail===two:==>" + ex);
+                }
+
+            },
+            three:function(callback){
+                try{
+
+
+                }catch(ex){
+                    console.log("routs----/bug_detail===three:==>" + ex);
+                }
+                callback(null);
+            }
+        }, function (err, results) {
+            console.log("routes----but/bug_detail===>"+err)
+            var isExecutioner=false;
+            var isSubmit_user=false;
+            if(req.session.uid==results.one.data.executioner_id){
+                isExecutioner=true;
+            }
+            if(req.session.uid==results.one.data.submit_user_id){
+                isSubmit_user=true;
+            }
+            json_data={'session':results.one.session,
+                'data':results.one.data,
+                'commu':results.two.commu,
+                'isExecutioner':isExecutioner,
+                'isSubmit_user':isSubmit_user
+            };
+            res.render('work/bug_detail', json_data);
+        });
     }
 
 });
@@ -141,5 +185,45 @@ router.post('/ajax/set_bug_task',function(req,res,next){
     });
 });
 
+/*提交任务确认时间*/
+router.post('/ajax/set_work_time',function(req,res,next){
+    var date=req.body.date;//工作完成时间
+    var bug_id=req.body.bug_id;//修改BUG任务ID
+    m_bug.set_worktime(date,bug_id,function(data){
+        res.json(data);
+    });
+
+});
+
+/*提交BUG沟通记录*/
+router.post('/ajax/set_commu',function(req,res,next){
+    var bug_id=req.body.bug_id;//任务ID编号
+    var context=req.body.data;//内容
+    var tj_userid=req.session.uid;//提交人ID
+    var tj_rname=req.session.rname;//提交人真实姓名
+    m_bug.set_commu(bug_id,tj_userid,tj_rname,context,function(data){
+        res.json(data);
+    });
+
+});
+
+/*提交任务总结*/
+router.post('/ajax/set_rwzj',function(req,res,next){
+    var bug_id=req.body.bug_id;
+    var context=req.body.data;
+    m_bug.set_rwzj(bug_id,context,function(data){
+        res.json(data);
+    });
+
+});
+
+/*提交任务确认*/
+router.post('/ajax/set_rwqr',function(req,res,next){
+    var bug_id=req.body.bug_id;
+    m_bug.set_rwqr(bug_id,function(data){
+        res.json(data);
+    });
+
+});
 
 module.exports = router;

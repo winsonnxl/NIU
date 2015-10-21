@@ -4,7 +4,13 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  res.render('user/login',{data:'0'});
+  if(req.session.uid==undefined||req.session.uid==''){
+    res.render('user/login',{data:'0'});
+  }else {
+    var session=require('../lib/c_session').get_Session(req);
+    var data={'session':session};
+    res.render('index',data);
+  }
 });
 
 

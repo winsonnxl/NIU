@@ -56,6 +56,15 @@
                           case 2:%>
                           <a href="/bug/bug_detail?<%=results[i].bug_id%>" class="btn btn-warning">已分派</a>
                           <%break;
+                          case 3:%>
+                          <a href="/bug/bug_detail?<%=results[i].bug_id%>" class="btn btn-primary">处理中</a>
+                          <%break;
+                          case 4:%>
+                          <a href="/bug/bug_detail?<%=results[i].bug_id%>" class="btn btn-success">已完结</a>
+                          <%break;
+                          case 5:%>
+                          <a href="/bug/bug_detail?<%=results[i].bug_id%>" class="btn btn-danger">待确认</a>
+                          <%break;
                           case 8:%>
                           <a href="/bug/bug_detail?<%=results[i].bug_id%>" class="btn btn-default">驳 回</a>
                           <%break;

@@ -17,7 +17,7 @@
     <!--导航栏 end-->
 
 
-    <div>
+    <div id="section-0">
         <blockquote>
             <p><%=data.bug_sys%>
                 <%switch(data.bug_level){
@@ -59,12 +59,36 @@
                 <%=data.suggest%>
             </div>
             <input type="hidden" id="bug_id" name="bug_id" value="<%=data.bug_id%>"/>
-            <div style="height:1px;width:100%;background:#737373;overflow:hidden;margin-top: 20px;margin-bottom: 20px;"></div>
+            <div style="border:1px dashed #737373;height:1px;width:100%;overflow:hidden;margin-top: 20px;margin-bottom: 20px;"></div>
             <div>
                 <blockquote>
                     <h3>信息沟通</h3>
                 </blockquote>
+                <!--沟通记录-->
+                <%for(var s=0;s<=commu.date.length;s++){%>
+                <div id="section-<%=s+1%>">
+                    <h2><%=commu.date[s]%></h2>
+                    <%for(var i=0;i<commu.commu.length;i++){
+                    if(commu.commu[i].submit_time==commu.date[s]){%>
+                <div class="bg-success" style="width: 50%"><%=commu.commu[i].submit_time1%>     提交人:<%=commu.commu[i].submit_user_rname%></div>
+                    <div>
+                        <%=commu.commu[i].context%>
+                    </div>
+                    <%}
+                    }%>
+                </div>
+                <%}%>
+                <!--沟通记录 end-->
+
+
+                <div>
+                    <div>
                 <textarea name="bug_back", id="bug_back", class="form-control" style="height: 300px" placeholder="进行详细的沟通，已确保修改到达预期目的"></textarea>
+                    </div>
+                    <div style="text-align: right">
+                        <button type="button" class="btn btn-defautl" id="bt_bug_commu" name="bt_bug_commu">提 交</button>
+                    </div>
+                </div>
             </div>
 
 
@@ -82,41 +106,47 @@
                     case 2:%>
                     <button type="button" class="btn btn-warning" id="bt_yfpzx" name="bt_yfpzx">已分派执行</button>
                     <%break;
-                    }%>
+                    case 3:%>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rwwjModal" id="bt_yfpzx" name="bt_yfpzx">处 理 中</button>
+                    <%break;
+                    case 4:%>
+                    <button type="button" class="btn btn-success">已完结</button>
+                    <%break;
+                    case 5:%>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#qrModal" id="bt_qr" name="bt_qr">待确认</button>
+                    <%break;
+                    case 8:%>
+                    <button type="button" class="btn btn-default">驳 回</button>
+                    <%break;}%>
                 </h4>
                 <%if(data.executioner_name!=null||data.executioner_name!=''){%>
                 <p id="fpg_name" name="fpg_name">分 派 给：<%=data.executioner_name%></p>
                 <%}%>
 
-
+                <%if(data.bug_statue==2 && isExecutioner){%>
                 <!--日历-->
-                <input size="16" type="text" value="<%=new Date().getFullYear()%>-<%=new Date().getMonth()%>-<%=new Date().getDate()%>" readonly class="form_datetime">
+                <p>完成时间: <input type="text" id="datepicker" style="width:135px" readonly></p>
+                <p style="text-align:center "><a id="bt_worktime" name="bt_worktime" href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>确认工作</a></p>
                 <!--日历 end-->
-
-
-                <p>完成时间：2015年10月21日</p>
+                <%}%>
+                <%if(data.bug_statue==3 && (data.work_time!=null||data.work_time!='')){%>
+                <p>完成时间：<%=data.work_time%></p>
+                <%}%>
             </div>
             <div class="sidebar-module" data-spy="affix" data-offset-top="0">
                 <h4>处理记录</h4>
                 <ul class="list-unstyled nav nav-pills nav-stacked" >
-                    <li><a href="#">March 2014</a></li>
-                    <li><a href="#">February 2014</a></li>
-                    <li><a href="#">January 2014</a></li>
-                    <li><a href="#">December 2013</a></li>
-                    <li><a href="#">November 2013</a></li>
-                    <li><a href="#">October 2013</a></li>
-                    <li><a href="#">September 2013</a></li>
-                    <li><a href="#">August 2013</a></li>
-                    <li><a href="#section-1">July 2013</a></li>
-                    <li><a href="#">June 2013</a></li>
-                    <li><a href="#">May 2013</a></li>
-                    <li><a href="#">April 2013</a></li>
+                    <li><a href="#section-0">开 始</a></li>
+                    <%for(var i=0;i<commu.date.length;i++){%>
+                    <li><a href="#section-<%=i+1%>"><%=commu.date[i]%></a></li>
+                    <%}%>
                 </ul>
             </div>
 
         </div><!-- /.blog-sidebar -->
 
-        <!--事件处理窗口-->
+        <!--指派任务执行人事件处理窗口-->
+
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -140,8 +170,7 @@
                                 <label for="person">任务执行人：</label>
                                 <select class="form-control" id="person" name="person">
                                     <option value="0">请选择任务执行人</option>
-                                    <option value="54">牛晓亮</option>
-                                    <option value="2">潘飞</option>
+                                    <option value="2">牛晓亮</option>
                                     <option value="3">张宁思</option>
                                 </select>
                             </div>
@@ -160,7 +189,67 @@
                 </div>
             </div>
         </div>
-        <!--事件处理窗口 end-->
+
+        <!--指派任务执行人事件处理窗口 end-->
+
+        <!--执行人完结事件处理窗口-->
+        <%if(isExecutioner){%>
+        <div class="modal fade" id="rwwjModal" tabindex="-1" role="dialog" aria-labelledby="rwwjModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="rwwjModalLabel">任务完结</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+
+                            <div class="form-group">
+                                <label for="rwsm">任务总结：</label>
+                                <textarea name="rwzj", id="rwzj", class="form-control" style="height: 100px" placeholder="记录修改过程或相关功能及字段"></textarea>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关 闭</button>
+                        <button type="button" class="btn btn-primary" id="bt_rwwj" name="bt_rwwj">提 交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%}%>
+        <!--执行人完结事件处理窗口 end-->
+
+        <!--确认完结事件处理窗口-->
+        <%if(isSubmit_user){%>
+        <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="qrModalLabel">确认完结</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+
+                            <div class="form-group">
+                                <label for="rwsm">任务已完结确认：</label>
+                                <p></p>
+                                <h4>亲！程序猿已经夜以继日的完成了BUG修改，请您在确认您提交的问题已经被修复后，点击【确认】按钮</h4>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关 闭</button>
+                        <button type="button" class="btn btn-primary" id="bt_rwqr" name="bt_rwqr">确 认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%}%>
+        <!--确认完结事件处理窗口 end-->
 
 
     </div><!-- /.row -->
@@ -175,41 +264,105 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript">
+<link rel='stylesheet' href='../stylesheets/jquery-ui.min.css' />
+<script src="../javascripts/jquery-ui.min.js"></script>
+
+<script>
     $(document).ready(function(){
         $('#bt_submit_task').click(function(){
             var person_name=$('#person').find("option:selected").text();
+            //alert($('#process_result:checked').val());
+
             $.ajax({
                 type: 'POST',
                 url: '/bug/ajax/set_bug_task',
-                data: {'bug_id':$('#bug_id').val(),'process_statue':$('#process_result').val(),'person_id':$('#person').val(),'rwsm':$('#rwsm').val(),'person_name':person_name} ,
+                data: {'bug_id':$('#bug_id').val(),'process_statue':$('#process_result:checked').val(),'person_id':$('#person').val(),'rwsm':$('#rwsm').val(),'person_name':person_name} ,
                 dataType: 'json',
                 success: function(data){
                 if(data){
-                    /*
-                    $('#myModal').modal('toggle');
-                    $('#bt_ddcl').hide();
-                    $('#bt_yfpzx').show();
-                    $('#fpg_name').html("分 派 给："+person_name).show();
-                    */
                     location.reload();
                 }
                 }
             });
+
         });
     });
-</script>
-<script type="text/javascript" src="../javascripts/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="../javascripts/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-<script type="text/javascript">
 
-    $('.form_datetime').datetimepicker({
-        language:  'zh-CN',
-        format:"yyyy-mm-dd",
-        weekStart: 1,
-        todayBtn:  1,
-        autoclose: 1,
-        todayHighlight: 1
+    $(function() {
+        $( "#datepicker" ).datepicker({
+            dateFormat: 'yy-mm-dd',//日期格式
+            monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+            dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+            dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+            dayNamesMin: ['日','一','二','三','四','五','六']
+        });
+    });
+
+    $(function(){
+        $('#bt_worktime').click(function() {
+            var date = $('#datepicker').val();
+            if (date){
+                //alert(date);
+                $.ajax({
+                    type: 'POST',
+                    url: '/bug/ajax/set_work_time',
+                    data: {'date':date,'bug_id':$('#bug_id').val()},
+                    success: function () {
+                        location.reload();
+                    }
+                });
+        }
+        });
+
+    });
+
+    $(function(){
+        $('#bt_bug_commu').click(function(){
+            var data=$('#bug_back').val();
+            if(data){
+                //alert(data);
+                $.ajax({
+                    type: 'POST',
+                    url: '/bug/ajax/set_commu',
+                    data: {'data':data,'bug_id':$('#bug_id').val()},
+                    success: function () {
+                        location.reload();
+                    }
+                });
+            }
+        });
+    });
+
+    /*提交任务总结*/
+    $(function(){
+        $('#bt_rwwj').click(function(){
+            var rwzj=$('#rwzj').val();
+            //alert(rwzj);
+            if(rwzj){
+                $.ajax({
+                    type:'POST',
+                    url:'/bug/ajax/set_rwzj',
+                    data:{'data':rwzj,'bug_id':$('#bug_id').val()},
+                    success:function(){
+                        location.reload();
+                    }
+                });
+            }
+        });
+    });
+
+    /*提交任务确认*/
+    $(function(){
+        $('#bt_rwqr').click(function(){
+                $.ajax({
+                    type:'POST',
+                    url:'/bug/ajax/set_rwqr',
+                    data:{'bug_id':$('#bug_id').val()},
+                    success:function(){
+                        location.reload();
+                    }
+                });
+        });
     });
 
 </script>

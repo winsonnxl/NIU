@@ -70,5 +70,16 @@ router.post('/login',function(req,res,next){
 
 });
 
+/*用户注销*/
+router.get('/logout',function(req,res,next){
+  req.session.uid='';
+  req.session.rname='';
+  req.session.mobile='';
+  req.session.local='';
+  req.session.dev='';
+  req.session.level='';
+  res.render('user/login',{data:'0'});
+});
+
 
 module.exports = router;
