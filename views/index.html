@@ -29,28 +29,55 @@
           <!--Chat JS区域 BUG提交-->
           <div class="row">
             <div class="col-sm-7">
-          <canvas id="myChart" width="350" height="350"></canvas>
+          <canvas id="myChart" width="300" height="300"></canvas>
             </div>
             <div class="col-sm-5">
               <ul class="list-unstyled" style="margin-top: 50px">
                 <li>
+                  <ul class="list-inline">
+                    <li><h4>共提交： <%=bug_num%></h4></li>
+                  </ul>
+                </li>
+
+                <li>
                 <ul class="list-inline">
-                  <li style="height: 12px;width: 12px;background-color: #ac2925"></li>
-                  <li>已提交BUG：19</li>
+                  <li style="height: 12px;width: 12px;background-color: #28a4c9"></li>
+                  <li>待处理： <%=bug_dcl_num%></li>
                 </ul>
                 </li>
 
                 <li>
                   <ul class="list-inline">
-                    <li style="height: 12px;width: 12px;background-color:#E2EAE9"></li>
-                    <li>等待处理：10</li>
+                    <li style="height: 12px;width: 12px;background-color:#e38d13"></li>
+                    <li>已分派： <%=bug_yfp_num%></li>
                   </ul>
                 </li>
 
                 <li>
                   <ul class="list-inline">
-                    <li style="height: 12px;width: 12px;background-color: #ac2925"></li>
-                    <li>已处理：10</li>
+                    <li style="height: 12px;width: 12px;background-color: #245580"></li>
+                    <li>处理中： <%=bug_clz_num%></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <ul class="list-inline">
+                    <li style="height: 12px;width: 12px;background-color: #c12e2a"></li>
+                    <li>待确认： <%=bug_dqr_num%></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <ul class="list-inline">
+                    <li style="height: 12px;width: 12px;background-color: #3e8f3e"></li>
+                    <li>已完结： <%=bug_wj_num%></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <ul class="list-inline">
+                    <li style="height: 12px;width: 12px;background-color: #ccc"></li>
+                    <li>被驳回： <%=bug_bh_num%></li>
                   </ul>
                 </li>
               </ul>
@@ -60,94 +87,97 @@
           </div>
           <!--Chat JS区域 BUG提交end-->
 
-          <div class="blog-post">
-            <h2 class="blog-post-title">Sample blog post</h2>
-            <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+          <div>
+            <!--BUG列表-->
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>系统名称</th>
+                <th>部门</th>
+                <th>模块</th>
+                <th>相关BUG报告</th>
+                <th>提交时间</th>
+                <th>处理状态</th>
+              </tr>
+              <tbody>
+            <% if(bug.length>0){
+            for(var i=0;bug.length>i;i++){%>
+            <tr>
+              <th scope="row"><%=i+1%></th>
+              <th><%=bug[i].sys_name%></th>
+              <th><%=bug[i].sys_dep%></th>
+              <th><%=bug[i].sys_model%></th>
+              <!-- <th><%=bug[i].bug_id%></th>-->
+              <th><%=bug[i].bug_title%></th>
+              <th><%=bug[i].submit_time%></th>
+              <th>
+                <%switch(bug[i].statue){
+                case 0:%>
+                <a href="/bug/bug_detail?<%=bug[i].bug_id%>" class="btn btn-info">未处理</a>
+                <%break;
+                case 2:%>
+                <a href="/bug/bug_detail?<%=bug[i].bug_id%>" class="btn btn-warning">已分派</a>
+                <%break;
+                case 3:%>
+                <a href="/bug/bug_detail?<%=bug[i].bug_id%>" class="btn btn-primary">处理中</a>
+                <%break;
+                case 4:%>
+                <a href="/bug/bug_detail?<%=bug[i].bug_id%>" class="btn btn-success">已完结</a>
+                <%break;
+                case 5:%>
+                <a href="/bug/bug_detail?<%=bug[i].bug_id%>" class="btn btn-danger">待确认</a>
+                <%break;
+                case 8:%>
+                <a href="/bug/bug_detail?<%=bug[i].bug_id%>" class="btn btn-default">驳  &nbsp;&nbsp;&nbsp;回</a>
+                <%break;
+                }%>
 
-            <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+              </th>
+
+            </tr>
+            <%}
+            }else{%>
+            <tr>
+              <th>暂时没有BUG报告，很好的系统！值得骄傲的程序猿！</th>
+            </tr>
+            <%}%>
+            </tbody>
+              </thead>
+            </table>
+            <!--BUG列表 end-->
+
             <hr>
-            <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-            <blockquote>
-              <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </blockquote>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            <h2>Heading</h2>
-            <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <h3>Sub-heading</h3>
-            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            <pre><code>Example code block</code></pre>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-            <h3>Sub-heading</h3>
-            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <ul>
-              <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-              <li>Donec id elit non mi porta gravida at eget metus.</li>
-              <li>Nulla vitae elit libero, a pharetra augue.</li>
-            </ul>
-            <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-            <ol>
-              <li>Vestibulum id ligula porta felis euismod semper.</li>
-              <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-              <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
-            </ol>
-            <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+
+
           </div><!-- /.blog-post -->
 
-          <div class="blog-post">
-            <h2 class="blog-post-title">Another blog post</h2>
-            <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
 
-            <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-            <blockquote>
-              <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </blockquote>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          </div><!-- /.blog-post -->
 
-          <div class="blog-post">
-            <h2 class="blog-post-title">New feature</h2>
-            <p class="blog-post-meta">December 14, 2013 by <a href="#">Chris</a></p>
 
-            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <ul>
-              <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-              <li>Donec id elit non mi porta gravida at eget metus.</li>
-              <li>Nulla vitae elit libero, a pharetra augue.</li>
-            </ul>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-          </div><!-- /.blog-post -->
-
-          <nav>
-            <ul class="pager">
-              <li><a href="#">Previous</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
-          </nav>
 
         </div><!-- /.blog-main -->
 
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="col-sm-3 col-sm-offset-1">
           <div class="sidebar-module sidebar-module-inset">
-            <h4>About</h4>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            <h4>办公设备</h4><button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-wrench" aria-hidden="true">申请维修</span>
+          </button>
+            <p><img src="../images/pc.png"></p>
           </div>
           <div class="sidebar-module">
-            <h4>Archives</h4>
+            <h4>设备信息：</h4>
             <ol class="list-unstyled">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
-              <li><a href="#">January 2014</a></li>
-              <li><a href="#">December 2013</a></li>
-              <li><a href="#">November 2013</a></li>
-              <li><a href="#">October 2013</a></li>
-              <li><a href="#">September 2013</a></li>
-              <li><a href="#">August 2013</a></li>
-              <li><a href="#">July 2013</a></li>
-              <li><a href="#">June 2013</a></li>
-              <li><a href="#">May 2013</a></li>
-              <li><a href="#">April 2013</a></li>
+              <li>设备类型： 笔记本</li>
+              <li>品牌及编号： Acer sms2322-mtnd</li>
+              <li>CPU: 酷睿i5</li>
+              <li>硬盘: 500G</li>
+              <li>内存: 8G</li>
+              <li>光驱: 无光驱</li>
+              <li>操作系统： Windows 10</li>
+              <li>浏览器： IE7,Chrome10</li>
+              <li>办公软件：office2016</li>
+              <li>杀毒软件：金山毒霸</li>
             </ol>
           </div>
           <div class="sidebar-module">
@@ -165,10 +195,7 @@
     </div><!-- /.container -->
 
     <footer>
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
+
     </footer>
 
 
@@ -177,30 +204,40 @@
     <!-- Placed at the end of the document so the pages load faster -->
   <script>
     <!--BUG提交-->
-    var data = [
+    var bug_dcl_num=<%=bug_dcl_num%>;//待处理数量‘0’
+    var bug_bh_num=<%=bug_bh_num%>;//驳回数量‘8’
+    var bug_clz_num=<%=bug_clz_num%>;//处理中数量‘3’
+    var bug_dqr_num=<%=bug_dqr_num%>;//待确认数量‘5’
+    var bug_yfp_num=<%=bug_yfp_num%>;//已分配‘2’
+    var bug_wj_num=<%=bug_wj_num%>;//完结‘4’
+    var bug_data = [
+            //
       {
-        value: 30,
-        color:"#F7464A"
+        value: bug_dcl_num,
+        color:"#28a4c9"
       },
       {
-        value : 50,
-        color : "#E2EAE9"
+        value : bug_bh_num,
+        color : "#ccc"
       },
       {
-        value : 100,
-        color : "#D4CCC5"
+        value : bug_clz_num,
+        color : "#245580"
       },
       {
-        value : 40,
-        color : "#949FB1"
+        value : bug_dqr_num,
+        color : "#c12e2a"
       },
       {
-        value : 120,
-        color : "#4D5360"
+        value : bug_yfp_num,
+        color : "#e38d13"
+      },{
+        value : bug_wj_num,
+        color : "#3e8f3e"
       }
 
     ]
-    var options= {
+    var defaults = {
       //Boolean - Whether we should show a stroke on each segment
       segmentShowStroke : true,
 
@@ -209,9 +246,6 @@
 
       //Number - The width of each segment stroke
       segmentStrokeWidth : 2,
-
-      //The percentage of the chart that we cut out of the middle.
-      percentageInnerCutout : 50,
 
       //Boolean - Whether we should animate the chart
       animation : true,
@@ -222,17 +256,17 @@
       //String - Animation easing effect
       animationEasing : "easeOutBounce",
 
-      //Boolean - Whether we animate the rotation of the Doughnut
+      //Boolean - Whether we animate the rotation of the Pie
       animateRotate : true,
 
-      //Boolean - Whether we animate scaling the Doughnut from the centre
+      //Boolean - Whether we animate scaling the Pie from the centre
       animateScale : false,
 
       //Function - Will fire on animation completion.
       onAnimationComplete : null
     }
     var ctx = document.getElementById("myChart").getContext("2d");
-    var myNewChart = new Chart(ctx).Doughnut(data,options);
+    var myNewChart = new Chart(ctx).Pie(bug_data,defaults);
     <!--BUG提交 end-->
 
   </script>

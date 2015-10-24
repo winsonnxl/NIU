@@ -10,7 +10,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">首 页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="/work_index">首 页 <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">维修申请</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BUG提交<span class="caret"></span></a>
@@ -23,14 +23,18 @@
                     </ul>
                 </li>
             </ul>
+            <!--
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">搜 索</button>
             </form>
+            -->
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/work_index/mywork">我的工作</a></li>
+                <li><a href="/users/getUsersList">人员维护</a></li>
+
                 <li><a href="#">消 息 <span class="badge">4</span></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">当前用户:<%=session.rname%><span class="caret"></span></a>

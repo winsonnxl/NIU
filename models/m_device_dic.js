@@ -1,0 +1,87 @@
+/**
+ * Created by winson on 10/24/15.
+ * device_dic
+ */
+var db=require('../database/database');
+
+/*获取edit_device所需要表单信息*/
+exports.getDeviceInfo=function(callback){
+    var sql="select * from device_dic";
+    try{
+        db.pool.getConnection(function(err,con){
+            if(err){
+                console.log("===>m_device===>getDeviceInfo===>"+err);
+            }else{
+                con.query(sql,function(err,data){
+                    if(err){
+                        console.log("===>m_device===>getDeviceInfo--query===>"+err);
+                    }else{
+                        //var results=[];
+                        var a= 0,b= 0,c= 0,d= 0,e= 0,f= 0,g= 0;
+                        var device_type=[];
+                        var device_brand=[];
+                        var device_cpu_brand=[];
+                        var device_cd=[];
+                        var device_os=[];
+                        var device_browser=[];
+                        var device_defense=[];
+                        for(var i=0;i<data.length;i++){
+                                //console.log("我是device_dic=="+data[i].content);
+                            //加载设备类型
+                            if(data[i].type==1){
+                                device_type[a]=data[i];
+                                a++;
+                            }
+                            //加载品牌
+                            if(data[i].type==2){
+                                device_brand[b]=data[i];
+                                b++;
+                            }
+                            //加载处理器品牌
+                            if(data[i].type==3 && data[i].level==0){
+                                device_cpu_brand[c]=data[i];
+                                c++;
+                            }
+                            //加载光驱
+                            if(data[i].type==5){
+                                device_cd[d]=data[i];
+                                d++;
+                            }
+                            //加载操作系统
+                            if(data[i].type==6){
+                                device_os[e]=data[i];
+                                e++;
+                            }
+                            //加载浏览器
+                            if(data[i].type==7){
+                                device_browser[f]=data[i];
+                                f++;
+                            }
+                            //加载杀毒软件
+                            if(data[i].type==9){
+                                device_defense[g]=data[i];
+                                g++;
+                            }
+
+                        }
+                        var results={'device_type':device_type,
+                        'device_brand':device_brand,
+                        'device_cpu_brand':device_cpu_brand,
+                        'device_cd':device_cd,
+                        'device_os':device_os,
+                        'device_browser':device_browser,
+                        'device_defense':device_defense};
+                        callback(results);
+                        con.release();
+
+                        //console.log(results);
+                    }
+                });
+            }
+        });
+
+
+    }catch(ex){
+        console.log("===>m_device===>getDeviceInfo===>"+ex);
+    }
+}

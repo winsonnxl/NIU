@@ -3,26 +3,25 @@
  */
 var db=require('../database/database');
 
-exports.show=function(){
-   var sql="select * from users";
+exports.getUser=function(userid,callback){
+   var sql="select * from users where id=?";
     db.pool.getConnection(function(err,connection){
         if(err){
-            console.log("POOL==>"+err);
+            console.log("m_users------>getUser==>"+err);
             return;
         }
-        connection.query(sql,function(err,results){
+        connection.query(sql,userid,function(err,result){
             if(err){
-                console.log("POOL==>connection error");
+                console.log("m_users------>getUser==>"+err);
                 return;
             }
             //console.log("现在的时间："+new Date());
-            if(results.length>0){
-
+            if(result.length>0){
+                callback(result);
             }
-            console.log("运行结果"+results.length);
             connection.release();
-            return results;
         });
+        //connection.release();
     });
 }
 
@@ -34,7 +33,7 @@ exports.reg=function(u_name,u_pw,u_pw2,r_name,phone,work_local,dep,callback){
         var crypto=require('crypto');
         var md5=crypto.createHash('md5').update(u_pw).digest('hex');
 
-        var sql = "insert into users (name,pw,real_name,mobile,dep,local) values(?,?,?,?,?,?)";
+        var sql = "insert into users (name,pw,real_name,mobile,dep,local) values (?,?,?,?,?,?)";
         db.pool.getConnection(function (err, connection) {
             if (err) {
                 console.log("POOL==>models/users/reg=>>>" + err);
@@ -72,18 +71,50 @@ exports.login=function(username,pw,callback){
                     if(err){
                         console.log("models/m_users.js==>login==>"+err);
                         callback(0);
-                    }else{
                         conn.release();
+
+                    }else{
+
                         if(data[0]==''||data[0]==null){
                             callback(0);
+
                         }else {
                             callback(data);
+
                         }
                     }
+                    conn.release();
+
                 });
             }
 
         );
     }
 
+}
+
+/*查询全部用户*/
+exports.get_users_list=function(callback){
+    var sql="select * from users";
+    try{
+        db.pool.getConnection(function(err,conn){
+            if(err){
+                console.log('m_users=====>users_list==>>'+err);
+                conn.release();
+            }else{
+                conn.query(sql,function(err,data){
+                    if(err){
+                        console.log('m_users=====>users_list==>>'+err);
+                        conn.release();
+                    }
+                    else{
+                        callback(data);
+                    }
+                    conn.release();
+                });
+            }
+        });
+    }catch(ex){
+        console.log('m_users=====>users_list==>>'+ex);
+    }
 }

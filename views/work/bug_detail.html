@@ -36,7 +36,7 @@
                 <%}%>
             </p>
             <div><%=data.bug_dep%>>><%=data.bug_model%></div>
-            <footer>报告人：李姗姗&nbsp&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp13955555555</footer>
+            <footer id="s_user_name" name="s_user_name"></footer>
         </blockquote>
     </div>
 
@@ -59,6 +59,7 @@
                 <%=data.suggest%>
             </div>
             <input type="hidden" id="bug_id" name="bug_id" value="<%=data.bug_id%>"/>
+            <input type="hidden" id="user_id" name="user_id" value="<%=data.submit_user_id%>"/>
             <div style="border:1px dashed #737373;height:1px;width:100%;overflow:hidden;margin-top: 20px;margin-bottom: 20px;"></div>
             <div>
                 <blockquote>
@@ -79,6 +80,17 @@
                 </div>
                 <%}%>
                 <!--沟通记录 end-->
+
+                <!--任务完结总结描述-->
+                <%if(data.processing_result!=null){%>
+                <div id="section-end" class="panel panel-primary">
+                    <div class="panel-heading">BUG修复总结</div>
+                    <div class="panel-body">
+                        <%=data.processing_result%>
+                    </div>
+                </div>
+                <%}%>
+                <!--任务完结总结描述 end-->
 
 
                 <div>
@@ -116,7 +128,7 @@
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#qrModal" id="bt_qr" name="bt_qr">待确认</button>
                     <%break;
                     case 8:%>
-                    <button type="button" class="btn btn-default">驳 回</button>
+                    <button type="button" class="btn btn-default">驳  &nbsp;&nbsp;&nbsp; 回</button>
                     <%break;}%>
                 </h4>
                 <%if(data.executioner_name!=null||data.executioner_name!=''){%>
@@ -140,6 +152,10 @@
                     <%for(var i=0;i<commu.date.length;i++){%>
                     <li><a href="#section-<%=i+1%>"><%=commu.date[i]%></a></li>
                     <%}%>
+                    <%if(data.processing_result!=null){%>
+                    <li><a href="#section-end">修复总结</a></li>
+                    <%}%>
+
                 </ul>
             </div>
 
@@ -362,6 +378,22 @@
                         location.reload();
                     }
                 });
+        });
+    });
+
+    /*自动加载用户名*/
+    $(function(){
+        //alert("我是自动加载哦！");
+        $.ajax({
+            type:'POST',
+            url:'/users/getUser',
+            data:{'user_id':$('#user_id').val()},
+            success:function(data){
+                //alert(data[0].real_name);
+                $('#s_user_name').append('提交人： '+data[0].real_name+' &nbsp;'+'<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>  '+data[0].mobile);
+                //$('#s_user_phone').text(data[0].mobile);
+
+            }
         });
     });
 

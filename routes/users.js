@@ -81,5 +81,78 @@ router.get('/logout',function(req,res,next){
   res.render('user/login',{data:'0'});
 });
 
+/*获取用户信息*/
+router.post('/getUser',function(req,res,next){
+  var user_id=req.body.user_id;
+  m_users.getUser(user_id,function(data){
+    if(data){
+     res.json(data);
+    }else{
+      res.json(0);
+    }
+  });
+});
+
+/*获取全部用户列表*/
+router.get('/getUsersList',function(req,res,next){
+  if(req.session.uid==undefined||req.session.uid==''){
+    res.render('user/login',{data:'0'});
+  }else {
+    var session = require('../lib/c_session').get_Session(req);
+    m_users.get_users_list(function(data){
+      res.render('user/users_list',{'session':session,
+        'users':data});
+    });
+
+  }
+
+});
+
+/*用户个人设备信息编辑页*/
+router.get('/edit_device',function(req,res,next){
+  if(req.session.uid==undefined||req.session.uid==''){
+    res.render('user/login',{data:'0'});
+  }else {
+    var session = require('../lib/c_session').get_Session(req);
+    var dic=require('../models/m_device_dic').getDeviceInfo(function(data){
+      res.render('user/edit_device',{'session':session,'device_info':data});
+    });
+
+  }
+});
+
+
+/*提交设备信息*/
+router.post('/set_device_info',function(req,res,next){
+  if(req.session.uid==undefined||req.session.uid==''){
+    res.render('user/login',{data:'0'});
+  }else {
+    //var session = require('../lib/c_session').get_Session(req);
+    var userid=req.body.userid;
+    var devicetype=req.body.devicetype;
+    var brand=req.body.brand;
+    var sn=req.body.sn;
+    var cpu_brand=req.body.cpu_brand;
+    var cpu_type=req.body.cpu_type;
+    var hd=req.body.hd;
+    var memory=req.body.memory_size;
+    var cd=req.body.cd;
+    var os=req.body.os;
+    var browser=req.body.browser;
+    var office=req.body.office;
+    var defense=req.body.defense;
+    require('../models/m_device').set_device_info(userid,devicetype,brand,sn,cpu_brand,cpu_type,hd,memory,cd,os,browser,office,defense,function(data){
+      if(data){
+        res.send("设备信息提交成功！");
+      }else{
+        res.send("设备信息提交失败！");
+      }
+
+    });
+
+
+  }
+
+});
 
 module.exports = router;

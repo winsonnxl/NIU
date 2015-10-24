@@ -36,16 +36,22 @@ exports.insertBUG=function(title,sys,dep,model,description,suggest,level,bug_use
 
 /*
 *BUG记录查询
+* isDev:判断是否未未卡法人员：0不是；1是
 * */
-exports.showBUG=function(uid,level,local,dev,callback){
-
-    if(level==3) {
-        //信息部主管
-        var sql = "select processing_statue, id_bug_tracke,title,bug_description,bug_model,bug_sys,bug_dep,submit_user_id,date_format(submit_time+'', '%Y-%m-%d %H:%m:%S') as submit_time,date_format(work_end_date+'', '%Y-%m-%d') as work_time from bug_tracke order by submit_time asc";
-    }else {
-        //信息部职员
-        var sql = "select processing_statue, id_bug_tracke,title,bug_description,bug_model,bug_sys,bug_dep,submit_user_id,date_format(submit_time+'', '%Y-%m-%d %H:%m:%S') as submit_time,date_format(work_end_date+'', '%Y-%m-%d') as work_time from bug_tracke where bug_executioner_id="+uid+" order by submit_time asc";
+exports.showBUG=function(uid,level,local,dev,isDev,callback){
+    if(isDev){
+        if(level==3) {
+            //信息部主管
+            var sql = "select processing_statue, id_bug_tracke,title,bug_description,bug_model,bug_sys,bug_dep,submit_user_id,date_format(submit_time+'', '%Y-%m-%d %H:%m:%S') as submit_time,date_format(work_end_date+'', '%Y-%m-%d') as work_time from bug_tracke order by submit_time asc";
+        }else {
+            //信息部职员
+            var sql = "select processing_statue, id_bug_tracke,title,bug_description,bug_model,bug_sys,bug_dep,submit_user_id,date_format(submit_time+'', '%Y-%m-%d %H:%m:%S') as submit_time,date_format(work_end_date+'', '%Y-%m-%d') as work_time from bug_tracke where bug_executioner_id="+uid+" order by submit_time asc";
+        }
+    }else{
+        var sql="select processing_statue, id_bug_tracke,title,bug_description,bug_model,bug_sys,bug_dep,submit_user_id,date_format(submit_time+'', '%Y-%m-%d %H:%m:%S') as submit_time,date_format(work_end_date+'', '%Y-%m-%d') as work_time from bug_tracke where submit_user_id="+uid+" order by submit_time asc";
     }
+
+
         try {
         db.pool.getConnection(function (err, conn) {
             if(err){
@@ -96,7 +102,7 @@ exports.showBUG=function(uid,level,local,dev,callback){
 * */
 exports.bug_detail=function(bugid,callback){
     //var sql="select *, from bug_tracke where id_bug_tracke=?";
-    var sql = "select submit_user_id,bug_executioner_id,bug_level,bug_suggest,bug_executioner_name,processing_statue, id_bug_tracke,title,bug_description,bug_model,bug_sys,bug_dep,submit_user_id,date_format(submit_time+'', '%Y-%m-%d %H:%m:%S') as submit_time,date_format(work_end_date+'', '%Y-%m-%d') as work_time from bug_tracke where id_bug_tracke=?";
+    var sql = "select processing_result,submit_user_id,bug_executioner_id,bug_level,bug_suggest,bug_executioner_name,processing_statue, id_bug_tracke,title,bug_description,bug_model,bug_sys,bug_dep,submit_user_id,date_format(submit_time+'', '%Y-%m-%d %H:%m:%S') as submit_time,date_format(work_end_date+'', '%Y-%m-%d') as work_time from bug_tracke where id_bug_tracke=?";
 
     try{
         db.pool.getConnection(function(err,conn){
@@ -122,7 +128,8 @@ exports.bug_detail=function(bugid,callback){
                             'executioner_name':result[0].bug_executioner_name,
                                 'executioner_id':result[0].bug_executioner_id,
                                 'submit_user_id':result[0].submit_user_id,
-                            'work_time':result[0].work_time};
+                            'work_time':result[0].work_time,
+                            'processing_result':result[0].processing_result};
 
                         }
                         callback(data);

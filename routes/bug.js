@@ -139,15 +139,6 @@ router.get('/bug_detail',function(req,res,next){
                     console.log("routs----/bug_detail===two:==>" + ex);
                 }
 
-            },
-            three:function(callback){
-                try{
-
-
-                }catch(ex){
-                    console.log("routs----/bug_detail===three:==>" + ex);
-                }
-                callback(null);
             }
         }, function (err, results) {
             console.log("routes----but/bug_detail===>"+err)

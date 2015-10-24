@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>N.I.U-首页</title>
+
+    <!-- Bootstrap core CSS -->
+    <% include ../header.html %>
+    <script src="/javascripts/Chart.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <!--导航栏-->
+    <%include ../nav.html%>
+    <!--导航栏 end-->
+
+
+    <div>
+        <h1>The Bootstrap Blog</h1>
+        <p>The official example template of creating a blog with Bootstrap.</p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <div>
+                <!--BUG列表-->
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>办公地</th>
+                        <th>部门</th>
+                        <th>姓名</th>
+                        <th>电话</th>
+                        <th>设备</th>
+                        <th>操作</th>
+                    </tr>
+                    <tbody>
+                    <% if(users.length>0){
+                    for(var i=0;users.length>i;i++){%>
+                    <tr>
+                        <th scope="row"><%=i+1%></th>
+                        <th><%=users[i].local%></th>
+                        <th><%=users[i].dep%></th>
+                        <th><%=users[i].real_name%></th>
+                        <th><%=users[i].mobile%></th>
+                        <th><%=users[i].id%></th>
+                        <th><a class="btn btn-default" href="/users/edit_device" role="button" target="_blank">设备管理</a></th>
+
+                    </tr>
+                    <%}
+                    }else{%>
+                    <tr>
+                        <th>暂时没有BUG报告，很好的系统！值得骄傲的程序猿！</th>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                    </thead>
+                </table>
+                <!--BUG列表 end-->
+
+                <hr>
+
+
+            </div><!-- /.blog-post -->
+
+
+
+
+
+        </div><!-- /.blog-main -->
+
+
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+<footer>
+
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>
