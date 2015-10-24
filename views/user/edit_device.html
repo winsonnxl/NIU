@@ -26,13 +26,13 @@
         <div class="col-sm-12">
 
             <div>
-                <form class="form-horizontal" method="post" action="/users/set_device_info">
+                <form class="form-horizontal" method="post" action="/device/set_device_info">
                     <div class="form-group">
                         <label for="devicetype" class="col-sm-2 control-label">设备类型</label>
                         <div class="col-sm-10">
                             <%for(var i=0;i<device_info.device_type.length;i++){%>
                             <label class="radio-inline">
-                                <input type="radio" name="devicetype" id="devicetype" value="<%=device_info.device_type[i].id%>"> <%=device_info.device_type[i].content%>
+                                <input type="radio" name="devicetype" id="devicetype" value="<%=device_info.device_type[i].id%>" <%if(has_set.length>0){if(has_set[0].device_type==device_info.device_type[i].id){%>checked<%}}%>> <%=device_info.device_type[i].content%>
                             </label>
                             <%}%>
                         </div>
@@ -43,7 +43,10 @@
                             <select id="brand" name="brand" class="form-control">
                                 <option value="0">请选择品牌</option>
                                 <%for(var i=0;i<device_info.device_brand.length;i++){%>
-                                <option value="<%=device_info.device_brand[i].id%>"><%=device_info.device_brand[i].content%></option>
+
+                                <option value="<%=device_info.device_brand[i].id%>"  <%if(has_set.length>0){
+                                    if(has_set[0].brand==device_info.device_brand[i].id){%>selected<%}}%>><%=device_info.device_brand[i].content%></option>
+
                                 <%}%>
                             </select>
                         </div>
@@ -51,7 +54,7 @@
                     <div class="form-group">
                         <label for="sn" class="col-sm-2 control-label">编号</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="sn" name="sn" placeholder="商品编号">
+                            <input type="text" class="form-control" id="sn" name="sn" placeholder="商品编号" <%if(has_set.length>0){if(has_set[0].sn!=null||has_set[0].sn!=''){%>value="<%=has_set[0].sn%>"<%}}%>>
                         </div>
                     </div>
                     <div class="form-group">
@@ -60,13 +63,16 @@
                             <select id="cpu_brand" name="cpu_brand" class="form-control">
                                 <option value="0">请选择品牌</option>
                                 <%for(var i=0;i<device_info.device_cpu_brand.length;i++){%>
-                                <option value="<%=device_info.device_cpu_brand[i].id%>"><%=device_info.device_cpu_brand[i].content%></option>
+                                <option value="<%=device_info.device_cpu_brand[i].id%>" <%if(has_set.length>0){if(has_set[0].cpu_brand==device_info.device_cpu_brand[i].id){%>selected<%}}%>><%=device_info.device_cpu_brand[i].content%></option>
                                 <%}%>
                             </select>
                             <select id="cpu_type" name="cpu_type" class="form-control">
                                 <option value="0">请选择型号</option>
-                                <option value="1">酷睿i5</option>
-                                <option value="2">酷睿i6</option>
+                                <%if(cpu_type!=0){
+                                 for(var i=0;i<cpu_type.length;i++){%>
+                                <option value="<%=cpu_type[i].id%>" <%if(cpu_type[i].id==has_set[0].cpu_type){%>selected<%}%>><%=cpu_type[i].content%></option>
+                                <%}
+                                }%>
                             </select>
                         </div>
                     </div>
@@ -74,7 +80,7 @@
                         <label for="hd" class="col-sm-2 control-label">硬盘容量</label>
                         <div class="col-sm-3">
                             <div class="input-group">
-                            <input class="form-control" id="hd" name="hd" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="硬盘容量">
+                            <input class="form-control" id="hd" name="hd" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="硬盘容量" <%if(has_set.length>0){if(has_set[0].harddisk!=null||has_set[0].harddisk!=''){%>value="<%=has_set[0].harddisk%>"<%}}%>>
                             <span class="input-group-addon">GB</span>
                                 </div>
                         </div>
@@ -83,7 +89,7 @@
                         <label for="memory_size" class="col-sm-2 control-label">内存容量</label>
                         <div class="col-sm-3">
                             <div class="input-group">
-                                <input class="form-control" id="memory_size" name="memory_size" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="内存容量">
+                                <input class="form-control" id="memory_size" name="memory_size" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="内存容量" <%if(has_set.length>0){if(has_set[0].memory_size!=null||has_set[0].memory_size!=''){%>value="<%=has_set[0].memory_size%>"<%}}%>>
                                 <span class="input-group-addon">GB</span>
                             </div>
                         </div>
@@ -94,7 +100,8 @@
                             <select id="cd" name="cd" class="form-control">
                                 <option value="0">请选择</option>
                                 <%for(var i=0;i<device_info.device_cd.length;i++){%>
-                                <option value="<%=device_info.device_cd[i].id%>"><%=device_info.device_cd[i].content%></option>
+                                <option value="<%=device_info.device_cd[i].id%>" <%if(has_set.length>0){
+                                if(has_set[0].cd==device_info.device_cd[i].id){%>selected<%}}%>><%=device_info.device_cd[i].content%></option>
                                 <%}%>
                             </select>
                         </div>
@@ -106,11 +113,13 @@
                             <select id="os" name="os" class="form-control">
                                 <option value="0">请选择</option>
                                 <%for(var i=0;i<device_info.device_os.length;i++){%>
-                                <option value="<%=device_info.device_os[i].id%>"><%=device_info.device_os[i].content%></option>
+                                <option value="<%=device_info.device_os[i].id%>" <%if(has_set.length>0){
+                                if(has_set[0].os==device_info.device_os[i].id){%>selected<%}}%>><%=device_info.device_os[i].content%></option>
                                 <%}%>
                             </select>
                         </div>
                     </div>
+                    <%=has_set[0].browser.split(',').length%>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">浏览器</label>
@@ -119,27 +128,15 @@
 
                                 <%for(var i=0;i<device_info.device_browser.length;i++){%>
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" id="browser" name="browser" value="<%=device_info.device_browser[i].id%>"> <%=device_info.device_browser[i].content%>
+                                    <input type="checkbox" id="browser" name="browser" value="<%=device_info.device_browser[i].id%>" <%if(has_set.length>0){if(has_set[0].browser==device_info.device_browser[i].id){%>checked<%}}%>> <%=device_info.device_browser[i].content%>
                                 </label>
                                 <%}%>
 
                             </div>
                         </div>
                     </div>
-                    <!--
-                    <div class="form-group">
-                        <label for="office" class="col-sm-2 control-label">办公软件</label>
-                        <div class="col-sm-5">
-                            <select id="office" name="office" class="form-control">
-                                <option value="0">请选择</option>
-                                <option value="1">office97</option>
-                                <option value="2">office2000</option>
-                                <option value="3">office2010</option>
-                                <option value="4">office2013</option>
-                                <option value="4">office2016</option>
-                            </select>
-                        </div>
-                    </div>-->
+                    <input type="hidden" id="browser_values" name="browser_values" value="">
+
 
                     <div class="form-group">
                         <label for="defense" class="col-sm-2 control-label">杀毒软件</label>
@@ -147,13 +144,16 @@
                             <select id="defense" name="defense" class="form-control">
                                 <option value="0">请选择</option>
                                 <%for(var i=0;i<device_info.device_defense.length;i++){%>
-                                <option value="<%=device_info.device_defense[i].id%>"><%=device_info.device_defense[i].content%></option>
+                                <option value="<%=device_info.device_defense[i].id%>" <%if(has_set.length>0){
+                                if(has_set[0].defense==device_info.device_defense[i].id){%>selected<%}}%>><%=device_info.device_defense[i].content%></option>
                                 <%}%>
                             </select>
                         </div>
                     </div>
 
                     <input type="hidden" id="userid" name="userid" value="1">
+                    <input type="hidden" id="isupdate" name="isupdate" value="<%if(has_set.length>0){%>1<%}else{%>0<%}%>">
+                    <input type="hidden" id="device_id" name="device_id" value="<%if(has_set.length>0){%><%=has_set[0].id%><%}else{%>0<%}%>">
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-5">
@@ -188,6 +188,7 @@
 
 </body>
 <script>
+    /*提交*/
     $('#bt_device').click(function(){
         //alert('dfdfdfd');
         //alert($('#devicetype:checked').val());
@@ -199,9 +200,30 @@
             $('#browser:checked').each(function(){
                 str+=$(this).val()+","
             });
-            alert(str);
-            return false;
+            var str1=str.substr(0,str.length-1);
+            //alert(str1);
+            $('#browser_values').val(str1);
+            alert($('#browser_values').val());
+            return true;
         }
+    });
+
+    /*显示CPU型号*/
+    $('#cpu_brand').change(function(){
+        $.ajax({
+            type:'POST',
+            url:'/device/ajax/get_cpu_type',
+            data:{'cpu_brand':$(this).val()},
+            dataType:'json',
+            success:function(data) {
+                //location.reload();
+                $('#cpu_type').empty();
+                $('#cpu_type').append( $("<option>").val(0).text('请选择'));
+                for(var i=0;i<data.length;i++){
+                    $('#cpu_type').append( $("<option>").val(data[i].id).text(data[i].content));
+                }
+            }
+        })
     });
 
 </script>
