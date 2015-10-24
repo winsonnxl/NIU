@@ -4,13 +4,19 @@
  */
 var db=require('../database/database');
 
-exports.set_device_info=function(user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,office,defense,callback){
-    var sql="insert into users_device (user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory_size,cd,os,browser,office,defense) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    db.pool.getConnection(function(err,conn){
+/*保存用户设备信息*/
+exports.set_device_info=function(isupdate,device_id,user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,defense,callback){
+    var sql="";
+    if(isupdate==1){
+        sql="update users_device set user_id=?,device_type=?,brand=?,sn=?,cpu_brand=?,cpu_type=?,harddisk=?,memory_size=?,cd=?,os=?,browser=?,defense=? where id="+device_id;
+    }else {
+        sql="insert into users_device (user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory_size,cd,os,browser,defense) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+    }
+        db.pool.getConnection(function(err,conn){
         if(err){
             console.log("--m_device====>set_device_info==>》"+err);
         }else{
-            conn.query(sql,[user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,office,defense],function(err,result){
+            conn.query(sql,[user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,defense],function(err,result){
                 if(err){
                     console.log("--m_device====>set_device_info==>》"+err);
                     callback(0);
@@ -22,4 +28,27 @@ exports.set_device_info=function(user_id,device_type,brand,sn,cpu_brand,cpu_type
         }
     });
 
+}
+
+/*读取用户设备信息*/
+exports.get_device_info=function(user_id,callback){
+    var sql="select * from users_device where user_id="+user_id;
+    try{
+        db.pool.getConnection(function(err,con){
+            if(err){
+                console.log("====>m_device===>get_device_info===>"+err);
+            }else{
+                con.query(sql,function(err,data){
+                    if(err){
+                        console.log("====>m_device===>get_device_info==query=>"+err);
+                    }else{
+                        callback(data);
+                    }
+                    con.release();
+                });
+            }
+        });
+    }catch(ex){
+        console.log("====>m_device===>get_device_info===>"+ex);
+    }
 }

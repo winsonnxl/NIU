@@ -49,7 +49,7 @@
                         <th><%=users[i].real_name%></th>
                         <th><%=users[i].mobile%></th>
                         <th><%=users[i].id%></th>
-                        <th><a class="btn btn-default" href="/users/edit_device" role="button" target="_blank">设备管理</a></th>
+                        <th><a class="btn btn-default" href="/device/edit_device?id=<%=users[i].id%>" role="button" target="_blank">设备管理</a></th>
 
                     </tr>
                     <%}

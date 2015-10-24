@@ -85,3 +85,23 @@ exports.getDeviceInfo=function(callback){
         console.log("===>m_device===>getDeviceInfo===>"+ex);
     }
 }
+
+
+/*获取CPU型号*/
+exports.get_cpu_type=function(brand,callback){
+    var sql="select id,content from device_dic where level=1 and uplevel="+brand;
+    db.pool.getConnection(function(err,con){
+        if(err){
+            console.log("====>m_device_dic====>get_cpu_type====>"+err);
+        }else{
+            con.query(sql,function(err,data){
+                if(err){
+                    console.log("====>m_device_dic====>get_cpu_type---query====>"+err);
+                }else{
+                    callback(data);
+                }
+                con.release();
+            });
+        }
+    });
+}

@@ -119,7 +119,6 @@
                             </select>
                         </div>
                     </div>
-                    <%=has_set[0].browser.split(',').length%>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">浏览器</label>
@@ -128,7 +127,10 @@
 
                                 <%for(var i=0;i<device_info.device_browser.length;i++){%>
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" id="browser" name="browser" value="<%=device_info.device_browser[i].id%>" <%if(has_set.length>0){if(has_set[0].browser==device_info.device_browser[i].id){%>checked<%}}%>> <%=device_info.device_browser[i].content%>
+                                    <input type="checkbox" id="browser" name="browser" value="<%=device_info.device_browser[i].id%>" <%if(has_set.length>0){
+                                    var arr_browser=has_set[0].browser.split(',');
+                                    for(var x=0;x<arr_browser.length;x++){
+                                    if(arr_browser[x]==device_info.device_browser[i].id){%>checked<%}}}%>> <%=device_info.device_browser[i].content%>
                                 </label>
                                 <%}%>
 
@@ -151,7 +153,7 @@
                         </div>
                     </div>
 
-                    <input type="hidden" id="userid" name="userid" value="1">
+                    <input type="hidden" id="userid" name="userid" value="<%=userid%>">
                     <input type="hidden" id="isupdate" name="isupdate" value="<%if(has_set.length>0){%>1<%}else{%>0<%}%>">
                     <input type="hidden" id="device_id" name="device_id" value="<%if(has_set.length>0){%><%=has_set[0].id%><%}else{%>0<%}%>">
 
@@ -203,7 +205,7 @@
             var str1=str.substr(0,str.length-1);
             //alert(str1);
             $('#browser_values').val(str1);
-            alert($('#browser_values').val());
+            //alert($('#browser_values').val());
             return true;
         }
     });
