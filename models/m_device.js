@@ -5,6 +5,7 @@
 var db=require('../database/database');
 
 /*保存用户设备信息*/
+/*
 exports.set_device_info=function(isupdate,device_id,user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,defense,callback){
     var sql="";
     if(isupdate==1){
@@ -29,7 +30,7 @@ exports.set_device_info=function(isupdate,device_id,user_id,device_type,brand,sn
     });
 
 }
-
+*/
 /*读取用户设备信息*/
 exports.get_device_info=function(user_id,callback){
     var sql="select * from users_device where user_id="+user_id;
@@ -51,4 +52,23 @@ exports.get_device_info=function(user_id,callback){
     }catch(ex){
         console.log("====>m_device===>get_device_info===>"+ex);
     }
+}
+
+/*获取类型下全部设备*/
+exports.get_device_name=function(item_id,callback){
+    var sql="select id,brand,sn from users_device where device_type="+item_id;
+    db.pool.getConnection(function(err,con){
+        if(err){
+            console.log("====>m_device===>get_device_name===>\n"+err);
+        }else{
+            con.query(sql,function(err,data){
+                if(err){
+                    console.log("====>m_device===>get_device_name==query=>\n"+err);
+                }else{
+                    callback(data);
+                }
+                con.release();
+            });
+        }
+    });
 }

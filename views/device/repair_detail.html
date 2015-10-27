@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>维护申请详细</title>
+
+    <!-- Bootstrap core CSS -->
+    <% include ../header.html %>
+    <link href="../stylesheets/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+</head>
+
+
+<div class="container">
+    <!--导航栏-->
+    <%include ../nav.html%>
+    <!--导航栏 end-->
+
+
+    <div id="section-0">
+        <blockquote>
+            <p>申请维护： <%=repair[0].title%></p>
+            <footer id="s_user_name" name="s_user_name"><div>申请时间： <%=repair[0].submit_time%></div></footer>
+        </blockquote>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-8">
+
+            <!--问题描述-->
+            <div>
+                <blockquote>
+                    <h2>问题描述</h2>
+                </blockquote>
+                <p></p>
+                <%=repair[0].description%>
+
+
+            </div>
+            <input type="hidden" id="repair_id" name="repair_id" value="<%=repair[0].id%>"/>
+            <input type="hidden" id="user_id" name="user_id" value="<%=repair[0].submit_user%>"/>
+
+            <div>
+
+
+
+                <!--任务完结总结描述-->
+                <%if(repair[0].processing_result!=null){%>
+                <br>
+                <div id="section-end" class="panel panel-primary">
+                    <div class="panel-heading">设备修复总结</div>
+                    <div class="panel-body">
+                        <%=repair[0].processing_result%>
+                    </div>
+                </div>
+                <%}%>
+                <!--任务完结总结描述 end-->
+
+
+
+            </div>
+
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>当前状态：
+                    <%switch(repair[0].processing_statue){
+                    case 0:%>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="bt_ddcl" name="bt_ddcl">
+                        等待处理
+                    </button>
+                    <%break;
+                    case 2:%>
+                    <button type="button" class="btn btn-warning" id="bt_yfpzx" name="bt_yfpzx">已分派执行</button>
+                    <%break;
+                    case 3:%>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rwwjModal" id="bt_yfpzx" name="bt_yfpzx">处 理 中</button>
+                    <%break;
+                    case 4:%>
+                    <button type="button" class="btn btn-success">已完结</button>
+                    <%break;
+                    case 5:%>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#qrModal" id="bt_qr" name="bt_qr">待确认</button>
+                    <%break;
+                    case 8:%>
+                    <button type="button" class="btn btn-default">驳  &nbsp;&nbsp;&nbsp; 回</button>
+                    <%break;}%>
+                </h4>
+                <%if(repair[0].executioner_name!=null||repair[0].executioner_name!=''){%>
+                <p id="fpg_name" name="fpg_name">分 派 给：<%=repair[0].executioner_name%></p>
+                <%}%>
+
+                <%if(repair[0].processing_statue==2 && isExecutioner){%>
+                <!--日历-->
+                <p>完成时间: <input type="text" id="datepicker" style="width:135px" readonly></p>
+                <p style="text-align:center "><a id="bt_worktime" name="bt_worktime" href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>确认工作</a></p>
+                <!--日历 end-->
+                <%}%>
+                <%if(repair[0].processing_statue==3 && (repair[0].end_time!=null||repair[0].end_time!='')){%>
+                <p>完成时间：<%=repair[0].end_time%></p>
+                <%}%>
+            </div>
+
+
+        </div><!-- /.blog-sidebar -->
+
+        <!--指派任务执行人事件处理窗口-->
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">任务处理</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" id="submit_task" name="submit_task" action="">
+                            <div class="form-group">
+                                <label for="process_statue">处理结果：</label>&nbsp;&nbsp;
+                                <label class="radio-inline">
+                                    <input type="radio" name="process_statue" id="process_statue" value="2"> 指派任务
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="process_statue" id="process_statue" value="8"> 任务驳回
+                                </label>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="person">任务执行人：</label>
+                                <select class="form-control" id="person" name="person">
+                                    <option value="0">请选择任务执行人</option>
+                                    <option value="2">牛晓亮</option>
+                                    <option value="3">张宁思</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="rwsm">任务说明：</label>
+                                <textarea name="rwsm", id="rwsm", class="form-control" style="height: 100px" placeholder="对指派任务进行说明"></textarea>
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关 闭</button>
+                        <button type="button" class="btn btn-primary" id="bt_submit_task" name="bt_submit_task">提 交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--指派任务执行人事件处理窗口 end-->
+
+        <!--执行人完结事件处理窗口-->
+        <%if(isExecutioner){%>
+        <div class="modal fade" id="rwwjModal" tabindex="-1" role="dialog" aria-labelledby="rwwjModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="rwwjModalLabel">任务完结</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            <div class="form-group">
+                                <label>维护类型：</label>
+                                <select class="form-control" id="repair_level1" name="repair_level1">
+                                    <option value="0">选择维护类型</option>
+                                </select>
+                                </div>
+                            <div class="form-group">
+                                <label>维护项目：</label>
+                                <select class="form-control" id="repair_level2" name="repair_level2">
+                                    <option value="0">选择维护类型</option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="rwsm">任务总结：</label>
+                                <textarea name="rwzj", id="rwzj", class="form-control" style="height: 100px" placeholder="请详细记录维护过程，为未来维修自助系统做好数据基础。"></textarea>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关 闭</button>
+                        <button type="button" class="btn btn-primary" id="bt_rwwj" name="bt_rwwj">提 交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%}%>
+        <!--执行人完结事件处理窗口 end-->
+
+        <!--确认完结事件处理窗口-->
+        <%if(isSubmitUser){%>
+        <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="qrModalLabel">确认完结</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+
+                            <div class="form-group">
+                                <label for="rwsm">任务已完结确认：</label>
+                                <p></p>
+                                <h4>亲！程序猿已经夜以继日的完成了BUG修改，请您在确认您提交的问题已经被修复后，点击【确认】按钮</h4>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关 闭</button>
+                        <button type="button" class="btn btn-primary" id="bt_rwqr" name="bt_rwqr">确 认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%}%>
+        <!--确认完结事件处理窗口 end-->
+
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+<footer>
+
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<link rel='stylesheet' href='../stylesheets/jquery-ui.min.css' />
+<script src="../javascripts/jquery-ui.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#bt_submit_task').click(function(){
+            var person_name=$('#person').find("option:selected").text();
+            //alert($('#process_result:checked').val());
+
+            $.ajax({
+                type: 'POST',
+                url: '/device/ajax/set_repair_task',
+                data: {'repair_id':$('#repair_id').val(),'statue':$('#process_statue:checked').val(),'person_id':$('#person').val(),'rwsm':$('#rwsm').val(),'person_name':person_name} ,
+                dataType: 'json',
+                success: function(data){
+                    if(data){
+                        location.reload();
+                    }
+                }
+            });
+
+        });
+    });
+
+    $(function() {
+        $( "#datepicker" ).datepicker({
+            dateFormat: 'yy-mm-dd',//日期格式
+            monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+            dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+            dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+            dayNamesMin: ['日','一','二','三','四','五','六']
+        });
+    });
+
+    $(function(){
+        $('#bt_worktime').click(function() {
+            var date = $('#datepicker').val();
+            if (date){
+                //alert(date);
+                $.ajax({
+                    type: 'POST',
+                    url: '/device/ajax/set_work_time',
+                    data: {'date':date,'repair_id':$('#repair_id').val()},
+                    success: function () {
+                        location.reload();
+                    }
+                });
+            }
+        });
+
+    });
+
+
+    /*提交任务总结*/
+    $(function(){
+        $('#bt_rwwj').click(function(){
+            var submit=true;
+            var rwzj=$('#rwzj').val();//热舞总结内容
+            var level1=$('#repair_level1').val();
+            var level2=$('#repair_level2').val();
+            //alert(rwzj);
+            if(level2==0){
+                submit=false;
+            }
+            if(rwzj==0){
+                submit=false;
+            }
+
+            if(submit){
+                $.ajax({
+                    type:'POST',
+                    url:'/device/ajax/set_rwzj',
+                    data:{'rwzj':rwzj,'repair_id':$('#repair_id').val(),'result_repair_item':level2},
+                    success:function(data){
+                        location.reload();
+                    }
+                });
+            }
+        });
+    });
+
+    /*提交任务确认*/
+    $(function(){
+        $('#bt_rwqr').click(function(){
+            $.ajax({
+                type:'POST',
+                url:'/device/ajax/set_rwqr',
+                data:{'repair_id':$('#repair_id').val()},
+                success:function(){
+                    location.reload();
+                }
+            });
+        });
+    });
+
+    /*自动加载用户名*/
+    $(function(){
+        //alert("我是自动加载哦！");
+        $.ajax({
+            type:'POST',
+            url:'/users/getUser',
+            data:{'user_id':$('#user_id').val()},
+            success:function(data){
+                //alert(data[0].real_name);
+                $('#s_user_name').append('提交人： '+data[0].real_name+' &nbsp;'+'<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>  '+data[0].mobile);
+                //$('#s_user_phone').text(data[0].mobile);
+
+            }
+        });
+    });
+
+/*点击处理中按钮，加载维护类型*/
+    $('#bt_yfpzx').click(function(){
+        //alert('我是处理中...');
+        $.ajax({
+            type:'POST',
+            url:'/device/ajax/get_repair_dic',
+            data:{'level':0},
+            dataType:'json',
+            success:function(data) {
+                //location.reload();
+                if(data) {
+                    $('#repair_level1').empty();
+                    $('#repair_level1').append($("<option>").val(0).text('请选择'));
+                    for (var i = 0; i < data.length; i++) {
+                        $('#repair_level1').append($("<option>").val(data[i].id).text(data[i].content));
+                    }
+                }
+            }
+        });
+    });
+
+
+    /*加载维护类型相关2级分类信息*/
+    $('#repair_level1').change(function(){
+        //alert('维护类型相关2级分类信息');
+        $.ajax({
+            type:'POST',
+            url:'/device/ajax/get_repair_dic',
+            data:{'level':$('#repair_level1').val()},
+            dataType:'json',
+            success:function(data) {
+                //location.reload();
+                if(data) {
+                    $('#repair_level2').empty();
+                    $('#repair_level2').append($("<option>").val(0).text('请选择'));
+                    for (var i = 0; i < data.length; i++) {
+                        $('#repair_level2').append($("<option>").val(data[i].id).text(data[i].content));
+                    }
+                }
+            }
+        });
+    });
+
+</script>
+
+
+</body>
+</html>

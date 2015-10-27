@@ -55,7 +55,7 @@ router.post('/login',function(req,res,next){
       req.session.rname=data[0]['real_name'];
       req.session.mobile=data[0]['mobile'];
       req.session.local=data[0]['local'];
-      req.session.dev=data[0]['dep'];
+      req.session.dep=data[0]['dep'];
       req.session.level=data[0]['level'];
 
      //console.log("session==="+req.session.rname);
@@ -76,7 +76,7 @@ router.get('/logout',function(req,res,next){
   req.session.rname='';
   req.session.mobile='';
   req.session.local='';
-  req.session.dev='';
+  req.session.dep='';
   req.session.level='';
   res.render('user/login',{data:'0'});
 });

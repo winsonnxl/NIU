@@ -167,7 +167,9 @@
           </div>
           <div class="sidebar-module">
             <h4>设备信息：</h4>
-            <ol class="list-unstyled">
+            <input type="hidden" id="device_no" name="devcie_no" value="">
+            <ol class="list-unstyled" id="device_list" name="device_list">
+              <!--
               <li>设备类型： 笔记本</li>
               <li>品牌及编号： Acer sms2322-mtnd</li>
               <li>CPU: 酷睿i5</li>
@@ -178,6 +180,7 @@
               <li>浏览器： IE7,Chrome10</li>
               <li>办公软件：office2016</li>
               <li>杀毒软件：金山毒霸</li>
+              -->
             </ol>
           </div>
           <div class="sidebar-module">
@@ -203,7 +206,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
   <script>
-    <!--BUG提交-->
+    <!--BUG数量统计-->
     var bug_dcl_num=<%=bug_dcl_num%>;//待处理数量‘0’
     var bug_bh_num=<%=bug_bh_num%>;//驳回数量‘8’
     var bug_clz_num=<%=bug_clz_num%>;//处理中数量‘3’
@@ -267,7 +270,24 @@
     }
     var ctx = document.getElementById("myChart").getContext("2d");
     var myNewChart = new Chart(ctx).Pie(bug_data,defaults);
-    <!--BUG提交 end-->
+    <!--BUG数量统计 end-->
+
+    $(function(){
+      $.ajax({
+        type:'get',
+              url:'/device/get_person_device_info',
+      success:function(data){
+        if(data[0]==0){
+          $('#device_list').append("<li>没有绑定设备</li>");
+        }else{
+          for(var i=1;i<data.length-1;i++){
+            $('#device_list').append("<li>"+data[i]+"</li>");
+          }
+          $('#device_no').val(data[10]);
+        }
+      }
+      });
+    });
 
   </script>
 

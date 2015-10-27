@@ -13,7 +13,8 @@ var bug=require('./routes/bug');
 var device=require('./routes/device');
 var test=require('./routes/test');
 
-require('./models/m_sys_list').getSys_List();
+require('./models/m_sys_list').getSys_List();//读取部门、科室、模块到内存
+require('./models/m_device_dic').get_device_info2mem();//读取设备信息到内存
 
 var app = express();
 

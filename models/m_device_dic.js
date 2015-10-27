@@ -105,3 +105,45 @@ exports.get_cpu_type=function(brand,callback){
         }
     });
 }
+
+/*读取设备信息ID和content到内存，为快速显示相关文字信息*/
+exports.get_device_info2mem=function(){
+    var sql="select id,content from device_dic";
+    db.pool.getConnection(function(err,con){
+        if(err){
+            console.log("====>m_device_dic====>get_device_info2mem====>"+err);
+        }else{
+            con.query(sql,function(err,data){
+                if(err){
+                    console.log("====>m_device_dic====>get_device_info2mem==query==>"+err);
+                }else{
+                    global.m_device_info=[];
+                    for(var i=0;i<data.length;i++){
+                        global.m_device_info[data[i].id]=data[i].content;
+                    }
+                    console.log(global.m_device_info);
+                    con.release();
+                }
+            });
+        }
+    });
+}
+
+/*读取设备总类目*/
+exports.get_device_item=function(callback){
+    var sql="select id,content from device_dic where type=1 and level=0 and uplevel=0";
+    db.pool.getConnection(function(err,con){
+        if(err){
+            console.log("====>m_device_dic====>get_device_item====>"+err);
+        }else{
+            con.query(sql,function(err,data){
+                if(err){
+                    console.log("====>m_device_dic====>get_device_item==query==>\n"+err);
+                }else{
+                    callback(data);
+                }
+                con.release();
+            });
+        }
+    });
+}

@@ -156,7 +156,7 @@ router.get('/bug_detail',function(req,res,next){
                 'isExecutioner':isExecutioner,
                 'isSubmit_user':isSubmit_user
             };
-            res.render('work/bug_detail', json_data);
+            res.render('bug/bug_detail', json_data);
         });
     }
 

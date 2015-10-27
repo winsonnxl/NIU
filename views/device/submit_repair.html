@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>申请维修-N.I.U</title>
+
+    <!-- Bootstrap core CSS -->
+    <% include ../header.html %>
+</head>
+
+<body>
+<div class="container">
+    <!--导航栏-->
+    <%include ../nav.html%>
+    <!--导航栏 end-->
+
+    <div>
+        <h1>您正在 申请维修</h1>
+        <p>申请维修：PC、笔记本、打印机、网络故障、办公软件安装调试等</p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-8">
+            <!--from-->
+            <form class="form-horizontal" id="f_repair_submit" name="f_repair_submit" method="post" action="/device/submit_repair">
+                <div class="form-group" id="div_type">
+                    <label class="col-sm-2 control-label">维护项目</label>
+                    <div class="col-sm-10">
+                        <label class="radio-inline">
+                            <input type="radio" name="repair_type" id="repair_type" value="1" onclick="close_item()"> 个人设备
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="repair_type" id="repair_type" value="2" onclick="show_item()"> 办公设备
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="repair_type" id="repair_type" value="3" onclick="close_item()"> 软件维护
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" id="div_item" style="display: none">
+                    <label class="col-sm-2 control-label">设备类目</label>
+                    <div class="col-sm-10">
+                        <select id="device_item" name="device_item" class="form-control">
+                            <option value="0">请选择设备类目</option>
+                            <%for(var i=0;i<item.length;i++){%>
+                            <option value="<%=item[i].id%>"><%=item[i].content%></option>
+                            <%}%>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" id="div_name" style="display: none">
+                    <label class="col-sm-2 control-label">设备名称</label>
+                    <div class="col-sm-10">
+                        <select id="device_name" name="device_name" class="form-control">
+                            <option value="0">请选择设备</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group" id="div_description">
+                    <label class="col-sm-2 control-label">问题描述</label>
+                    <div class="col-sm-10">
+                        <textarea name="device_description", id="device_description", class="form-control" style="height: 300px"></textarea>
+                    </div>
+                </div>
+                <input type="hidden" id="repair_title" name="repair_title">
+
+
+
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-default" name="bt_repair_submit" id="bt_repair_submit">提 交</button>
+                    </div>
+                </div>
+            </form>
+            <!--from end-->
+        </div>
+
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>可能相关的BUG</h4>
+                <p>看看是不是有可能与您提出的问题相似</p>
+            </div>
+            <div class="sidebar-module">
+                <ol class="list-unstyled">
+                    <li><a href="#">March 2014</a></li>
+                    <li><a href="#">February 2014</a></li>
+                    <li><a href="#">January 2014</a></li>
+                    <li><a href="#">December 2013</a></li>
+                    <li><a href="#">November 2013</a></li>
+                    <li><a href="#">October 2013</a></li>
+                    <li><a href="#">September 2013</a></li>
+                    <li><a href="#">August 2013</a></li>
+                    <li><a href="#">July 2013</a></li>
+                    <li><a href="#">June 2013</a></li>
+                    <li><a href="#">May 2013</a></li>
+                    <li><a href="#">April 2013</a></li>
+                </ol>
+            </div>
+
+        </div><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+<footer>
+
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+
+<script type="text/javascript">
+    function show_item(){
+        document.getElementById("div_item").style.display="";//隐藏
+        document.getElementById("div_name").style.display="";//显示
+    }
+    function close_item(){
+        document.getElementById("div_item").style.display="none";//隐藏
+        document.getElementById("div_name").style.display="none";//显示
+    }
+
+    $('#device_item').change(function(){
+        //alert($(this).val());
+        $.ajax({
+            type: 'post',
+            url: '/device/get_device_name',
+            data: {'item_id':$(this).val()},
+            dataType: 'json',
+            success: function (data) {
+                $('#device_name').empty();
+                $('#device_name').append( $("<option>").val('0').text('请选择设备'));
+                for(var i=0;data.length;i++){
+                    $('#device_name').append( $("<option>").val(data[i].id).text(data[i].brand+''+data[i].sn));
+                }
+
+            }
+        });
+    });
+
+
+    $('#bt_repair_submit').click(function(){
+        var sub=true;
+        //var data={};
+        var type=$('#repair_type:checked').val();
+        var device_item=$('#device_item').val();
+        var device_name=$('#device_name').val();
+        var device_description=$('#device_description').val();
+        var title;
+        if(type==2){
+            if(device_item==0){
+                $('#div_item').toggleClass("has-error",true);
+                sub=false;
+            }else{
+                $('#div_item').toggleClass("has-error",false);
+            }
+            if(device_name==0){
+                $('#div_name').toggleClass("has-error",true);
+                sub=false;
+            }else{
+                $('#div_name').toggleClass("has-error",false);
+            }
+            if(device_description==''){
+                $('#div_description').toggleClass("has-error",true);
+                sub=false;
+            }else{
+                $('#div_description').toggleClass("has-error",false);
+            }
+            title=$('#repair_type:checked')[0].nextSibling.nodeValue.replace(/[\r\n]/g,"").replace(/\ +/g,"")+' '+$('#device_item').find("option:selected").text()+' '+$('#device_name').find("option:selected").text();
+            //alert(title);
+            /*data={'type':type,
+            'device_item':device_item,
+                'device_name':device_name,
+                'device_description':device_description
+            };*/
+        }else{
+            if(type==''||type==null){
+                $('#div_type').toggleClass("has-error",true);
+                sub=false;
+            }else{
+                $('#div_type').toggleClass("has-error",false);
+            }
+            if(device_description==''){
+                $('#div_description').toggleClass("has-error",true);
+                sub=false;
+            }else{
+                $('#div_description').toggleClass("has-error",false);
+            }
+            title=$('#repair_type:checked')[0].nextSibling.nodeValue.replace(/[\r\n]/g,"").replace(/\ +/g,"");
+            //alert(title);
+            /*data={'type':type,
+            'device_description':device_description};*/
+        }
+        if(sub){
+            $('#repair_title').val(title);
+            $('#f_repair_submit').submit();
+        }
+    });
+</script>
+
+
+</body>
+</html>

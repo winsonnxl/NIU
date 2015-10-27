@@ -17,6 +17,7 @@ exports.getUser=function(userid,callback){
             }
             //console.log("现在的时间："+new Date());
             if(result.length>0){
+                result[0].pw=0;
                 callback(result);
             }
             connection.release();

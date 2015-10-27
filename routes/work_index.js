@@ -5,6 +5,7 @@
 var express = require('express');
 var router = express.Router();
 var m_bug=require('../models/m_bug');
+var m_device_repair=require('../models/m_device_repair');
 
 
 /*工作平台首页*/
@@ -17,7 +18,7 @@ router.get('/',function(req,res,next){
             var async = require('async');
             async.series({
                 one:function(callback){
-                    m_bug.showBUG(req.session.uid,req.session.level,req.session.local,req.session.dev,0,function(results){
+                    m_bug.showBUG(req.session.uid,req.session.level,req.session.local,req.session.dep,0,function(results){
                         callback(null,results);
                     })
                 }
@@ -74,20 +75,36 @@ router.get('/mywork',function(req,res,next){
             res.render('user/login',{data:'0'});
         }else {
             var session=require('../lib/c_session').get_Session(req);
+            var async = require('async');
+            async.series({
+                    one:function(callback){
+                        m_bug.showBUG(req.session.uid,req.session.level,req.session.local,req.session.dep,1,function(result){
+                            if(result){
+                                callback(null,result);
+                            }else{
+                                callback(null,0);
+                            }
+                        })
+                    },
+                    two:function(callback){
+                        m_device_repair.show_repair_list(1,req.session.uid,req.session.level,req.session.dep,req.session.local,function(result){
+                            if(result){
+                                callback(null,result);
+                            }else{
+                                callback(null,0);
+                            }
+                        })
 
-            m_bug.showBUG(req.session.uid,req.session.level,req.session.local,req.session.dev,1,function(result){
-                if(result){
+                    }
+                },
+                function(err,data){
                     data={'session':session,
-                    'results':result};
+                        'results':data.one,
+                    'repair':data.two};
                     console.log('mywork====>',data);
                     res.render('work/mywork',data);
-                }else{
-                    data={'session':session,
-                    'results':0};
-                    console.log('mywork====>',data);
-                    res.render('work/mywork',data);
-                }
-            });
+                });
+
 
         }
 
