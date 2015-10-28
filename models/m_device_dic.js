@@ -147,3 +147,22 @@ exports.get_device_item=function(callback){
         }
     });
 }
+
+/*读取type：10（设备维护项目）内容*/
+exports.get_type10=function(level,callback){
+    var sql="select id ,content from device_dic where type=10 and level=1 and uplevel="+level;
+    db.pool.getConnection(function(err,con){
+        if(err){
+            console.log("====>m_device_dic====>get_type10====>"+err);
+        }else{
+            con.query(sql,function(err,data){
+                if(err){
+                    console.log("====>m_device_dic====>get_type10==query==>"+err);
+                }else{
+                    callback(data);
+                }
+                con.release();
+            });
+        }
+    });
+}

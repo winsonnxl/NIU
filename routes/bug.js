@@ -144,17 +144,23 @@ router.get('/bug_detail',function(req,res,next){
             console.log("routes----but/bug_detail===>"+err)
             var isExecutioner=false;
             var isSubmit_user=false;
+            var isCommonder=false;
             if(req.session.uid==results.one.data.executioner_id){
                 isExecutioner=true;
             }
             if(req.session.uid==results.one.data.submit_user_id){
                 isSubmit_user=true;
             }
+            if(req.session.dep==10 && req.session.level==3)
+            {
+                isCommonder=true;
+            }
             json_data={'session':results.one.session,
                 'data':results.one.data,
                 'commu':results.two.commu,
                 'isExecutioner':isExecutioner,
-                'isSubmit_user':isSubmit_user
+                'isSubmit_user':isSubmit_user,
+                'isCommonder':isCommonder
             };
             res.render('bug/bug_detail', json_data);
         });

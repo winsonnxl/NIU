@@ -7,6 +7,10 @@
 </head>
 <body>
 <div class="container">
+    <br>
+    <blockquote>
+        用户注册
+    </blockquote>
     <form class="form-horizontal" id="f_reg_sub" method="post" action="/users/reg_sub">
         <div id="div_uname" class="form-group">
             <label class="col-sm-2 control-label">用户名</label>
@@ -43,18 +47,14 @@
             <div class="col-sm-4">
                 <select class="form-control" id="local" name="local">
                     <option value="0">请选择分店</option>
-                    <option value="1">金融街店</option>
-                    <option value="2">方圆店</option>
+                    <%for(var i in company){%>
+                    <option value="<%=company[i].id%>"><%=company[i].content%></option>
+                    <%}%>
                 </select>
                 <br>
 
                 <select class="form-control" id="dep" name="dep">
                     <option value="0">请选择部门</option>
-                    <option value="1">体检部</option>
-                    <option value="2">呼叫中心</option>
-                    <option value="3">销售部</option>
-                    <option value="4">综合管理部</option>
-                    <option value="9">信息部</option>
                 </select>
             </div>
         </div>
@@ -79,13 +79,13 @@
      var phone=$('#phone');
      var local=$('#local');
      var dep=$('#dep');
-     if(u_name.val()==''||u_name.val()==null){
+     if(u_name.val()==''||u_name.val()==null||u_name.val().length<4){
          $('#div_uname').toggleClass("has-error",true);
          sub=false;
      }else{
          $('#div_uname').toggleClass("has-error",false);
      }
-     if(u_pw.val()==''||u_pw.val()==null){
+     if(u_pw.val()==''||u_pw.val()==null||u_pw.val().length<6){
          $('#div_upw').toggleClass("has-error",true);
          sub=false;
      }else{
@@ -131,5 +131,20 @@
 
  });
 });
+
+    $('#local').change(function(){
+        $.ajax({
+            type: 'POST',
+            url: '/users/ajax/get_dep',
+            data: {'id':$('#local').val()} ,
+            dataType: 'json',
+            success: function(data){
+                $('#dep').empty();
+                $('#dep').append( $("<option>").val(0).text('请选择部门'));
+                for(var i=0;data.length;i++){
+                    $('#dep').append( $("<option>").val(data[i].id).text(data[i].content));
+                }
+            }});
+    });
 </script>
 </html>

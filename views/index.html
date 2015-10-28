@@ -17,25 +17,23 @@
       <!--导航栏 end-->
 
 
-      <div>
-        <h1>The Bootstrap Blog</h1>
-        <p>The official example template of creating a blog with Bootstrap.</p>
-      </div>
+
 
       <div class="row">
 
         <div class="col-sm-8">
 
           <!--Chat JS区域 BUG提交-->
+          <%if(bug_num>0){%>
           <div class="row">
-            <div class="col-sm-7">
-          <canvas id="myChart" width="300" height="300"></canvas>
+            <div class="col-sm-4">
+          <canvas id="myChart" width="210" height="210"></canvas>
             </div>
-            <div class="col-sm-5">
-              <ul class="list-unstyled" style="margin-top: 50px">
+            <div class="col-sm-2">
+              <ul class="list-unstyled" style="margin-top: 20px">
                 <li>
                   <ul class="list-inline">
-                    <li><h4>共提交： <%=bug_num%></h4></li>
+                    <li><h5>bug提交： <%=bug_num%></h5></li>
                   </ul>
                 </li>
 
@@ -81,14 +79,76 @@
                   </ul>
                 </li>
               </ul>
-
-
             </div>
+            <%}%>
+            <!--维修汇总图表-->
+            <%if(repair_num>0){%>
+            <div class="col-sm-4">
+              <canvas id="repairChart" width="210" height="210"></canvas>
+            </div>
+            <div class="col-sm-2">
+              <ul class="list-unstyled" style="margin-top: 20px">
+                <li>
+                  <ul class="list-inline">
+                    <li><h5>维护申请： <%=repair_num%></h5></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <ul class="list-inline">
+                    <li style="height: 12px;width: 12px;background-color: #28a4c9"></li>
+                    <li>待处理： <%=repair_dcl_num%></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <ul class="list-inline">
+                    <li style="height: 12px;width: 12px;background-color:#e38d13"></li>
+                    <li>已分派： <%=repair_yfp_num%></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <ul class="list-inline">
+                    <li style="height: 12px;width: 12px;background-color: #245580"></li>
+                    <li>处理中： <%=repair_clz_num%></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <ul class="list-inline">
+                    <li style="height: 12px;width: 12px;background-color: #c12e2a"></li>
+                    <li>待确认： <%=repair_dqr_num%></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <ul class="list-inline">
+                    <li style="height: 12px;width: 12px;background-color: #3e8f3e"></li>
+                    <li>已完结： <%=repair_wj_num%></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <ul class="list-inline">
+                    <li style="height: 12px;width: 12px;background-color: #ccc"></li>
+                    <li>被驳回： <%=repair_bh_num%></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <!--维修汇总图表 end-->
           </div>
-          <!--Chat JS区域 BUG提交end-->
+          <%}%>
+          <!--Chat JS区域 end-->
+          <hr>
+          <% if(bug.length>0){%>
 
           <div>
             <!--BUG列表-->
+
+            <blockquote>系统bug</blockquote>
             <table class="table table-hover">
               <thead>
               <tr>
@@ -101,8 +161,8 @@
                 <th>处理状态</th>
               </tr>
               <tbody>
-            <% if(bug.length>0){
-            for(var i=0;bug.length>i;i++){%>
+
+            <%for(var i=0;bug.length>i;i++){%>
             <tr>
               <th scope="row"><%=i+1%></th>
               <th><%=bug[i].sys_name%></th>
@@ -136,21 +196,87 @@
               </th>
 
             </tr>
-            <%}
-            }else{%>
-            <tr>
-              <th>暂时没有BUG报告，很好的系统！值得骄傲的程序猿！</th>
-            </tr>
             <%}%>
             </tbody>
               </thead>
             </table>
             <!--BUG列表 end-->
+          </div>
+          <hr>
+          <%}%>
 
-            <hr>
+
+          <!--repair-->
+          <% if(repair.length>0){%>
+          <div>
+            <!--维修列表-->
+
+            <blockquote>维修申请</blockquote>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>申请项目</th>
+                <th>提交时间</th>
+                <th>处理状态</th>
+              </tr>
+              <tbody>
+
+              <%for(var i=0;repair.length>i;i++){%>
+              <tr>
+                <th scope="row"><%=i+1%></th>
+                <th><%=repair[i].title%></th>
+                <th><%=repair[i].submit_time%></th>
+                <th>
+                  <%switch(repair[i].processing_statue){
+                  case 0:%>
+                  <a href="/device/repair_detail?<%=repair[i].id%>" class="btn btn-info">未处理</a>
+                  <%break;
+                  case 2:%>
+                  <a href="/device/repair_detail?<%=repair[i].id%>" class="btn btn-warning">已分派</a>
+                  <%break;
+                  case 3:%>
+                  <a href="/device/repair_detail?<%=repair[i].id%>" class="btn btn-primary">处理中</a>
+                  <%break;
+                  case 4:%>
+                  <a href="/device/repair_detail?<%=repair[i].id%>" class="btn btn-success">已完结</a>
+                  <%break;
+                  case 5:%>
+                  <a href="/device/repair_detail?<%=repair[i].id%>" class="btn btn-danger">待确认</a>
+                  <%break;
+                  case 8:%>
+                  <a href="/device/repair_detail?<%=repair[i].id%>" class="btn btn-default">驳  &nbsp;&nbsp;&nbsp;回</a>
+                  <%break;
+                  }%>
+
+                </th>
+
+              </tr>
+              <%}%>
+              </tbody>
+              </thead>
+            </table>
+            <!--BUG列表 end-->
 
 
-          </div><!-- /.blog-post -->
+          </div>
+          <%}%>
+          <!--repair end-->
+
+          <%if(repair.length==0 && bug==0){%>
+          <div class="jumbotron">
+            <h1>欢迎使用 N.I.U 系统</h1>
+            <p>全新的信息部管理工具系统，全面优化工作流程。为各位同仁高效优质的解决各种信息系统及电子设备维护问题。</p>
+            <p>
+            <div style="text-align: center">
+              <img src="../images/no_info.jpg">
+            </div>
+
+            </p>
+          </div>
+
+          <%}%>
+          <!-- /.blog-post -->
 
 
 
@@ -160,36 +286,20 @@
 
         <div class="col-sm-3 col-sm-offset-1">
           <div class="sidebar-module sidebar-module-inset">
-            <h4>办公设备</h4><button type="button" class="btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-wrench" aria-hidden="true">申请维修</span>
-          </button>
-            <p><img src="../images/pc.png"></p>
+            <h4>设备信息：</h4>
+            <p><img id="device_img" name="device_img"></p>
           </div>
           <div class="sidebar-module">
-            <h4>设备信息：</h4>
+
             <input type="hidden" id="device_no" name="devcie_no" value="">
             <ol class="list-unstyled" id="device_list" name="device_list">
-              <!--
-              <li>设备类型： 笔记本</li>
-              <li>品牌及编号： Acer sms2322-mtnd</li>
-              <li>CPU: 酷睿i5</li>
-              <li>硬盘: 500G</li>
-              <li>内存: 8G</li>
-              <li>光驱: 无光驱</li>
-              <li>操作系统： Windows 10</li>
-              <li>浏览器： IE7,Chrome10</li>
-              <li>办公软件：office2016</li>
-              <li>杀毒软件：金山毒霸</li>
-              -->
+
             </ol>
           </div>
           <div class="sidebar-module">
-            <h4>Elsewhere</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
-            </ol>
+            <button type="button" class="btn btn-default" aria-label="Left Align">
+              <span class="glyphicon glyphicon-wrench" aria-hidden="true">申请维修</span>
+            </button>
           </div>
         </div><!-- /.blog-sidebar -->
 
@@ -197,9 +307,7 @@
 
     </div><!-- /.container -->
 
-    <footer>
 
-    </footer>
 
 
     <!-- Bootstrap core JavaScript
@@ -240,6 +348,44 @@
       }
 
     ]
+
+    <!--维护-->
+    var repair_dcl_num=<%=repair_dcl_num%>;//待处理数量‘0’
+    var repair_bh_num=<%=repair_bh_num%>;//驳回数量‘8’
+    var repair_clz_num=<%=repair_clz_num%>;//处理中数量‘3’
+    var repair_dqr_num=<%=repair_dqr_num%>;//待确认数量‘5’
+    var repair_yfp_num=<%=repair_yfp_num%>;//已分配‘2’
+    var repair_wj_num=<%=repair_wj_num%>;//完结‘4’
+    var repair_data = [
+      //
+      {
+        value: repair_dcl_num,
+        color:"#28a4c9"
+      },
+      {
+        value : repair_bh_num,
+        color : "#ccc"
+      },
+      {
+        value : repair_clz_num,
+        color : "#245580"
+      },
+      {
+        value : repair_dqr_num,
+        color : "#c12e2a"
+      },
+      {
+        value : repair_yfp_num,
+        color : "#e38d13"
+      },{
+        value : repair_wj_num,
+        color : "#3e8f3e"
+      }
+
+    ]
+    <!--维护 end-->
+
+
     var defaults = {
       //Boolean - Whether we should show a stroke on each segment
       segmentShowStroke : true,
@@ -268,9 +414,18 @@
       //Function - Will fire on animation completion.
       onAnimationComplete : null
     }
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var myNewChart = new Chart(ctx).Pie(bug_data,defaults);
+    if(<%=bug_num%>>0) {
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var myNewChart = new Chart(ctx).Pie(bug_data, defaults);
+    }
     <!--BUG数量统计 end-->
+
+    <!--维护数量统计-->
+    if(<%=repair_num%>>0){
+    var repair_chart=document.getElementById("repairChart").getContext("2d");
+    var myRepairChart=new Chart(repair_chart).Pie(repair_data,defaults);
+    }
+    <!--维护数量统计 end-->
 
     $(function(){
       $.ajax({
@@ -280,10 +435,22 @@
         if(data[0]==0){
           $('#device_list').append("<li>没有绑定设备</li>");
         }else{
-          for(var i=1;i<data.length-1;i++){
+          for(var i=1;i<data.length-2;i++){
             $('#device_list').append("<li>"+data[i]+"</li>");
           }
           $('#device_no').val(data[10]);
+          switch(data[11]){
+            case '1':
+              $('#device_img').attr('src','../images/PC.jpg');
+                  break;
+            case '2':
+              $('#device_img').attr('src','../images/laptop.jpg');
+                  break;
+            case '3':
+              $('#device_img').attr('src','../images/print.jpg');
+                  break;
+          }
+
         }
       }
       });

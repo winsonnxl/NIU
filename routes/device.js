@@ -111,6 +111,7 @@ router.get('/get_person_device_info',function(req,res,next){
             results[8]="操作系统: "+global.m_device_info[data[0].os];
             results[9]="杀毒软件: "+global.m_device_info[data[0].defense];
             results[10]=data[0].id;//设备编号
+            results[11]=data[0].device_type;//设备类型
             res.json(results);
 
         }else{
@@ -184,6 +185,7 @@ router.get('/repair_detail',function(req,res,next){
             console.log(data);
             var isExecutioner=false;
             var isSubmitUser=false;
+            var isCommonder=false;
             if(data[0].executioner_id==req.session.uid){
                 isExecutioner=true;
                 console.log("===================="+isExecutioner);
@@ -191,7 +193,11 @@ router.get('/repair_detail',function(req,res,next){
             if(data[0].submit_user==req.session.uid){
                 isSubmitUser=true;
             }
-            res.render('device/repair_detail',{'session':session,'repair':data,'isExecutioner':isExecutioner,'isSubmitUser':isSubmitUser});
+            if(req.session.dep==10 && req.session.level==3)
+            {
+                isCommonder=true;
+            }
+            res.render('device/repair_detail',{'session':session,'repair':data,'isExecutioner':isExecutioner,'isSubmitUser':isSubmitUser,'isCommonder':isCommonder});
         });
     }
     //res.send('I am repair_detail page ^.^');
@@ -269,9 +275,9 @@ router.post('/ajax/set_rwqr',function(req,res,next){
 });
 
 /*获取repair_dic列表*/
-router.post('/ajax/get_repair_dic',function(req,res,next){
+router.post('/ajax/get_device_item',function(req,res,next){
     var level=req.body.level;
-    require('../models/m_repair_dic').get_repair_list(level,function(data){
+    require('../models/m_device_dic').get_device_item(function(data){
        if(data.length>0){
            res.json(data);
        } else{
@@ -280,5 +286,11 @@ router.post('/ajax/get_repair_dic',function(req,res,next){
     });
 });
 
+router.post('/ajax/get_type10',function(req,res,next){
+    var level=req.body.level;
+    require('../models/m_device_dic').get_type10(level,function(data){
+        res.json(data);
+    });
+});
 
 module.exports = router;

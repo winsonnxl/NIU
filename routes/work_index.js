@@ -21,6 +21,11 @@ router.get('/',function(req,res,next){
                     m_bug.showBUG(req.session.uid,req.session.level,req.session.local,req.session.dep,0,function(results){
                         callback(null,results);
                     })
+                },
+                two:function(callback){
+                    m_device_repair.show_repair_list(0,req.session.uid,req.session.level,req.session.dep,req.session.local,function(results){
+                        callback(null,results);
+                    });
                 }
             },function(err,data){
                 var bug_num=data.one.length;//总提交BUG数量
@@ -30,6 +35,14 @@ router.get('/',function(req,res,next){
                 var bug_dqr_num=0;//待确认数量‘5’
                 var bug_yfp_num=0;//已分配‘2’
                 var bug_wj_num=0;//完结‘4’
+
+                var repair_num=data.two.length;//维修申请总数
+                var repair_dcl_num=0;//待处理数量‘0’
+                var repair_bh_num=0;//驳回数量‘8’
+                var repair_clz_num=0;//处理中数量‘3’
+                var repair_dqr_num=0;//待确认数量‘5’
+                var repair_yfp_num=0;//已分配‘2’
+                var repair_wj_num=0;//完结‘4’
 
                 if(bug_num==undefined){
                     bug_num=0;
@@ -45,6 +58,23 @@ router.get('/',function(req,res,next){
                         }
                     }
                 }
+
+                if(repair_num==undefined){
+                    repair_num=0;
+                }else{
+                    for(var i=0;i<data.two.length;i++){
+                        switch (data.two[i].processing_statue){
+                            case 0:repair_dcl_num++;break;
+                            case 2:repair_yfp_num++;break;
+                            case 3:repair_clz_num++;break;
+                            case 4:repair_wj_num++;break;
+                            case 5:repair_dqr_num++;break;
+                            case 8:repair_bh_num++;break;
+                        }
+                    }
+                }
+
+
                 var result={'session':session,
                 'bug_num':bug_num,
                 'bug_dcl_num':bug_dcl_num,
@@ -53,7 +83,15 @@ router.get('/',function(req,res,next){
                 'bug_dqr_num':bug_dqr_num,
                 'bug_yfp_num':bug_yfp_num,
                 'bug_wj_num':bug_wj_num,
-                'bug':data.one};
+                'bug':data.one,
+                    'repair_num':repair_num,
+                    'repair_dcl_num':repair_dcl_num,
+                    'repair_bh_num':repair_bh_num,
+                    'repair_clz_num':repair_clz_num,
+                    'repair_dqr_num':repair_dqr_num,
+                    'repair_yfp_num':repair_yfp_num,
+                    'repair_wj_num':repair_wj_num,
+                    'repair':data.two};
                 res.render('index',result);
             });
 

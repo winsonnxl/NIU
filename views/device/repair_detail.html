@@ -108,6 +108,7 @@
         </div><!-- /.blog-sidebar -->
 
         <!--指派任务执行人事件处理窗口-->
+        <%if(isCommonder){%>
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -151,7 +152,7 @@
                 </div>
             </div>
         </div>
-
+       <%}%>
         <!--指派任务执行人事件处理窗口 end-->
 
         <!--执行人完结事件处理窗口-->
@@ -166,13 +167,13 @@
                     <div class="modal-body">
                         <form method="post">
                             <div class="form-group">
-                                <label>维护类型：</label>
+                                <label>维护设备：</label>
                                 <select class="form-control" id="repair_level1" name="repair_level1">
                                     <option value="0">选择维护类型</option>
                                 </select>
                                 </div>
                             <div class="form-group">
-                                <label>维护项目：</label>
+                                <label>维护内容：</label>
                                 <select class="form-control" id="repair_level2" name="repair_level2">
                                     <option value="0">选择维护类型</option>
 
@@ -355,7 +356,7 @@
         //alert('我是处理中...');
         $.ajax({
             type:'POST',
-            url:'/device/ajax/get_repair_dic',
+            url:'/device/ajax/get_device_item',
             data:{'level':0},
             dataType:'json',
             success:function(data) {
@@ -377,7 +378,7 @@
         //alert('维护类型相关2级分类信息');
         $.ajax({
             type:'POST',
-            url:'/device/ajax/get_repair_dic',
+            url:'/device/ajax/get_type10',
             data:{'level':$('#repair_level1').val()},
             dataType:'json',
             success:function(data) {

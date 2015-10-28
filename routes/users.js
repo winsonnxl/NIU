@@ -16,7 +16,10 @@ router.get('/login',function(req,res){
 
 /*用户注册页*/
 router.get('/reg',function(req,res,next){
-  res.render('user/register');
+  require('../models/m_company_dep_dic').get_company(0,function(data){
+    res.render('user/register',{'company':data});
+  });
+
 });
 
 /*提交注册信息*/
@@ -108,5 +111,17 @@ router.get('/getUsersList',function(req,res,next){
 
 });
 
+/*获取分店下属部门信息*/
+router.post('/ajax/get_dep',function(req,res,next){
+  var id=req.body.id;
+  require('../models/m_company_dep_dic').get_company(id,function(data){
+    var dep=[];
+    var list=data[0].dep.split(",");
+    for(i in list){
+      dep[i]={'id':list[i],'content':global.company_info[list[i]]};
+    }
+    res.json(dep);
+  });
+});
 
 module.exports = router;
