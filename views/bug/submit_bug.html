@@ -18,7 +18,7 @@
 
 
       <div>
-        <h1>您正在为 体检系统 提交BUG信息</h1>
+        <h1>提交 <%=sys_name%> BUG信息</h1>
         <p>体检系统涉及体检流程、LIS、PACS系统</p>
       </div>
 
@@ -206,14 +206,20 @@
             $('#div_descrption').toggleClass("has-error",false);
             $('#h_description').val(getStr_descrption());
           }
+          /*
           if(getStr_suggest().length==0||getStr_suggest()=="<br>"){
             $('#div_suggest').toggleClass("has-error",true);
             sub=false;
           }else{
             $('#div_suggest').toggleClass("has-error",false);
             $('#h_suggest').val(getStr_suggest());
-          }
+          }*/
           if(sub==true){
+            if(getStr_suggest()=="<br>"){
+              $('#h_suggest').val('');
+            }else {
+              $('#h_suggest').val(getStr_suggest());
+            }
             $('#f_bug_submit').submit();
           }else{
             return false;

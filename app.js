@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var work_index=require('./routes/work_index');
 var bug=require('./routes/bug');
 var device=require('./routes/device');
+var company=require('./routes/company');
 var test=require('./routes/test');
 
 require('./models/m_sys_list').getSys_List();//读取部门、科室、模块到内存
@@ -52,6 +53,7 @@ app.use('/users', users);
 app.use('/work_index',work_index);
 app.use('/bug',bug);
 app.use('/device',device);
+app.use('/company',company);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

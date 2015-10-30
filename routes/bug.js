@@ -71,7 +71,7 @@ router.post('/submit/post',function(req,res,next){
     var level=req.body.bug_level;
 
     //var bug_userid=req.body.userid;
-    m_bug.insertBUG(title,sys,dep,model,descrption,suggest,level,req.session.uid,function(data){
+    m_bug.insertBUG(title,sys,dep,model,descrption,suggest,level,req.session.uid,req.session.local,req.session.dep,function(data){
         if(data){
             if(data['affectedRows']){
                 res.send("BUG提交陈宫");

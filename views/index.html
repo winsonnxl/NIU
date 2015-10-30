@@ -10,7 +10,7 @@
     <script src="/javascripts/Chart.min.js"></script>
   </head>
 
-  <body>
+
     <div class="container">
       <!--导航栏-->
       <%include nav.html%>
@@ -24,8 +24,9 @@
         <div class="col-sm-8">
 
           <!--Chat JS区域 BUG提交-->
-          <%if(bug_num>0){%>
+
           <div class="row">
+              <%if(bug_num>0){%>
             <div class="col-sm-4">
           <canvas id="myChart" width="210" height="210"></canvas>
             </div>
@@ -256,12 +257,11 @@
               </tbody>
               </thead>
             </table>
+              </div>
+            <%}%>
             <!--BUG列表 end-->
 
 
-          </div>
-          <%}%>
-          <!--repair end-->
 
           <%if(repair.length==0 && bug==0){%>
           <div class="jumbotron">
@@ -274,15 +274,19 @@
 
             </p>
           </div>
-
           <%}%>
+          </div>
+
+          <!--repair end-->
+
+
           <!-- /.blog-post -->
 
 
 
 
 
-        </div><!-- /.blog-main -->
+        <!-- /.blog-main -->
 
         <div class="col-sm-3 col-sm-offset-1">
           <div class="sidebar-module sidebar-module-inset">
@@ -305,14 +309,11 @@
 
       </div><!-- /.row -->
 
-    </div><!-- /.container -->
+    </div>
 
 
+  <!-- /.container -->
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
   <script>
     <!--BUG数量统计-->
     var bug_dcl_num=<%=bug_dcl_num%>;//待处理数量‘0’

@@ -32,8 +32,18 @@ exports.set_device_info=function(isupdate,device_id,user_id,device_type,brand,sn
 }
 */
 /*读取用户设备信息*/
-exports.get_device_info=function(user_id,callback){
-    var sql="select * from users_device where user_id="+user_id;
+exports.get_device_info=function(user_id,device_id,callback){
+    var sql="";
+    if(user_id>0){
+        sql="select * from users_device where user_id="+user_id;
+    }
+    if(device_id>0){
+        sql="select * from users_device where id="+device_id;
+    }
+    if(user_id==0&&device_id==0){
+        sql="select * from users_device where id=0";
+    }
+
     try{
         db.pool.getConnection(function(err,con){
             if(err){

@@ -18,8 +18,15 @@
 
 
     <div>
-        <h1>人员维护</h1>
-        <p>修改用户信息、绑定设备使用人</p>
+        <h1>设备管理</h1>
+        <p>公司信息设备汇总</p>
+        <div class="text-right">
+            <a type="button" class="btn btn-default" style="margin-top: -100px" href="/device/edit_device" target="_blank">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加设备
+            </a>
+        </div>
+
+
     </div>
 
     <div class="row">
@@ -32,24 +39,24 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>办公地</th>
-                        <th>部门</th>
-                        <th>姓名</th>
-                        <th>电话</th>
                         <th>设备</th>
+                        <th>品牌</th>
+                        <th>编号</th>
+                        <th>分店</th>
+                        <th>部门</th>
                         <th>操作</th>
                     </tr>
                     <tbody>
-                    <% if(users.length>0){
-                    for(var i=0;users.length>i;i++){%>
+                    <% if(device_list.length>0){
+                    for(var i=0;device_list.length>i;i++){%>
                     <tr>
                         <th scope="row"><%=i+1%></th>
-                        <th><%=users[i].local%></th>
-                        <th><%=users[i].dep%></th>
-                        <th><%=users[i].real_name%></th>
-                        <th><%=users[i].mobile%></th>
-                        <th><%=users[i].id%></th>
-                        <th><a class="btn btn-default" href="/device/edit_device?userid=<%=users[i].id%>&local=<%=users[i].local%>&dep=<%=users[i].dep%>" role="button" target="_blank">设备管理</a></th>
+                        <th><%=device_dic[device_list[i].device_type]%></th>
+                        <th><%=device_dic[device_list[i].brand]%></th>
+                        <th><%=device_list[i].sn%></th>
+                        <th><%=device_list[i].local%></th>
+                        <th><%=device_list[i].dep%></th>
+                        <th><a class="btn btn-default" href="/device/edit_device?device_id=<%=device_list[i].id%>" role="button" target="_blank">设备管理</a></th>
 
                     </tr>
                     <%}
@@ -80,9 +87,7 @@
 
 </div><!-- /.container -->
 
-<footer>
 
-</footer>
 
 
 <!-- Bootstrap core JavaScript

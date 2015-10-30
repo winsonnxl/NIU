@@ -4,15 +4,15 @@
 var db=require('../database/database');
 
 /*存储维修申请*/
-exports.submit_repair=function(title,repair_type,device_item,device_id,description,user_id,user_local,user_dep,statue,callback){
-    var sql="insert into device_repair (title,repair_type,device_item,device_id,description,submit_user,submit_user_dep,submit_user_local,processing_statue) values (?,?,?,?,?,?,?,?,?)";
+exports.submit_repair=function(title,repair_type,device_item,device_id,description,user_id,user_local,user_dep,statue,local,dep,callback){
+    var sql="insert into device_repair (title,repair_type,device_item,device_id,description,submit_user,submit_user_dep,submit_user_local,processing_statue,local,dep) values (?,?,?,?,?,?,?,?,?,?,?)";
     try{
         db.pool.getConnection(function(err,con){
             if(err){
                 console.log("==>m_device_repair=====>subit_repair==>\n"+err);
                 callback(0);
             }else{
-                con.query(sql,[title,repair_type,device_item,device_id,description,user_id,user_dep,user_local,statue],function(err,data){
+                con.query(sql,[title,repair_type,device_item,device_id,description,user_id,user_dep,user_local,statue,local,dep,local,dep],function(err,data){
                     if(err){
                         console.log("==>m_device_repair=====>subit_repair= query=>\n"+err);
                         callback(0);

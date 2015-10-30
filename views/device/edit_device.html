@@ -153,9 +153,44 @@
                         </div>
                     </div>
 
+                   <!--所在分店-->
+                    <div class="form-group">
+                        <label for="local" class="col-sm-2 control-label">公司/分店</label>
+                        <div class="col-sm-5">
+                            <select id="local" name="local" class="form-control">
+                                <option value="0">请选择</option>
+                                <%for(var i=0;i<local.length;i++){
+                                if(local[i]){%>
+                                <option value="<%=local[i].id%>"
+                                <%if(has_set.length>0){if(has_set[0].local==local[i].id){%>selected<%}}%>><%=local[i].content%></option>
+                                <%}
+                                }%>
+                            </select>
+                        </div>
+                    </div>
+                    <!--所在分店 end-->
+
+                    <!--所在部门-->
+                    <div class="form-group">
+                        <label for="local" class="col-sm-2 control-label">部门</label>
+                        <div class="col-sm-5">
+                            <select id="dep" name="dep" class="form-control">
+                                <option value="0">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--所在部门 end-->
+
+
+
                     <input type="hidden" id="userid" name="userid" value="<%=userid%>">
                     <input type="hidden" id="isupdate" name="isupdate" value="<%if(has_set.length>0){%>1<%}else{%>0<%}%>">
                     <input type="hidden" id="device_id" name="device_id" value="<%if(has_set.length>0){%><%=has_set[0].id%><%}else{%>0<%}%>">
+
+                    <input type="hidden" id="dep_list" name="dep_list" value="<%if(has_set.length>0){%><%=local[has_set[0].local].dep%><%}else{%>0<%}%>">
+                    <input type="hidden" id="has_set_dep" name="has_set_dep" value="<%if(has_set.length>0){%><%=has_set[0].dep%><%}else{%>0<%}%>">
+
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-5">
@@ -179,9 +214,7 @@
 
 </div><!-- /.container -->
 
-<footer>
 
-</footer>
 
 
 <!-- Bootstrap core JavaScript
@@ -226,6 +259,59 @@
                 }
             }
         })
+    });
+
+    /*首次打开页面时，依据local列出被选择的部门*/
+    $(document).ready(function(){
+        var local=$('#local').val();
+        var dep_list=$('#dep_list').val();
+        var has_set_dep=$('#has_set_dep').val();
+        if(local==0 || dep_list==0){
+            return false;
+        }else{
+            try {
+                $.ajax({
+                    type: 'POST',
+                    url: '/company/ajax/get_set_dep',
+                    data: {'dep': dep_list},
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.length > 0) {
+                            for (var i in data) {
+                                if (data[i].id == has_set_dep) {
+                                    $('#dep').append($("<option>").val(data[i].id).text(data[i].content).attr("selected", true));
+                                    continue;
+                                }
+                                $('#dep').append($("<option>").val(data[i].id).text(data[i].content));
+                            }
+                        }
+
+                    }
+                });
+            }catch(ex){
+                return false;
+            }
+        }
+    });
+
+    /*select 显示相应部门*/
+    $('#local').change(function(){
+        $.ajax({
+            type:'post',
+            url:'/company/get_dep',
+            data:{'local':$('#local').val()},
+            dataType:'json',
+            success:function(data){
+                $('#dep').empty();
+                $('#dep').append( $("<option>").val(0).text('请选择'));
+                if(data.length>0){
+                    for (var i in data){
+                        $('#dep').append($("<option>").val(data[i].id).text(data[i].content));
+                    }
+                }
+
+            }
+        });
     });
 
 </script>

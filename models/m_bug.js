@@ -12,15 +12,15 @@ var log= require('../lib/log').logger;
 /*
 *BUG报告信息插入到数据库
 */
-exports.insertBUG=function(title,sys,dep,model,description,suggest,level,bug_userid,callback){
-    var sql="insert into bug_tracke (title,bug_sys,bug_dep,bug_model,bug_description,bug_suggest,bug_level,submit_user_id) values (?,?,?,?,?,?,?,?)";
+exports.insertBUG=function(title,sys,dep,model,description,suggest,level,bug_userid,submit_local,submit_dep,callback){
+    var sql="insert into bug_tracke (title,bug_sys,bug_dep,bug_model,bug_description,bug_suggest,bug_level,submit_user_id,local,dep) values (?,?,?,?,?,?,?,?,?,?)";
     db.pool.getConnection(function(err,conn){
         if(err){
            console.log("m_bug------>insertBUG====>"+err);
             callback(0);
 
         }else{
-            conn.query(sql,[title,sys,dep,model,description,suggest,level,bug_userid],function(err,data){
+            conn.query(sql,[title,sys,dep,model,description,suggest,level,bug_userid,submit_local,submit_dep],function(err,data){
                 if(err){
                     console.log("m_bug------>insertBUG====>"+err);
                     callback(0);

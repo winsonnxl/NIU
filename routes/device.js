@@ -6,13 +6,26 @@ var express = require('express');
 var router = express.Router();
 var m_users=require('../models/m_users');
 
+
 /*用户个人设备信息编辑页*/
 router.get('/edit_device',function(req,res,next){
     if(req.session.uid==undefined||req.session.uid==''){
         res.render('user/login',{data:'0'});
     }else {
         var url = require('url');
-        var userid=url.parse(req.url,true).query.id;
+        var userid=url.parse(req.url,true).query.userid;
+        var device_id=url.parse(req.url,true).query.device_id;
+        var local=url.parse(req.url,true).query.local;
+        var dep=url.parse(req.url,true).query.dep;
+        var hasUser=false;
+        if(userid==undefined||userid==''){
+            userid=0;
+        }else{
+            hasUser=true;
+        }
+        if(device_id==undefined||device_id==''){
+            device_id=0;
+        }
         var device_dic=require('../models/m_device_dic');
         var async = require('async');
         async.series({
@@ -22,7 +35,7 @@ router.get('/edit_device',function(req,res,next){
                 });
             },
             two:function(callback){
-                require('../models/m_device').get_device_info(userid,function(data){
+                require('../models/m_device').get_device_info(userid,device_id,function(data){
                     callback(null,data);
                 });
             }
@@ -32,13 +45,13 @@ router.get('/edit_device',function(req,res,next){
                 var browser=data.two[0].browser.split(',');
                 if(data.two[0].cpu_type!=0||data.two[0].cpu_type!=null||data.two.cpu_type!=undefined){
                     device_dic.get_cpu_type(data.two[0].cpu_brand,function(cpu_type){
-                        res.render('device/edit_device',{'session':session, 'userid':userid,'device_info':data.one, 'has_set':data.two,'cpu_type':cpu_type});
+                        res.render('device/edit_device',{'session':session, 'userid':userid,'user_local':local,'user_dep':dep,'device_info':data.one, 'has_set':data.two,'cpu_type':cpu_type,'isUser':hasUser,'local':global.company_local,'company':global.company_info});
                     });
                 }else{
-                    res.render('device/edit_device',{'session':session, 'userid':userid,'device_info':data.one, 'has_set':data.two,'cpu_type':0});
+                    res.render('device/edit_device',{'session':session, 'userid':userid,'user_local':local,'user_dep':dep,'device_info':data.one, 'has_set':data.two,'cpu_type':0,'isUser':hasUser,'local':global.company_local,'company':global.company_info});
                 }
             }else{
-                res.render('device/edit_device',{'session':session,'userid':userid, 'device_info':data.one, 'has_set':data.two,'cpu_type':0});
+                res.render('device/edit_device',{'session':session,'userid':userid,'user_local':local,'user_dep':dep,'device_info':data.one, 'has_set':data.two,'cpu_type':0,'hasUser':hasUser,'local':global.company_local,'company':global.company_info});
             }
 
 
@@ -69,9 +82,11 @@ router.post('/set_device_info',function(req,res,next){
         var cd=req.body.cd;
         var os=req.body.os;
         var browser=req.body.browser_values;
+        var local=req.body.local;
+        var dep=req.body.dep;
         //var office=req.body.office;
         var defense=req.body.defense;
-        require('../models/m_users_device').set_device_info(isupdate,device_id,userid,devicetype,brand,sn,cpu_brand,cpu_type,hd,memory,cd,os,browser,defense,function(data){
+        require('../models/m_users_device').set_device_info(isupdate,device_id,userid,devicetype,brand,sn,cpu_brand,cpu_type,hd,memory,cd,os,browser,defense,local,dep,function(data){
             if(data){
                 res.send("设备信息提交成功！");
             }else{
@@ -96,7 +111,7 @@ router.post('/ajax/get_cpu_type',function(req,res,next){
 /*获得个人用户已绑定设备信息*/
 router.get('/get_person_device_info',function(req,res,next){
     var userid=req.session.uid;
-    require('../models/m_device').get_device_info(userid,function(data){
+    require('../models/m_device').get_device_info(userid,0,function(data){
         var results=new Array;
         results[0]=0;
         if(data.length>0){
@@ -160,7 +175,7 @@ router.post('/submit_repair',function(req,res,next){
     var user_dep=req.session.dep;
     var title=req.body.repair_title;
     var statue=0;
-    require('../models/m_device_repair').submit_repair(title,type,device_item,device_name,device_description,user_id,user_local,user_dep,statue,function(data){
+    require('../models/m_device_repair').submit_repair(title,type,device_item,device_name,device_description,user_id,user_local,user_dep,statue,user_local,user_dep,function(data){
             if(data){
                 res.send('提交成功！');
             }else{
@@ -291,6 +306,18 @@ router.post('/ajax/get_type10',function(req,res,next){
     require('../models/m_device_dic').get_type10(level,function(data){
         res.json(data);
     });
+});
+
+router.get('/get_device_list',function(req,res,next){
+    if(req.session.uid==undefined||req.session.uid==''){
+        res.render('user/login',{data:'0'});
+    }else {
+        var session = require('../lib/c_session').get_Session(req);
+        require('../models/m_users_device').get_device_list(function (data) {
+            res.render('device/device_list',{'session':session,'device_list':data,'device_dic':global.m_device_info});
+        });
+        //res.send("get_device_list");
+    }
 });
 
 module.exports = router;
