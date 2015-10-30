@@ -54,8 +54,8 @@
                         <th><%=device_dic[device_list[i].device_type]%></th>
                         <th><%=device_dic[device_list[i].brand]%></th>
                         <th><%=device_list[i].sn%></th>
-                        <th><%=device_list[i].local%></th>
-                        <th><%=device_list[i].dep%></th>
+                        <th><%=company_info[device_list[i].local]%></th>
+                        <th><%=company_info[device_list[i].dep]%></th>
                         <th><a class="btn btn-default" href="/device/edit_device?device_id=<%=device_list[i].id%>" role="button" target="_blank">设备管理</a></th>
 
                     </tr>

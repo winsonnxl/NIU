@@ -54,3 +54,26 @@ exports.get_device_list=function(callback){
         console.log("====m_users_device===>get_device_list====>\n"+ex);
     }
 }
+
+/*该用户是否绑定个人设备*/
+exports.User_had_Device=function(userid,callback){
+    var sql="select * from users_device where user_id="+userid;
+    try{
+        db.pool.getConnection(function(err,con){
+            if(err){
+                console.log("==m_users_device===>User_had_Device==>\n"+err);
+            }else{
+                con.query(sql,function(err,data){
+                    if(err){
+                        console.log("==m_users_device===>User_had_Device==query==>\n"+err);
+                    }else{
+                       callback(data);
+                    }
+                    con.release();
+                });
+            }
+        });
+    }catch(ex){
+        console.log("==m_users_device===>User_had_Device==>\n"+ex);
+    }
+}

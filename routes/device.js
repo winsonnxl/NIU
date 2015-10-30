@@ -115,16 +115,34 @@ router.get('/get_person_device_info',function(req,res,next){
         var results=new Array;
         results[0]=0;
         if(data.length>0){
+            var type=global.m_device_info[data[0].device_type];
+            var brand=global.m_device_info[data[0].brand];
+            var sn=data[0].sn;
+            var cpu=global.m_device_info[data[0].cpu_brand];
+            var cpu_type=global.m_device_info[data[0].cpu_type];
+            var cd=global.m_device_info[data[0].cd];
+            var os=global.m_device_info[data[0].os];
+            var def=global.m_device_info[data[0].defense];
+            if(type==undefined)type='';
+            if(brand==undefined)brand='';
+            if(sn==undefined)sn='';
+            if(cpu==undefined)cpu='';
+            if(cpu_type==undefined)cpu_type='';
+            if(cd==undefined)cd='';
+            if(os==undefined)os='';
+            if(def==undefined)def='';
+
+
             results[0]=1;
             results[1]="设备编号： "+data[0].id;
-            results[2]="设备类型： "+global.m_device_info[data[0].device_type];
-            results[3]="品牌及编号： "+global.m_device_info[data[0].brand]+' '+data[0].sn;
-            results[4]="CPU: "+global.m_device_info[data[0].cpu_brand]+' '+global.m_device_info[data[0].cpu_type];
+            results[2]="设备类型： "+type;
+            results[3]="品牌及编号： "+brand+' '+sn;
+            results[4]="CPU: "+cpu+' '+cpu_type;
             results[5]="硬盘: "+data[0].harddisk;
             results[6]="内存: "+data[0].memory_size;
-            results[7]="光驱: "+global.m_device_info[data[0].cd];
-            results[8]="操作系统: "+global.m_device_info[data[0].os];
-            results[9]="杀毒软件: "+global.m_device_info[data[0].defense];
+            results[7]="光驱: "+cd;
+            results[8]="操作系统: "+os;
+            results[9]="杀毒软件: "+def;
             results[10]=data[0].id;//设备编号
             results[11]=data[0].device_type;//设备类型
             res.json(results);
@@ -142,9 +160,26 @@ router.get('/submit_repair',function(req,res,next){
         res.render('user/login',{data:'0'});
     }else {
         var session = require('../lib/c_session').get_Session(req);
-        require('../models/m_device_dic').get_device_item(function(data){
-            res.render('device/submit_repair',{'session':session,'item':data});
+        var async = require('async');
+        async.series({
+            one:function(callback){
+            require('../models/m_device_dic').get_device_item(function(data){
+                callback(null,data);
+            });
+            },
+            two:function(callback){
+                require('../models/m_users_device').User_had_Device(req.session.uid,function(data){
+                    //console.log("是否有设备绑定："+data[0].id);
+                    callback(null,data);
+                });
+            }
+        },function(err,results){
+            res.render('device/submit_repair',
+                {'session':session,
+                    'item':results.one,
+                    'person_device':results.two});
         });
+
 
     }
 });
@@ -174,7 +209,23 @@ router.post('/submit_repair',function(req,res,next){
     var user_local=req.session.local;
     var user_dep=req.session.dep;
     var title=req.body.repair_title;
+    var person_device_id=req.body.person_device_id;
+    var person_device_type=req.body.person_device_type;
     var statue=0;
+    if(type==1){
+        if(person_device_id==undefined) person_device_id=0;
+        if(person_device_type==undefined) person_device_type=0;
+        require('../models/m_device_repair').submit_repair(title,type,person_device_type,person_device_id,device_description,user_id,user_local,user_dep,statue,user_local,user_dep,function(data){
+                if(data){
+                    res.send('提交成功！');
+                }else{
+                    res.send('失败！');
+                }
+            }
+        );
+
+    }
+    if(type==2){
     require('../models/m_device_repair').submit_repair(title,type,device_item,device_name,device_description,user_id,user_local,user_dep,statue,user_local,user_dep,function(data){
             if(data){
                 res.send('提交成功！');
@@ -183,7 +234,7 @@ router.post('/submit_repair',function(req,res,next){
             }
         }
     );
-
+    }
 
 });
 
@@ -314,7 +365,7 @@ router.get('/get_device_list',function(req,res,next){
     }else {
         var session = require('../lib/c_session').get_Session(req);
         require('../models/m_users_device').get_device_list(function (data) {
-            res.render('device/device_list',{'session':session,'device_list':data,'device_dic':global.m_device_info});
+            res.render('device/device_list',{'session':session,'device_list':data,'device_dic':global.m_device_info,'company_info':global.company_info});
         });
         //res.send("get_device_list");
     }

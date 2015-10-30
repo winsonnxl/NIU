@@ -29,16 +29,22 @@
                     <label class="col-sm-2 control-label">维护项目</label>
                     <div class="col-sm-10">
                         <label class="radio-inline">
-                            <input type="radio" name="repair_type" id="repair_type" value="1" onclick="close_item()"> 个人设备
+                            <input type="radio" name="repair_type" id="repair_type" value="1" onclick="close_item()" <%if(person_device.length>0){%>checked<%}%>> 个人设备
                         </label>
                         <label class="radio-inline">
                             <input type="radio" name="repair_type" id="repair_type" value="2" onclick="show_item()"> 办公设备
                         </label>
+                        <!--
                         <label class="radio-inline">
                             <input type="radio" name="repair_type" id="repair_type" value="3" onclick="close_item()"> 软件维护
                         </label>
+                        -->
                     </div>
                 </div>
+                <%if(person_device.length>0){%>
+                <input type="hidden" id="person_device_id" name="person_device_id" value="<%=person_device[0].id%>">
+                <input type="hidden" id="person_device_type" name="person_device_type" value="<%=person_device[0].device_type%>">
+                <%}%>
                 <div class="form-group" id="div_item" style="display: none">
                     <label class="col-sm-2 control-label">设备类目</label>
                     <div class="col-sm-10">

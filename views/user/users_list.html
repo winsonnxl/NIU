@@ -44,8 +44,8 @@
                     for(var i=0;users.length>i;i++){%>
                     <tr>
                         <th scope="row"><%=i+1%></th>
-                        <th><%=users[i].local%></th>
-                        <th><%=users[i].dep%></th>
+                        <th><%=company_info[users[i].local]%></th>
+                        <th><%=company_info[users[i].dep]%></th>
                         <th><%=users[i].real_name%></th>
                         <th><%=users[i].mobile%></th>
                         <th><%=users[i].id%></th>

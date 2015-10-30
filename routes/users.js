@@ -104,7 +104,7 @@ router.get('/getUsersList',function(req,res,next){
     var session = require('../lib/c_session').get_Session(req);
     m_users.get_users_list(function(data){
       res.render('user/users_list',{'session':session,
-        'users':data});
+        'users':data,'company_info':global.company_info});
     });
 
   }

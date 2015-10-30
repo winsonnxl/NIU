@@ -42,7 +42,7 @@ router.get('/submit',function(req,res,next){
                 if(data){
                     callback(null,data);
                 }else{
-                    callbace(null,data);
+                    callback(null,data);
                 }
             });
         }
