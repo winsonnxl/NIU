@@ -143,13 +143,18 @@
           </div>
           <%}%>
           <!--Chat JS区域 end-->
-          <hr>
+
+
+          <ul class="nav nav-tabs nav-justified">
+            <li role="presentation" id="checklist1" class="active" onclick="checklist(1)"><a href="#">设备维护</a></li>
+            <li role="presentation" id="checklist2" onclick="checklist(2)"><a href="#">数据维护</a></li>
+            <li role="presentation" id="checklist3" onclick="checklist(3)"><a href="#">系统BUG</a></li>
+          </ul>
+
           <% if(bug.length>0){%>
 
-          <div>
+          <div id="bug_list" style="display: none">
             <!--BUG列表-->
-
-            <blockquote>系统bug</blockquote>
             <table class="table table-hover">
               <thead>
               <tr>
@@ -203,16 +208,14 @@
             </table>
             <!--BUG列表 end-->
           </div>
-          <hr>
           <%}%>
 
 
           <!--repair-->
           <% if(repair.length>0){%>
-          <div>
+          <div id="repair_list" style="display:">
             <!--维修列表-->
 
-            <blockquote>维修申请</blockquote>
             <table class="table table-hover">
               <thead>
               <tr>
@@ -264,11 +267,10 @@
 
           <!--data repair-->
           <% if(data_repair.length>0){%>
-          <hr>
-          <div>
+
+          <div id="data_repair_list" style="display: none">
             <!--维修列表-->
 
-            <blockquote>维修申请</blockquote>
             <table class="table table-hover">
               <thead>
               <tr>
@@ -512,6 +514,36 @@
       }
       });
     });
+
+    function checklist(id){
+      //alert(id);
+      switch (id){
+        case 1:
+              $('#checklist1').toggleClass('active',true);
+              document.getElementById("repair_list").style.display="";
+              $('#checklist2').toggleClass('active',false);
+              document.getElementById("data_repair_list").style.display="none";
+              $('#checklist3').toggleClass('active',false);
+              document.getElementById("bug_list").style.display="none";
+              break;
+        case 2:
+          $('#checklist1').toggleClass('active',false);
+          document.getElementById("repair_list").style.display="none";
+          $('#checklist2').toggleClass('active',true);
+          document.getElementById("data_repair_list").style.display="";
+          $('#checklist3').toggleClass('active',false);
+          document.getElementById("bug_list").style.display="none";
+          break;
+        case 3:
+          $('#checklist1').toggleClass('active',false);
+          document.getElementById("repair_list").style.display="none";
+          $('#checklist2').toggleClass('active',false);
+          document.getElementById("data_repair_list").style.display="none";
+          $('#checklist3').toggleClass('active',true);
+          document.getElementById("bug_list").style.display="";
+          break;
+      }
+    }
 
   </script>
 
