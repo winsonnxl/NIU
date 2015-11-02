@@ -27,14 +27,20 @@ exports.getSys_List=function(){
                         var tmp_result=[];
                         for(var i=0;i<result.length;i++){
                             //1:sysid; 2:depid ; 3:modelid
-                            tmp_result[result[i].sys_id+''+result[i].dep_id+''+result[i].model_id]=result[i].name;
+                            //tmp_result[result[i].sys_id+''+result[i].dep_id+''+result[i].model_id]=result[i].name;
+                            tmp_result[result[i].id]=result[i].name;
                         }
+                        /*
                         global.sys_list_models =tmp_result;
                         console.log("global.sys_list_models======>>>>"+global.sys_list_models);
                         log.info("m_sys_list=>>>>>>global.sys_list: error "+global.sys_list_models);
+                        */
+                        global.sysname_list=tmp_result;
+                        console.log("global.sysname_list======>>>>"+global.sysname_list);
 
                     }
                 });
+                /*
                 //获取sys名单
                 conn.query(sql1,function(err,result){
                     if(err){
@@ -67,7 +73,8 @@ exports.getSys_List=function(){
                         log.info("m_sys_list=>>>>>>global.sys_list_deps: error "+global.sys_list_deps);
 
                     }
-                });
+
+                });*/
                 conn.release();
 
             }
@@ -88,25 +95,35 @@ exports.show_SysList=function(select,sys,dep,callback){
     var sql;
     switch(select){
         case 'dep':
-            sql="select * from sys_list where sys_id="+sys+" and model_id=0 and dep_id>0";
+            sql="select * from sys_list where sys_id="+sys+" and dep_id=0";
             break;
         case 'model':
-            sql="select * from sys_list where sys_id="+sys+" and dep_id="+dep+" and model_id>0";
+            sql="select * from sys_list where sys_id="+sys+" and dep_id="+dep;
+            break;
+        case 'sys':
+            sql="select * from sys_list where sys_id=0 and dep_id=0 and model_id=0";
             break;
         default :break;
     }
     db.pool.getConnection(function(err,conn){
         if(err){
-            console.log("m_sys_list------>show_SysList====>"+err);
+            console.log("m_sys_list------>show_SysList====>\n"+err);
             callback(0);
         }else{
             try{
                 conn.query(sql,function(err,data){
                     if(err){
-                        console.log("m_sys_list------>show_SysList====>"+err);
+                        console.log("m_sys_list------>show_SysList====>\n"+err);
                         callback(0);
                     }else {
                         var result = [];
+                        for(var i=0;i<data.length;i++){
+                            result[i]={
+                                name:data[i].name,
+                                id:data[i].id
+                            }
+                        }
+                        /*
                         if (select == 'dep') {
                             for (var i = 0; i < data.length; i++) {
                                 result[i] = {
@@ -123,13 +140,22 @@ exports.show_SysList=function(select,sys,dep,callback){
                                 };
                             }
                         }
+                        if(select=='sys'){
+                            for(var i=0;i<data.length;i++){
+                                result[i]={
+                                    name:data[i].name,
+                                    sys_id:data[i].id
+                                };
+                            }
+                        }
+                        */
 
 
                         conn.release();
                         callback(result);
                     }
                 });}catch(ex){
-                console.log("m_bug------>m_sys_list====>"+ex);
+                console.log("m_bug------>m_sys_list====>\n"+ex);
             }
         }
     });

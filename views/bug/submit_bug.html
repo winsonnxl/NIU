@@ -40,7 +40,7 @@
                   <option value="0">请选择工作模块</option>
                   <%if(dep.length>0){
                     for(var i=0;i<dep.length;i++){%>
-                  <option value=<%=dep[i].dep_id%>><%=dep[i].name%></option>
+                  <option value=<%=dep[i].id%>><%=dep[i].name%></option>
                   <%}
                   }%>
                 </select>
@@ -243,7 +243,7 @@
               $('#bug_block').empty();
               $('#bug_block').append( $("<option>").val(0).text('请选择功能模块'));
                for(var i=0;data.length;i++){
-                 $('#bug_block').append( $("<option>").val(data[i].model_id).text(data[i].name));
+                 $('#bug_block').append( $("<option>").val(data[i].id).text(data[i].name));
                }
             }});
         });

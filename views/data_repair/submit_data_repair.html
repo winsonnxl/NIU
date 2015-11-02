@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>申请维修-N.I.U</title>
+
+    <!-- Bootstrap core CSS -->
+    <% include ../header.html %>
+</head>
+
+<body>
+<div class="container">
+    <!--导航栏-->
+    <%include ../nav.html%>
+    <!--导航栏 end-->
+
+    <div>
+        <h1>您正在 申请数据维修</h1>
+        <p>申请维修：体检系统、CRM等系统中错误数据。</p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-8">
+            <!--from-->
+            <form class="form-horizontal" id="f_repair_submit" name="f_repair_submit" method="post" action="/data_repair/submit_repair">
+                <div class="form-group" id="div_sys">
+                    <label class="col-sm-2 control-label">维护系统</label>
+                    <div class="col-sm-10">
+                        <select id="sys_item" name="sys_item" class="form-control">
+                            <option value="0">请选择</option>
+                            <%for(var i=0;i<sys_list.length;i++){%>
+                            <option value="<%=sys_list[i].id%>"><%=sys_list[i].name%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" id="div_dep">
+                    <label class="col-sm-2 control-label">部门</label>
+                    <div class="col-sm-10">
+                        <select id="dep_item" name="dep_item" class="form-control">
+                            <option value="0">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" id="div_model">
+                    <label class="col-sm-2 control-label">功能模块</label>
+                    <div class="col-sm-10">
+                        <select id="model_item" name="model_item" class="form-control">
+                            <option value="0">请选择</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group" id="div_description">
+                    <label class="col-sm-2 control-label">问题描述</label>
+                    <div class="col-sm-10">
+                        <textarea name="repair_description", id="repair_description", class="form-control" style="height: 300px"></textarea>
+                    </div>
+                </div>
+                <input type="hidden" id="repair_title" name="repair_title">
+
+
+
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-default" name="bt_repair_submit" id="bt_repair_submit">提 交</button>
+                    </div>
+                </div>
+            </form>
+            <!--from end-->
+        </div>
+
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>可能相关的BUG</h4>
+                <p>看看是不是有可能与您提出的问题相似</p>
+            </div>
+            <div class="sidebar-module">
+                <ol class="list-unstyled">
+                    <li><a href="#">March 2014</a></li>
+                    <li><a href="#">February 2014</a></li>
+                    <li><a href="#">January 2014</a></li>
+                    <li><a href="#">December 2013</a></li>
+                    <li><a href="#">November 2013</a></li>
+                    <li><a href="#">October 2013</a></li>
+                    <li><a href="#">September 2013</a></li>
+                    <li><a href="#">August 2013</a></li>
+                    <li><a href="#">July 2013</a></li>
+                    <li><a href="#">June 2013</a></li>
+                    <li><a href="#">May 2013</a></li>
+                    <li><a href="#">April 2013</a></li>
+                </ol>
+            </div>
+
+        </div><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+<footer>
+
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+
+<script type="text/javascript">
+    $('#sys_item').change(function(){
+        //alert($(this).val());
+        $.ajax({
+            type: 'post',
+            url: '/sys_list/getDep',
+            data: {'sys_id':$('#sys_item').val()},
+            dataType: 'json',
+            success: function (data) {
+                $('#dep_item').empty();
+                $('#dep_item').append( $("<option>").val('0').text('请选择'));
+                for(var i=0;data.length;i++){
+                    $('#dep_item').append( $("<option>").val(data[i].id).text(data[i].name));
+                }
+
+            }
+        });
+    });
+
+    $('#dep_item').change(function(){
+        //alert($(this).val());
+        $.ajax({
+            type: 'post',
+            url: '/sys_list/getModel',
+            data: {'sys_id':$('#sys_item').val(),'dep_id':$('#dep_item').val()},
+            dataType: 'json',
+            success: function (data) {
+                $('#model_item').empty();
+                $('#model_item').append( $("<option>").val('0').text('请选择'));
+                for(var i=0;data.length;i++){
+                    $('#model_item').append( $("<option>").val(data[i].id).text(data[i].name));
+                }
+
+            }
+        });
+    });
+
+
+    $('#bt_repair_submit').click(function(){
+        var sub=true;
+        //var data={};
+        //var type=$('#repair_type:checked').val();
+        var sys_item=$('#sys_item').val();
+        var dep_item=$('#dep_item').val();
+        var model_item=$('#model_item').val();
+        var repair_description=$('#device_description').val();
+        var title;
+
+            if(sys_item==0){
+                $('#div_sys').toggleClass("has-error",true);
+                sub=false;
+            }else{
+                $('#div_sys').toggleClass("has-error",false);
+            }
+            if(dep_item==0){
+                $('#div_dep').toggleClass("has-error",true);
+                sub=false;
+            }else{
+                $('#div_dep').toggleClass("has-error",false);
+            }
+        if(model_item==0){
+            $('#div_model').toggleClass("has-error",true);
+            sub=false;
+        }else{
+            $('#div_model').toggleClass("has-error",false);
+        }
+            if(repair_description==''){
+                $('#repair_description').toggleClass("has-error",true);
+                sub=false;
+            }else{
+                $('#repair_description').toggleClass("has-error",false);
+            }
+            title=$('#sys_item').find("option:selected").text()+' '+$('#dep_item').find("option:selected").text()+' '+$('#model_item').find("option:selected").text();
+            //alert(title);
+            /*data={'type':type,
+             'device_item':device_item,
+             'device_name':device_name,
+             'device_description':device_description
+             };*/
+
+        if(sub){
+            $('#repair_title').val(title);
+            $('#f_repair_submit').submit();
+        }
+    });
+</script>
+
+
+</body>
+</html>

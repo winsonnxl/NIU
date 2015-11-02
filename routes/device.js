@@ -84,9 +84,10 @@ router.post('/set_device_info',function(req,res,next){
         var browser=req.body.browser_values;
         var local=req.body.local;
         var dep=req.body.dep;
+        var time_buying=req.body.time_buying
         //var office=req.body.office;
         var defense=req.body.defense;
-        require('../models/m_users_device').set_device_info(isupdate,device_id,userid,devicetype,brand,sn,cpu_brand,cpu_type,hd,memory,cd,os,browser,defense,local,dep,function(data){
+        require('../models/m_users_device').set_device_info(isupdate,device_id,userid,devicetype,brand,sn,cpu_brand,cpu_type,hd,memory,cd,os,browser,defense,local,dep,time_buying,function(data){
             if(data){
                 res.send("设备信息提交成功！");
             }else{
@@ -281,7 +282,7 @@ router.post('/ajax/set_repair_task',function(req,res,next){
     data[0]="processing_statue='"+req.body.statue+"'";
     data[1]="executioner_id='"+req.body.person_id+"'";
     data[2]="executioner_name='"+req.body.person_name+"'";
-    data[3]="description='"+req.body.rwsm+"'";//任务说明
+    data[3]="rwsm='"+req.body.rwsm+"'";//任务说明
     data[4]="task_person_id='"+req.session.uid+"'";
     require('../models/m_device_repair').update_repair(data,repair_id,function(data){
         if(data.affectedRows){

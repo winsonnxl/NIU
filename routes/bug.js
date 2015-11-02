@@ -19,7 +19,7 @@ router.get('/submit',function(req,res,next){
     var sys_code = url.parse(req.url).query;//主系统编号
     /*1:sysid; 2:depid ; 3:modelid*/
     //console.log("第一次知道是从哪里来的=========="+global.sys_list[arg]);
-    var sys_name=global.sys_list_sys[sys_code];
+    var sys_name=global.sysname_list[sys_code];
 
     var async = require('async');
     async.series({

@@ -137,6 +137,64 @@
                 </tbody>
             </table>
             <!--维护工作 end-->
+
+
+            <!--数据工作-->
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>区域</th>
+                    <th>部门</th>
+                    <th>申请</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% if(data_repair.length>0){
+                for(var i=0;data_repair.length>i;i++){%>
+                <tr>
+                    <th scope="row"><%=i+1%></th>
+                    <th><%=data_repair[i].submit_user_local%></th>
+                    <th><%=data_repair[i].submit_user_dep%></th>
+                    <th><%=data_repair[i].title%></th>
+                    <th><%=data_repair[i].submit_time%></th>
+                    <th>
+                        <%switch(data_repair[i].processing_statue){
+                        case 0:%>
+                        <a href="/data_repair/repair_detail?<%=data_repair[i].id%>" class="btn btn-info">未处理</a>
+                        <%break;
+                        case 2:%>
+                        <a href="/data_repair/repair_detail?<%=data_repair[i].id%>" class="btn btn-warning">已分派</a>
+                        <%break;
+                        case 3:%>
+                        <a href="/data_repair/repair_detail?<%=data_repair[i].id%>" class="btn btn-primary">处理中</a>
+                        <%break;
+                        case 4:%>
+                        <a href="/data_repair/repair_detail?<%=data_repair[i].id%>" class="btn btn-success">已完结</a>
+                        <%break;
+                        case 5:%>
+                        <a href="/date_repair/repair_detail?<%=data_repair[i].id%>" class="btn btn-danger">待确认</a>
+                        <%break;
+                        case 8:%>
+                        <a href="/data_repair/repair_detail?<%=data_repair[i].id%>" class="btn btn-default">驳  &nbsp;&nbsp;&nbsp; 回</a>
+                        <%break;
+                        }%>
+
+                    </th>
+
+                </tr>
+                <%}
+                }else{%>
+                <tr>
+                    <th>暂时没有维护申请，很不错哦，可以晒晒太阳！</th>
+                </tr>
+                <%}%>
+
+                </tbody>
+            </table>
+            <!--数据工作 end-->
+
         </div>
 
 

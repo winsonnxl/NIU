@@ -1,0 +1,59 @@
+CREATE DATABASE  IF NOT EXISTS `niu` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `niu`;
+-- MySQL dump 10.13  Distrib 5.5.46, for debian-linux-gnu (x86_64)
+--
+-- Host: 127.0.0.1    Database: niu
+-- ------------------------------------------------------
+-- Server version	5.5.46-0ubuntu0.14.04.2
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增长字段',
+  `name` varchar(45) NOT NULL COMMENT '用户名',
+  `pw` varchar(45) NOT NULL COMMENT '用户密码，MD5加密',
+  `real_name` varchar(45) NOT NULL COMMENT '用户真实姓名',
+  `mobile` varchar(45) NOT NULL COMMENT '手机号码',
+  `dep` varchar(2) NOT NULL COMMENT '所在部门',
+  `level` varchar(4) NOT NULL DEFAULT '0' COMMENT '用户等级，默认0（职员）; 3:部门主管',
+  `local` varchar(45) NOT NULL COMMENT '所在区域（分店），0：高层；1：金融街店；2：方圆店',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'111111','96e79218965eb72c92a549dd5a330112','信息部主管','11111111111','10','3','2'),(2,'222222','e3ceb5881a0a1fdaad01296d7554868d','牛晓亮','22222222222','10','0','2'),(3,'333333','1a100d2c0dab19c4430e7d73762b3423','张宁思','33333333333','10','0','2'),(4,'444444','73882ab1fa529d7273da0db6b49cc4f3','体检','44444444444','1','0','2'),(5,'555555','5b1b68a9abf4d2cd155c81a9225fd158','呼叫中心','55555555555','2','0','2'),(6,'666666','96e79218965eb72c92a549dd5a330112','测试1','11111111111','3','0','1');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-11-02 13:49:59

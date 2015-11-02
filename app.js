@@ -12,6 +12,8 @@ var work_index=require('./routes/work_index');
 var bug=require('./routes/bug');
 var device=require('./routes/device');
 var company=require('./routes/company');
+var data_repair=require('./routes/data_repair');
+var sys_list=require('./routes/sys_list');
 var test=require('./routes/test');
 
 require('./models/m_sys_list').getSys_List();//读取部门、科室、模块到内存
@@ -54,6 +56,8 @@ app.use('/work_index',work_index);
 app.use('/bug',bug);
 app.use('/device',device);
 app.use('/company',company);
+app.use('/data_repair',data_repair);
+app.use('/sys_list',sys_list);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,15 +4,15 @@
 var db=require('../database/database');
 
 /*保存用户设备信息*/
-exports.set_device_info=function(isupdate,device_id,user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,defense,local,dep,callback){
+exports.set_device_info=function(isupdate,device_id,user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,defense,local,dep,time_buying,callback){
     var sql="";
     var list=[];
     if(isupdate==1){
-        sql="update users_device set user_id=?,device_type=?,brand=?,sn=?,cpu_brand=?,cpu_type=?,harddisk=?,memory_size=?,cd=?,os=?,browser=?,defense=?,local=?,dep=? where id="+device_id;
-        list=[user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,defense,local,dep];
+        sql="update users_device set user_id=?,device_type=?,brand=?,sn=?,cpu_brand=?,cpu_type=?,harddisk=?,memory_size=?,cd=?,os=?,browser=?,defense=?,local=?,dep=?,time_buying=? where id="+device_id;
+        list=[user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,defense,local,dep,time_buying];
     }else {
-        sql="insert into users_device (user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory_size,cd,os,browser,defense,local,dep) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        list=[user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,defense,local,dep];
+        sql="insert into users_device (user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory_size,cd,os,browser,defense,local,dep,time_buying) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        list=[user_id,device_type,brand,sn,cpu_brand,cpu_type,harddisk,memory,cd,os,browser,defense,local,dep,time_buying];
     }
     db.pool.getConnection(function(err,conn){
         if(err){

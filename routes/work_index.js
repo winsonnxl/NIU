@@ -6,6 +6,7 @@ var express = require('express');
 var router = express.Router();
 var m_bug=require('../models/m_bug');
 var m_device_repair=require('../models/m_device_repair');
+var m_data_repair=require('../models/m_data_repair');
 
 
 /*工作平台首页*/
@@ -26,6 +27,11 @@ router.get('/',function(req,res,next){
                     m_device_repair.show_repair_list(0,req.session.uid,req.session.level,req.session.dep,req.session.local,function(results){
                         callback(null,results);
                     });
+                },
+                three:function(callback){
+                    m_data_repair.show_repair_list(0,req.session.uid,req.session.level,req.session.dep,req.session.local,function(results){
+                        callback(null,results);
+                    });
                 }
             },function(err,data){
                 var bug_num=data.one.length;//总提交BUG数量
@@ -43,6 +49,15 @@ router.get('/',function(req,res,next){
                 var repair_dqr_num=0;//待确认数量‘5’
                 var repair_yfp_num=0;//已分配‘2’
                 var repair_wj_num=0;//完结‘4’
+
+
+                var data_repair_num=data.three.length;//维修申请总数
+                var data_repair_dcl_num=0;//待处理数量‘0’
+                var data_repair_bh_num=0;//驳回数量‘8’
+                var data_repair_clz_num=0;//处理中数量‘3’
+                var data_repair_dqr_num=0;//待确认数量‘5’
+                var data_repair_yfp_num=0;//已分配‘2’
+                var data_repair_wj_num=0;//完结‘4’
 
                 if(bug_num==undefined){
                     bug_num=0;
@@ -75,6 +90,22 @@ router.get('/',function(req,res,next){
                 }
 
 
+                if(data_repair_num==undefined){
+                    data_repair_num=0;
+                }else{
+                    for(var i=0;i<data.three.length;i++){
+                        switch (data.three[i].processing_statue){
+                            case 0:data_repair_dcl_num++;break;
+                            case 2:data_repair_yfp_num++;break;
+                            case 3:data_repair_clz_num++;break;
+                            case 4:data_repair_wj_num++;break;
+                            case 5:data_repair_dqr_num++;break;
+                            case 8:data_repair_bh_num++;break;
+                        }
+                    }
+                }
+
+
                 var result={'session':session,
                 'bug_num':bug_num,
                 'bug_dcl_num':bug_dcl_num,
@@ -91,7 +122,15 @@ router.get('/',function(req,res,next){
                     'repair_dqr_num':repair_dqr_num,
                     'repair_yfp_num':repair_yfp_num,
                     'repair_wj_num':repair_wj_num,
-                    'repair':data.two};
+                    'repair':data.two,
+                    'data_repair_num':data_repair_num,
+                    'data_repair_dcl_num':data_repair_dcl_num,
+                    'data_repair_bh_num':data_repair_bh_num,
+                    'data_repair_clz_num':data_repair_clz_num,
+                    'data_repair_dqr_num':data_repair_dqr_num,
+                    'data_repair_yfp_num':data_repair_yfp_num,
+                    'data_repair_wj_num':data_repair_wj_num,
+                    'data_repair':data.three};
                 res.render('index',result);
             });
 
@@ -133,12 +172,22 @@ router.get('/mywork',function(req,res,next){
                             }
                         })
 
+                    },
+                    three:function(callback){
+                        m_data_repair.show_repair_list(1,req.session.uid,req.session.level,req.session.dep,req.session.local,function(results){
+                            if(results) {
+                                callback(null, results);
+                            }else{
+                                callback(null, 0);
+                            }
+                        });
                     }
                 },
                 function(err,data){
                     data={'session':session,
                         'results':data.one,
-                    'repair':data.two};
+                    'repair':data.two,
+                    'data_repair':data.three};
                     console.log('mywork====>',data);
                     res.render('work/mywork',data);
                 });
