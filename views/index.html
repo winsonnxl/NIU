@@ -143,13 +143,13 @@
           </div>
           <%}%>
           <!--Chat JS区域 end-->
-
-
+          <%if(bug.length>0||repair.length>0||data_repair.length>0){%>
           <ul class="nav nav-tabs nav-justified">
             <li role="presentation" id="checklist1" class="active" onclick="checklist(1)"><a href="#">设备维护</a></li>
             <li role="presentation" id="checklist2" onclick="checklist(2)"><a href="#">数据维护</a></li>
             <li role="presentation" id="checklist3" onclick="checklist(3)"><a href="#">系统BUG</a></li>
           </ul>
+          <%}%>
 
           <% if(bug.length>0){%>
 
@@ -332,7 +332,9 @@
 
             </p>
           </div>
+        </div>
           <%}%>
+
           </div>
 
           <!--repair end-->

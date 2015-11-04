@@ -106,7 +106,6 @@ exports.get_users_list=function(callback){
                 conn.query(sql,function(err,data){
                     if(err){
                         console.log('m_users=====>users_list==>>'+err);
-                        conn.release();
                     }
                     else{
                         callback(data);
@@ -116,7 +115,36 @@ exports.get_users_list=function(callback){
             }
         });
     }catch(ex){
-        console.log('m_users=====>users_list==>>'+ex);
+        console.log('m_users=====>users_list==>>\n'+ex);
     }
 }
 
+/*检查用户名是否唯一*/
+exports.check_user_name=function(user_name,callback){
+    var sql="select * from users where name="+user_name;
+    try{
+        db.pool.getConnection(function(err,conn){
+            if(err){
+                console.log('m_users=====>check_user_name==>>\n'+err);
+                conn.release();
+            }else{
+                conn.query(sql,function(err,data){
+                    if(err){
+                        console.log('m_users=====>check_user_namet===query=>>\n'+err);
+                    }
+                    else{
+                        if(data.length>=1){
+                            callback(false);
+                        }else{
+                            callback(true);
+                        }
+                    }
+                    conn.release();
+                });
+            }
+        });
+
+    }catch(ex){
+        console.log('m_users=====>check_user_name==>>\n'+ex);
+    }
+}

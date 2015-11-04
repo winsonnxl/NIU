@@ -69,9 +69,10 @@
 </div>
 </body>
 <script>
+    var sub=true;
     $(document).ready(function(){
  $('#bt_sub').click(function(){
-     var sub=true;
+     //var sub=true;
      var u_name=$('#u_name');
      var u_pw=$('#u_pw');
      var u_pw2=$('#u_pw2');
@@ -145,6 +146,26 @@
                     $('#dep').append( $("<option>").val(data[i].id).text(data[i].content));
                 }
             }});
+    });
+
+    $("#u_name").blur(function(){
+        $.ajax({
+            type:'POST',
+            url:'/users/ajax/check_user_name',
+            data:{'user_name':$(this).val()},
+            dataType:'json',
+            success:function(data){
+                if(data){
+                    //alert("hello world");
+                    $('#div_uname').toggleClass("has-error",false);
+                    sub=true;
+                }else{
+                    $('#div_uname').toggleClass("has-error",true);
+                    sub=false;
+                }
+            }
+        });
+
     });
 </script>
 </html>

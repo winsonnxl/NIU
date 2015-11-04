@@ -24,11 +24,11 @@ router.get('/reg',function(req,res,next){
 
 /*提交注册信息*/
 router.post('/reg_sub',function(req,res,next){
-  var u_name=req.body.u_name;
-  var u_pw=req.body.u_pw;
-  var u_pw2=req.body.u_pw2;
-  var r_name=req.body.r_name;
-  var phone=req.body.phone;
+  var u_name=req.body.u_name.replace(/(^\s*)|(\s*$)/g, "");
+  var u_pw=req.body.u_pw.replace(/(^\s*)|(\s*$)/g, "");
+  var u_pw2=req.body.u_pw2.replace(/(^\s*)|(\s*$)/g, "");
+  var r_name=req.body.r_name.replace(/(^\s*)|(\s*$)/g, "");
+  var phone=req.body.phone.replace(/(^\s*)|(\s*$)/g, "");
   var work_local=req.body.local;
   var dep=req.body.dep;
 
@@ -37,7 +37,8 @@ router.post('/reg_sub',function(req,res,next){
       if(data['affectedRows']){
         //console.log("callback="+data.toString());
         //console.log("callback="+data['affectedRows']);
-        res.send("恭喜！欢迎加入N.I.U系统！");
+        //res.send("恭喜！欢迎加入N.I.U系统！");
+        res.redirect('/users/login');
       }else{
         res.send("^_^!注册没有成功，赶紧联系程序猿～！！程序猿！！程序猿！");
       }
@@ -123,5 +124,15 @@ router.post('/ajax/get_dep',function(req,res,next){
     res.json(dep);
   });
 });
+
+/*检测用户名是否唯一*/
+router.post('/ajax/check_user_name',function(req,res,next){
+  var user_name=req.body.user_name.replace(/(^\s*)|(\s*$)/g, "");
+
+  m_users.check_user_name(user_name,function(data){
+    res.json(data);
+  });
+});
+
 
 module.exports = router;
