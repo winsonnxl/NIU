@@ -32,9 +32,11 @@ router.post('/submit_repair',function(req,res,next){
     var title="修复"+' '+global.sysname_list[sys_id]+' '+global.sysname_list[dep_id]+' '+global.sysname_list[model_id]+"中的数据错误";
     m_data_repair.submit_repair(title,sys_id,dep_id,model_id,description,user_id,user_local,user_dep,statue,user_local,user_dep,function(data){
         if(data){
-            res.send('提交成功！');
+            //res.send('提交成功！');
+            res.render('tips/submit',{'info':"提交成功喽～～～开始干活啦！我们会尽快处理完！请稍等"});
         }else{
-            res.send('失败！');
+           // res.send('失败！');
+            res.render('tips/submit',{'info':"失败了～5555555。耐心些，重新是一次！或联系程序猿！"});
         }
     });
 

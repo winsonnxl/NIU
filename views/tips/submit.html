@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap-theme.min.css' />
+    <script src="/javascripts/jquery-1.11.3.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div style="height: 150px"></div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" align="center">
+           <h3> <%=info%></h3>
+            <p>返回<a href="http://localhost:3000">  <首页> </a> </p>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" align="center">
+
+            <div class="jumbotron">
+                <p>认识一下信息部的成员，让我们为您更好的服务！</p>
+            <img id="employee_img">
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+//x是随机数上限，y是随机数下限
+        var x = 4;
+        var y = 1;
+        var rand = parseInt(Math.random() * (x - y + 1) + y);
+        $('#employee_img').attr("src","/images/employee/"+rand+".jpg");
+        //alert(rand);
+    });
+</script>
+</body>
+</html>

@@ -74,12 +74,15 @@ router.post('/submit/post',function(req,res,next){
     m_bug.insertBUG(title,sys,dep,model,descrption,suggest,level,req.session.uid,req.session.local,req.session.dep,function(data){
         if(data){
             if(data['affectedRows']){
-                res.send("BUG提交陈宫");
+                res.render('tips/submit',{'info':"提交成功了哦～我们会尽快为您处理！"});
+                //res.send("BUG提交陈宫");
             }else{
-                res.send("^_^!BUG提交没有成功，赶紧联系程序猿～！！程序猿！！程序猿！");
+                //res.send("^_^!BUG提交没有成功，赶紧联系程序猿～！！程序猿！！程序猿！");
+                res.render('tips/submit',{'info':"失败了～5555555。耐心些，重新是一次！或联系程序猿！"});
             }
         }else{
-            res.send("^_^!BUG提交没有成功，赶紧联系程序猿～！！程序猿！！程序猿！");
+           // res.send("^_^!BUG提交没有成功，赶紧联系程序猿～！！程序猿！！程序猿！");
+            res.render('tips/submit',{'info':"失败了～5555555。耐心些，重新是一次！或联系程序猿！"});
         }
     })
 });

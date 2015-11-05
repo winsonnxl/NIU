@@ -39,11 +39,12 @@ router.post('/reg_sub',function(req,res,next){
         //console.log("callback="+data['affectedRows']);
         //res.send("恭喜！欢迎加入N.I.U系统！");
         res.redirect('/users/login');
+        //res.render('tips/submit',{'info':""});
       }else{
-        res.send("^_^!注册没有成功，赶紧联系程序猿～！！程序猿！！程序猿！");
+        res.render('tips/submit',{'info':"注册失败了～5555555。耐心些，重新是一次！或联系程序猿！"});
       }
     }else{
-      res.send("^_^!注册没有成功，赶紧联系程序猿～！！程序猿！！程序猿！");
+      res.render('tips/submit',{'info':"注册失败了～5555555。耐心些，重新是一次！或联系程序猿！"});
     }
   });
 });

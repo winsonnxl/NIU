@@ -121,7 +121,7 @@ exports.get_users_list=function(callback){
 
 /*检查用户名是否唯一*/
 exports.check_user_name=function(user_name,callback){
-    var sql="select * from users where name="+user_name;
+    var sql="select * from users where name='"+user_name+"'";
     try{
         db.pool.getConnection(function(err,conn){
             if(err){

@@ -89,9 +89,11 @@ router.post('/set_device_info',function(req,res,next){
         var defense=req.body.defense;
         require('../models/m_users_device').set_device_info(isupdate,device_id,userid,devicetype,brand,sn,cpu_brand,cpu_type,hd,memory,cd,os,browser,defense,local,dep,time_buying,function(data){
             if(data){
-                res.send("设备信息提交成功！");
+                //res.send("设备信息提交成功！");
+                res.render('tips/submit',{'info':"成功喽～！幸福生活在像你招手！"});
             }else{
-                res.send("设备信息提交失败！");
+                //res.send("设备信息提交失败！");
+                res.render('tips/submit',{'info':"失败了～5555555。耐心些，重新是一次！或联系程序猿！"});
             }
 
         });
@@ -218,9 +220,11 @@ router.post('/submit_repair',function(req,res,next){
         if(person_device_type==undefined) person_device_type=0;
         require('../models/m_device_repair').submit_repair(title,type,person_device_type,person_device_id,device_description,user_id,user_local,user_dep,statue,user_local,user_dep,function(data){
                 if(data){
-                    res.send('提交成功！');
+                    //res.send('提交成功！');
+                    res.render('tips/submit',{'info':"成功喽！生活越来越美好了！"});
                 }else{
-                    res.send('失败！');
+                    //res.send('失败！');
+                    res.render('tips/submit',{'info':"失败了～5555555。耐心些，重新是一次！或联系程序猿！"});
                 }
             }
         );
@@ -229,9 +233,11 @@ router.post('/submit_repair',function(req,res,next){
     if(type==2){
     require('../models/m_device_repair').submit_repair(title,type,device_item,device_name,device_description,user_id,user_local,user_dep,statue,user_local,user_dep,function(data){
             if(data){
-                res.send('提交成功！');
+                //res.send('提交成功！');
+                res.render('tips/submit',{'info':"成功喽！生活越来越美好了！"});
             }else{
-                res.send('失败！');
+                //res.send('失败！');
+                res.render('tips/submit',{'info':"失败了～5555555。耐心些，重新是一次！或联系程序猿！"});
             }
         }
     );
