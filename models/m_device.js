@@ -66,7 +66,7 @@ exports.get_device_info=function(user_id,device_id,callback){
 
 /*获取类型下全部设备*/
 exports.get_device_name=function(item_id,callback){
-    var sql="select id,brand,sn from users_device where device_type="+item_id;
+    var sql="select id,brand,sn from users_device where device_type="+item_id+" and user_id=0";
     db.pool.getConnection(function(err,con){
         if(err){
             console.log("====>m_device===>get_device_name===>\n"+err);
