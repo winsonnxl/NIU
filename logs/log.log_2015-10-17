@@ -1,0 +1,4 @@
+[2015-10-17 00:04:23.496] [INFO] dateFileLog - m_bug------->bug_detail======>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+[2015-10-17 00:15:22.302] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-17 00:15:22.303] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-17 00:15:22.305] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台

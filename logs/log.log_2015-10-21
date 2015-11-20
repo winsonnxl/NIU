@@ -1,0 +1,246 @@
+[2015-10-21 08:08:16.014] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 08:08:16.016] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 08:08:16.017] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 08:50:32.638] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 08:50:32.641] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 08:50:32.643] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 08:55:57.313] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 08:55:57.314] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 08:55:57.315] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 08:58:32.540] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 08:58:32.541] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 08:58:32.541] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 08:59:24.357] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 08:59:24.358] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 08:59:24.359] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 09:00:10.796] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 09:00:10.800] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 09:00:10.803] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:01:07.429] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:01:07.430] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:01:07.431] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:01:38.545] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:01:38.547] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:01:38.549] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:01:47.464] [INFO] dateFileLog - ====m_bug-----get_commu==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where bug_tracke_id='6' order by submit_time Desc' at line 1
+[2015-10-21 10:03:24.500] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:03:24.501] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:03:24.502] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:05:10.296] [INFO] dateFileLog - ====m_bug-----get_commu==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where bug_tracke_id='6' order by submit_time Desc' at line 1
+[2015-10-21 10:05:10.981] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:05:10.982] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:05:10.983] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:06:02.517] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:06:02.517] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:06:02.518] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:07:17.560] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:07:17.560] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:07:17.561] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:07:43.559] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:07:43.560] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:07:43.560] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:10:23.312] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:10:23.313] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:10:23.313] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:11:52.969] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:11:52.970] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:11:52.970] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:12:29.381] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:12:29.382] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:12:29.383] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:13:39.031] [INFO] dateFileLog - ====m_bug-----get_commu==error==>>>>Error: Handshake inactivity timeout
+[2015-10-21 10:14:34.634] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:14:34.636] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:14:34.637] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:15:15.314] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:15:15.315] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:15:15.316] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:16:48.763] [INFO] dateFileLog - ====m_bug-----get_commu==error==>>>>Error: Handshake inactivity timeout
+[2015-10-21 10:19:07.676] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:19:07.677] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:19:07.679] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:19:28.320] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:19:28.321] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:19:28.321] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:23:07.317] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:23:07.319] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:23:07.321] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:45:48.084] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:45:48.085] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:45:48.086] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:48:00.152] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:48:00.153] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:48:00.155] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 10:50:53.671] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 10:50:53.672] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 10:50:53.674] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:06:03.469] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:06:03.470] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:06:03.472] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:07:06.406] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:07:06.407] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:07:06.408] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:12:02.220] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:12:02.220] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:12:02.221] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:15:45.172] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:15:45.174] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:15:45.177] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:19:28.123] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:19:28.124] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:19:28.125] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:22:40.068] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:22:40.069] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:22:40.071] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:24:31.592] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:24:31.593] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:24:31.595] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:25:08.055] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:25:08.056] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:25:08.057] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:27:49.762] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:27:49.764] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:27:49.766] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:32:25.832] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:32:25.833] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:32:25.834] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:33:00.429] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:33:00.430] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:33:00.432] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:34:02.496] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:34:02.497] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:34:02.498] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:34:30.810] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:34:30.811] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:34:30.812] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 11:37:31.188] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 11:37:31.189] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 11:37:31.190] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 13:14:49.457] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 13:14:49.459] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 13:14:49.460] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 13:52:51.062] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 13:52:51.063] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 13:52:51.064] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 13:58:41.925] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 13:58:41.926] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 13:58:41.928] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 14:02:52.443] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 14:02:52.444] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 14:02:52.445] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 14:10:23.633] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 14:10:23.634] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 14:10:23.635] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 14:38:04.671] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 14:38:04.672] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 14:38:04.673] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 15:11:24.860] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 15:11:24.861] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 15:11:24.862] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 15:12:37.623] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 15:12:37.624] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 15:12:37.625] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 15:12:58.493] [INFO] dateFileLog - ====m_bug-----set_worktime==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where id_bug_tracke=1' at line 1
+[2015-10-21 15:14:29.469] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 15:14:29.470] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 15:14:29.471] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 15:15:54.881] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 15:15:54.882] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 15:15:54.883] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 15:20:41.664] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 15:20:41.665] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 15:20:41.666] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 15:20:59.613] [INFO] dateFileLog - m_bug------->bug_detail======>Error: ER_BAD_FIELD_ERROR: Unknown column 'work_end_time' in 'field list'
+[2015-10-21 15:21:01.696] [INFO] dateFileLog - m_bug------->bug_detail======>Error: ER_BAD_FIELD_ERROR: Unknown column 'work_end_time' in 'field list'
+[2015-10-21 15:21:02.737] [INFO] dateFileLog - m_bug------->bug_detail======>Error: ER_BAD_FIELD_ERROR: Unknown column 'work_end_time' in 'field list'
+[2015-10-21 15:21:03.662] [INFO] dateFileLog - m_bug------->bug_detail======>Error: ER_BAD_FIELD_ERROR: Unknown column 'work_end_time' in 'field list'
+[2015-10-21 15:21:27.105] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 15:21:27.107] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 15:21:27.108] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 15:51:00.185] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 15:51:00.186] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 15:51:00.187] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 15:52:03.969] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 15:52:03.970] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 15:52:03.972] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 16:04:05.148] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 16:04:05.150] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 16:04:05.153] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 16:12:18.239] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项
+[2015-10-21 16:12:18.240] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统
+[2015-10-21 16:12:18.241] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台
+[2015-10-21 16:29:13.313] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 16:29:13.315] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 16:29:13.316] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 16:29:55.675] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 16:29:55.676] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 16:29:55.677] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 16:40:29.325] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 16:40:29.327] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 16:40:29.328] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 16:55:01.057] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 16:55:01.058] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 16:55:01.058] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:05:28.725] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:05:28.728] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:05:28.731] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:06:53.047] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:07:01.082] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:07:01.526] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:07:01.803] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:07:02.028] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:07:02.220] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:07:20.326] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:07:20.326] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:07:20.327] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:08:08.994] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:08:09.000] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:08:10.976] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:08:10.977] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:08:10.978] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:09:04.400] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:09:06.482] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:09:06.483] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:09:06.484] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:14:11.841] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:14:11.846] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'task_person_id=1 ,bug_executioner_name= where id_bug_tracke=1' at line 1
+[2015-10-21 17:14:12.409] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:14:12.411] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:14:12.413] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:15:42.303] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_BAD_FIELD_ERROR: Unknown column '指派给牛晓亮' in 'field list'
+[2015-10-21 17:16:27.035] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:16:27.036] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:16:27.036] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:18:11.620] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_BAD_FIELD_ERROR: Unknown column '指派给牛晓亮' in 'field list'
+[2015-10-21 17:19:57.153] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_BAD_FIELD_ERROR: Unknown column '指派给牛晓亮' in 'field list'
+[2015-10-21 17:19:59.124] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:19:59.125] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:19:59.126] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:22:06.234] [INFO] dateFileLog - ====m_bug-----set_bug_task==error==>>>>Error: ER_BAD_FIELD_ERROR: Unknown column '指派给牛晓亮' in 'field list'
+[2015-10-21 17:22:07.088] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:22:07.092] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:22:07.094] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:25:51.976] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:25:51.977] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:25:51.979] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:31:01.953] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:31:01.954] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:31:01.954] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:34:05.903] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:34:05.903] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:34:05.904] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:34:33.668] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:34:33.668] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:34:33.669] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:37:10.290] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:37:10.292] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:37:10.292] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:40:43.764] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:40:43.765] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:40:43.766] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:41:55.825] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:41:55.826] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:41:55.827] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
+[2015-10-21 17:42:58.538] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list: error ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,体检系统,,,,,,,,,,检验科,血常规,尿常规,,,,,,,,前台,签到,增项,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CRM系统,,,,,,,,,,呼叫中心,预约体检,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N.I.U系统,,,,,,,,,,BUG报告,体检系统BUG
+[2015-10-21 17:42:58.538] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_sys: error ,体检系统,CRM系统,N.I.U系统
+[2015-10-21 17:42:58.539] [INFO] dateFileLog - m_sys_list=>>>>>>global.sys_list_deps: error ,,,,,,,,,,,检验科,前台,,,,,,,,,呼叫中心,,,,,,,,,,BUG报告
