@@ -102,7 +102,7 @@ exports.showBUG=function(uid,level,local,dev,isDev,callback){
 * */
 exports.bug_detail=function(bugid,callback){
     //var sql="select *, from bug_tracke where id_bug_tracke=?";
-    var sql = "select processing_result,submit_user_id,bug_executioner_id,bug_level,bug_suggest,bug_executioner_name,processing_statue, id_bug_tracke,title,bug_description,bug_model,bug_sys,bug_dep,submit_user_id,date_format(submit_time+'', '%Y-%m-%d %H:%m:%S') as submit_time,date_format(work_end_date+'', '%Y-%m-%d') as work_time from bug_tracke where id_bug_tracke=?";
+    var sql = "select task_person_id,tesk_descrption,processing_result,submit_user_id,bug_executioner_id,bug_level,bug_suggest,bug_executioner_name,processing_statue, id_bug_tracke,title,bug_description,bug_model,bug_sys,bug_dep,submit_user_id,date_format(submit_time+'', '%Y-%m-%d %H:%m:%S') as submit_time,date_format(work_end_date+'', '%Y-%m-%d') as work_time from bug_tracke where id_bug_tracke=?";
 
     try{
         db.pool.getConnection(function(err,conn){
@@ -129,7 +129,9 @@ exports.bug_detail=function(bugid,callback){
                                 'executioner_id':result[0].bug_executioner_id,
                                 'submit_user_id':result[0].submit_user_id,
                             'work_time':result[0].work_time,
-                            'processing_result':result[0].processing_result};
+                            'processing_result':result[0].processing_result,
+                            'tesk_descrption':result[0].tesk_descrption,
+                            'task_person_id':result[0].task_person_id};
 
                         }
                         callback(data);

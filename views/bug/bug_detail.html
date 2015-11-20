@@ -16,7 +16,6 @@
     <%include ../nav.html%>
     <!--导航栏 end-->
 
-
     <div id="section-0">
         <blockquote>
             <p><%=data.bug_sys%>
@@ -45,18 +44,29 @@
         <div class="col-sm-8">
 
             <!--问题描述-->
+            <%if(data.tesk_descrption!=null){
+            if(isExecutioner || isTasker){%>
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                <%=data.tesk_descrption%>
+            </div>
+            <%}}%>
+
             <div>
                 <blockquote>
                     <h2>问题描述</h2>
                 </blockquote>
                 <p></p>
-                <%=data.descript%>
+                <%-data.descript%>
 
+                <%if(data.suggest.length!=0){%>
                 <blockquote>
                     <h2>修改建议</h2>
                 </blockquote>
                 <p></p>
-                <%=data.suggest%>
+                <%-data.suggest%>
+                <%}%>
             </div>
             <input type="hidden" id="bug_id" name="bug_id" value="<%=data.bug_id%>"/>
             <input type="hidden" id="user_id" name="user_id" value="<%=data.submit_user_id%>"/>

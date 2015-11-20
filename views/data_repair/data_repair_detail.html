@@ -58,7 +58,7 @@
                 <!--任务完结总结描述 end-->
 
                 <!--SQL-->
-                <%if(repair[0].sql_backup!=null||repair[0].sql_backup!=''){%>
+                <%if(repair[0].sql_backup.length!=0){%>
                 <br>
                 <kbd><%=repair[0].sql_backup%></kbd>
                 <%}%>

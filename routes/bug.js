@@ -148,6 +148,7 @@ router.get('/bug_detail',function(req,res,next){
             var isExecutioner=false;
             var isSubmit_user=false;
             var isCommonder=false;
+            var isTasker=false;
             if(req.session.uid==results.one.data.executioner_id){
                 isExecutioner=true;
             }
@@ -158,12 +159,16 @@ router.get('/bug_detail',function(req,res,next){
             {
                 isCommonder=true;
             }
+            if(req.session.uid==results.one.data.task_person_id){
+                isTasker=true;
+            }
             json_data={'session':results.one.session,
                 'data':results.one.data,
                 'commu':results.two.commu,
                 'isExecutioner':isExecutioner,
                 'isSubmit_user':isSubmit_user,
-                'isCommonder':isCommonder
+                'isCommonder':isCommonder,
+                'isTasker':isTasker
             };
             res.render('bug/bug_detail', json_data);
         });
