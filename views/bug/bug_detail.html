@@ -72,6 +72,7 @@
             <input type="hidden" id="user_id" name="user_id" value="<%=data.submit_user_id%>"/>
             <div style="border:1px dashed #737373;height:1px;width:100%;overflow:hidden;margin-top: 20px;margin-bottom: 20px;"></div>
             <div>
+                <%if(commu.date.length>0){%>
                 <blockquote>
                     <h3>信息沟通</h3>
                 </blockquote>
@@ -88,7 +89,8 @@
                     <%}
                     }%>
                 </div>
-                <%}%>
+                <%}
+                }%>
                 <!--沟通记录 end-->
 
                 <!--任务完结总结描述-->
@@ -102,7 +104,10 @@
                 <%}%>
                 <!--任务完结总结描述 end-->
 
-
+               <%switch(data.bug_statue){
+                case 4:break;
+                case 8:break;
+                default:%>
                 <div>
                     <div>
                 <textarea name="bug_back", id="bug_back", class="form-control" style="height: 300px" placeholder="进行详细的沟通，已确保修改到达预期目的"></textarea>
@@ -111,6 +116,7 @@
                         <button type="button" class="btn btn-defautl" id="bt_bug_commu" name="bt_bug_commu">提 交</button>
                     </div>
                 </div>
+                <%}%>
             </div>
 
 

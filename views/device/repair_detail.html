@@ -27,6 +27,14 @@
     <div class="row">
 
         <div class="col-sm-8">
+            <!--设备信息-->
+            <div>
+                设备信息：
+            </div>
+            <div id="device_list" name="device_list">
+
+            </div>
+            <!--设备信息 end-->
 
             <!--问题描述-->
             <div>
@@ -389,6 +397,39 @@
                     for (var i = 0; i < data.length; i++) {
                         $('#repair_level2').append($("<option>").val(data[i].id).text(data[i].content));
                     }
+                }
+            }
+        });
+    });
+
+
+    $(function(){
+        $.ajax({
+                    cache : false,
+            type:'get',
+            url:'/device/get_person_device_info',
+            data:{'device_id':<%=repair[0].device_id%>},
+                dataType: 'json',
+            success:function(data){
+                if(data[0]==0){
+                    $('#device_list').append("<li>没有绑定设备</li>");
+                }else{
+                    for(var i=1;i<data.length-2;i++){
+                        $('#device_list').append("<li>"+data[i]+"</li>");
+                    }
+                    $('#device_no').val(data[10]);
+                    switch(data[11]){
+                        case '1':
+                            $('#device_img').attr('src','../images/PC.jpg');
+                            break;
+                        case '2':
+                            $('#device_img').attr('src','../images/laptop.jpg');
+                            break;
+                        case '3':
+                            $('#device_img').attr('src','../images/print.jpg');
+                            break;
+                    }
+
                 }
             }
         });

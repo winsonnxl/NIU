@@ -24,7 +24,15 @@
     <div class="row">
 
         <div class="col-sm-12">
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" id="checklist1" class="active" onclick="checklist(1)"><a href="#">设备维护</a></li>
+                <li role="presentation" id="checklist2" onclick="checklist(2)"><a href="#">数据维护</a></li>
+                <li role="presentation" id="checklist3" onclick="checklist(3)"><a href="#">系统BUG</a></li>
+            </ul>
 
+
+            <div id="bug_list" style="display: none">
+                <% if(results.length>0){%>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -38,8 +46,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <% if(results.length>0){
-                     for(var i=0;results.length>i;i++){%>
+
+                     <%for(var i=0;results.length>i;i++){%>
                   <tr>
                       <th scope="row"><%=i+1%></th>
                       <th><%=results[i].sys_name%></th>
@@ -81,8 +89,12 @@
 
                 </tbody>
             </table>
+                </div>
 
             <!--维护工作-->
+            <div id="repair_list" style="display:">
+                <% if(repair.length>0){%>
+
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -94,8 +106,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <% if(repair.length>0){
-                for(var i=0;repair.length>i;i++){%>
+
+                <%for(var i=0;repair.length>i;i++){%>
                 <tr>
                     <th scope="row"><%=i+1%></th>
                     <th><%=repair[i].submit_user_local%></th>
@@ -136,10 +148,13 @@
 
                 </tbody>
             </table>
+            </div>
             <!--维护工作 end-->
 
 
             <!--数据工作-->
+            <div id="data_repair_list" style="display: none">
+                <% if(data_repair.length>0){%>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -151,8 +166,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <% if(data_repair.length>0){
-                for(var i=0;data_repair.length>i;i++){%>
+
+                <%for(var i=0;data_repair.length>i;i++){%>
                 <tr>
                     <th scope="row"><%=i+1%></th>
                     <th><%=data_repair[i].submit_user_local%></th>
@@ -193,6 +208,7 @@
 
                 </tbody>
             </table>
+                </div>
             <!--数据工作 end-->
 
         </div>
@@ -217,4 +233,36 @@
 
 
 </body>
+
+<script>
+    function checklist(id){
+        //alert(id);
+        switch (id){
+            case 1:
+                $('#checklist1').toggleClass('active',true);
+                document.getElementById("repair_list").style.display="";
+                $('#checklist2').toggleClass('active',false);
+                document.getElementById("data_repair_list").style.display="none";
+                $('#checklist3').toggleClass('active',false);
+                document.getElementById("bug_list").style.display="none";
+                break;
+            case 2:
+                $('#checklist1').toggleClass('active',false);
+                document.getElementById("repair_list").style.display="none";
+                $('#checklist2').toggleClass('active',true);
+                document.getElementById("data_repair_list").style.display="";
+                $('#checklist3').toggleClass('active',false);
+                document.getElementById("bug_list").style.display="none";
+                break;
+            case 3:
+                $('#checklist1').toggleClass('active',false);
+                document.getElementById("repair_list").style.display="none";
+                $('#checklist2').toggleClass('active',false);
+                document.getElementById("data_repair_list").style.display="none";
+                $('#checklist3').toggleClass('active',true);
+                document.getElementById("bug_list").style.display="";
+                break;
+        }
+    }
+</script>
 </html>

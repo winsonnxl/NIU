@@ -114,7 +114,9 @@ router.post('/ajax/get_cpu_type',function(req,res,next){
 /*获得个人用户已绑定设备信息*/
 router.get('/get_person_device_info',function(req,res,next){
     var userid=req.session.uid;
-    require('../models/m_device').get_device_info(userid,0,function(data){
+    var device_id=req.query.device_id;
+    if(device_id==undefined)device_id=0;
+    require('../models/m_device').get_device_info(userid,device_id,function(data){
         var results=new Array;
         results[0]=0;
         if(data.length>0){
@@ -359,6 +361,7 @@ router.post('/ajax/get_device_item',function(req,res,next){
     });
 });
 
+/*读取type：10（设备维护项目）内容*/
 router.post('/ajax/get_type10',function(req,res,next){
     var level=req.body.level;
     require('../models/m_device_dic').get_type10(level,function(data){
